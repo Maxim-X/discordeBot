@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-
+import os
 
 Bot = commands.Bot(command_prefix='!')
 
@@ -12,4 +12,5 @@ async def on_ready():
 async def hello(ctx):
 	await Bot.say("Hello!!!")
 
-Bot.run("NTcxMzUzNDI3NzI1MjU0NjU3.XVJ8MQ.AuG90ruoj3Zc8MzToIJ-CCm2jFI")
+token = os.environ.get('BOT_TIKEN')
+Bot.run(str(token))
