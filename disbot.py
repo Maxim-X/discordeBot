@@ -11,8 +11,8 @@ bot = commands.Bot(command_prefix='>')
 @bot.command()
 async def ping(ctx):
     await ctx.send('pong')
-    
-bot = commands.Bot(command_prefix='.')
+  
+
 YOUTUBE_API = 'AIzaSyAqslDNpc0VSKi1wx3aiPA4pqYsGUFjEVI'
 
 
