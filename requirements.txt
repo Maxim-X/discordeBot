@@ -3,5 +3,6 @@ aiohttp
 websockets
 chardet
 asyncio
-youtube_dl
+youtube-dl
+PyNaCl
 requests
