@@ -22,7 +22,7 @@ async def myinfo(ctx, user: discord.User):
 	emb.add_field(name = "Name", value="Value")
 	emb.set_thumbnail(url= user.avatar_url)
 	emb.set_author(name="Author", url=user.avatar_url)
-    await ctx.send(embed= emb)
+    await ctx.send("123")
 
     
 
