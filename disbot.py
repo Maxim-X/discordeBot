@@ -16,7 +16,9 @@ summ = 1
 async def ping(ctx):
     global summ
     summ+=1
-    await ctx.send('pong'+str(ClientUser.relationships()))
+    global user
+    user = ClientUser.name
+    await ctx.send('pong'+str(user))
 
     
 
