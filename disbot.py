@@ -21,7 +21,7 @@ async def ping(ctx):
     await ctx.send('pong'+str(user))
 
 @bot.command(pass_context= True)
-async def MyInfo(ctx, user: discord.User):
+async def myinfo(ctx, user: discord.User):
 	await bot.say("Name: {}".format(user.name))
 
     
