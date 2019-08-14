@@ -10,7 +10,7 @@ summ = 1
 async def ping(ctx):
     global summ
     summ+=1
-    await ctx.send('pong'+summ)
+    await ctx.send('pong'+str(summ))
 
     
 token = os.environ.get('BOT_TOKEN')
