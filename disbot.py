@@ -18,11 +18,11 @@ async def hello(ctx):
 
 @bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
-	emb = discord.Embed(title= "Title", colour= 0xFF00FF)
-	emb.add_field(name = "Name", value= "Value")
-	emb.set_thumbnail(url= user.avatar_url)
-	emb.set_author(name= "Author", url= user.avatar_url)
-    await ctx.send(embed = emb)
+	embd = discord.Embed(title= "Title", colour= 0xFF00FF)
+	embd.add_field(name = "Name", value= "Value")
+	embd.set_thumbnail(url= user.avatar_url)
+	embd.set_author(name= "Author", url= user.avatar_url)
+    await ctx.send(embed = embd)
 
     
 
