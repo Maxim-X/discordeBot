@@ -13,12 +13,12 @@ logger.addHandler(handler)
 summ = 1
 
 @bot.command(pass_context= True)
-async def ping(ctx):
+async def hello(ctx):
     global summ
     summ+=1
     global user
-    user = ctx.message.author
-    await ctx.send('pong'+str(user))
+    user = ctx.message.author.mention
+    await ctx.send("Hello {}".format(user))
 
 @bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
