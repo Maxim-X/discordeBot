@@ -2,8 +2,9 @@ import discord
 from discord.ext import commands
 import os
 import logging
+import discord.ext.commands import Bot
 
-bot = commands.Bot(command_prefix='>')
+Bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -12,7 +13,7 @@ logger.addHandler(handler)
 
 summ = 1
 
-@bot.command(pass_context= True)
+@Bot.command(pass_context= True)
 async def ping(ctx):
     global summ
     summ+=1
@@ -20,7 +21,7 @@ async def ping(ctx):
     user = ctx.message.author
     await ctx.send('pong'+str(user))
 
-@bot.command(pass_context= True)
+@Bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
     await ctx.send("Name: {}".format(user.name))
 
@@ -29,5 +30,5 @@ async def myinfo(ctx, user: discord.User):
     
 token = os.environ.get('BOT_TOKEN')
 
-bot.run(str(token))
+Bot.run(str(token))
 
