@@ -32,7 +32,7 @@ async def pogoda(ctx, city):
 	observation = owm.weather_at_place(str(city))
 	w = observation.get_weather()
 	temp = w.get_temperature('celsius')["temp"]
-	await ctx.send("Погода в городе"+str(city)+":"+str(temp))
+	await ctx.send("Погода в городе"+str(city)+": "+str(temp)+"℃")
 
     
 
