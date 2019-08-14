@@ -14,11 +14,7 @@ summ = 1
 
 @bot.command(pass_context= True)
 async def hello(ctx):
-    global summ
-    summ+=1
-    global user
-    user = ctx.message.author.mention
-    await ctx.send("Hello {}".format(user))
+    await ctx.send("Hello {}".format(ctx.message.author.mention))
 
 @bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
