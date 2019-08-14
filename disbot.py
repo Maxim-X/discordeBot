@@ -16,7 +16,13 @@ summ = 1
 async def hello(ctx):
     await ctx.send("Hello1 {}".format(ctx.message.author.mention))
 
-
+@bot.command(pass_context= True)
+async def myinfo(ctx, user: discord.User):
+	emb = discord.Embed(title="Title", colour= 0x39d0d6)
+	emb.add_field(name = "Name", value="Value")
+	emb.set_thumbnail(url= user.avatar_url)
+	emb.set_author(name="Author", url=user.avatar_url)
+    await ctx.send(embed= emb)
 
     
 
