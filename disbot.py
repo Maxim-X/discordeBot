@@ -17,7 +17,7 @@ async def ping(ctx):
     global summ
     summ+=1
     global user
-    user = ClientUser.name()
+    user = ctx.message.author
     await ctx.send('pong'+str(user))
 
     
