@@ -18,7 +18,7 @@ async def hello(ctx):
 
 @bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
-	embd = discord.Embed(title= "Title", colour= 0xFF00FF)
+	embd = discord.Embed(title= "Title", colour= 0xFF00FF, description="werwer")
 	embd.add_field(name = "Name", value= "Value")
 	embd.set_thumbnail(url= user.avatar_url)
 	embd.set_author(name= "Author", url= user.avatar_url)
