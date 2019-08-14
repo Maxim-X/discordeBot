@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 import os
 import logging
+import pyowm
+
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
@@ -23,6 +25,14 @@ async def myinfo(ctx, user: discord.User):
 	embd.set_thumbnail(url= user.avatar_url)
 	embd.set_author(name= "Author", url= user.avatar_url)
 	await ctx.send(embed = embd)
+
+@bot.command(pass_context= True)
+async def pogoda(ctx, city):
+	owm = pyowm.OWM('6d00d1d4e704068d70191bad2673e0cc')  # You MUST provide a valid API key
+	observation = owm.weather_at_place(str(city))
+	w = observation.get_weather()
+	temp = w.get_temperature('celsius')["temp"]
+	await ctx.send("Погода в городе"+city+":"+temp)
 
     
 
