@@ -12,7 +12,7 @@ logger.addHandler(handler)
 
 summ = 1
 
-@bot.command()
+@bot.command(pass_context= True)
 async def ping(ctx):
     global summ
     summ+=1
@@ -20,7 +20,7 @@ async def ping(ctx):
     user = ctx.message.author
     await ctx.send('pong'+str(user))
 
-@bot.command()
+@bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
     await bot.say("Name: {}".format(user.name))
 
