@@ -14,7 +14,7 @@ logger.addHandler(handler)
 summ = 1
 
 @bot.command()
-async def ping(ctx):
+async def ping(ctx1):
     global summ
     summ+=1
     await ctx.send('pong'+str(summ))
