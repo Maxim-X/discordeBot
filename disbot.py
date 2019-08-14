@@ -19,11 +19,11 @@ async def ping(ctx):
     summ+=1
     global user
     user = ctx.message.author
-    await ctx.send('pong'+str(user))
+    await Bot.say('pong'+str(user))
 
 @Bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
-    await ctx.send("Name: {}".format(user.name))
+    await Bot.say("Name: {}".format(user.name))
 
     
 
