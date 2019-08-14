@@ -7,7 +7,8 @@ bot = commands.Bot(command_prefix='>')
 summ = 1
 
 @bot.command()
-async def ping(ctx):
+async def ping(ctx, summ):
+	global summ
     await ctx.send('pong'+summ)
     summ+=1
 
