@@ -20,9 +20,14 @@ async def ping(ctx):
     user = ctx.message.author
     await ctx.send('pong'+str(user))
 
+@bot.command(pass_context= True)
+async def MyInfo(ctx, user: discord.User):
+	await bot.say("Name: {}".format(user.name))
+
     
 
     
 token = os.environ.get('BOT_TOKEN')
 
 bot.run(str(token))
+
