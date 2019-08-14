@@ -18,7 +18,6 @@ async def hello(ctx):
 
 @bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
-
     await ctx.send("123")
 
     
