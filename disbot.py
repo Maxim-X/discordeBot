@@ -22,7 +22,7 @@ async def ping(ctx):
 
 @bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
-    await bot.say("Name: {}".format(user.name))
+    await ctx.send("Name: {}".format(user.name))
 
     
 
