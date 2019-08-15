@@ -21,6 +21,7 @@ async def on_message(message):
 		listBunMessage[i] = listBunMessage[i].lower()
 		i+=1
 	messageUser = message.content.lower()
+	messageUser.split()
 	if messageUser in listBunMessage:
 		channel = message.channel
 		userBan = message.author
