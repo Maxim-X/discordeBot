@@ -22,13 +22,13 @@ while i < len(listBunMessage):
 @bot.event
 async def on_message(message):
 	# print(message.content)
-	# messageUser = message.content[:]
-	# messageUser = messageUser.lower()
-	# messageUser = messageUser.split()
+	messageUser = message.content[:]
+	messageUser = messageUser.lower()
+	messageUser = messageUser.split()
 	# print(messageUser)
 	# if set(messageUser).intersection(set(listBunMessage)):
 	for ig in listBunMessage:
-		if ig in message.content:
+		if ig in messageUser:
 			channel = message.channel
 			userBan = message.author
 			infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description='Оу Оу '+str(userBan)+', полегче.')
