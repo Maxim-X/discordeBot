@@ -12,7 +12,7 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-listBunMessage = ['Сука', 'мат']
+listBunMessage = ['сука', 'мат']
 
 @bot.event
 async def on_message(message):
@@ -23,8 +23,9 @@ async def on_message(message):
 	messageUser = message.content.lower()
 	if messageUser in listBunMessage:
 		channel = message.channel
+		userBan = message.author
 		await discord.Message.delete(message, delay=None)
-		await channel.send('Оу Оу полегче. `Администрация осуждает данное высказывание.`')
+		await channel.send('Оу Оу '+str(userBan)+', полегче. `Администрация осуждает данное высказывание.`')
 
 
 
