@@ -13,6 +13,12 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 listBunMessage = ['сука', 'мат']
+i=0
+while i < len(listBunMessage):
+	listBunMessage[i] = listBunMessage[i].lower()
+	i+=1
+
+	
 @bot.event
 async def on_message(message):
 	# print(message.content)
