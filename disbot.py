@@ -31,8 +31,8 @@ async def on_message(message):
 		if ig in messageUser:
 			channel = message.channel
 			userBan = message.author
-			infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description='Оу Оу '+str(userBan)+', полегче.')
-			infoUserBan.set_footer(text="Администрация осуждает данное высказывание.")
+			infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description=''+str(userBan)+', если хочешь использовать мат, заходи в голосовой чат.')
+			infoUserBan.set_footer(text="Администрация осуждает данное высказывание. `© Maxim`")
 			await discord.Message.delete(message, delay=None)
 			await channel.send(embed=infoUserBan)
 	await bot.process_commands(message)
@@ -43,13 +43,20 @@ async def on_message(message):
 async def hello(ctx):
 	await ctx.send("Привет, {}".format(ctx.message.author.mention))
 
-# @bot.command(pass_context= True)
-# async def addBanMessage(ctx, word):
-# 	text_file=open("listBunMessage.txt", "r", encoding="utf-8")
-# 	text_file.writelines(lines)
-# 	allBanMessage = text_file.readlines()
-# 	await ctx.send(allBanMessage)
-# 	text_file.close()
+@bot.command(pass_context= True)
+async def addBanMessage(ctx, *, word):
+	allword = word.split( )
+	allword = len(allword)
+	if allword == 1:
+		text_file=open("listBunMessage.txt", "a", encoding="utf-8")
+		text_file.write('\n'+word)
+		text_file.close()
+		author = word.author
+		infoUser = discord.Embed(title= "Слово `"+word+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+author+" спасибо за то что внес вклад в мое развитие!")
+		await ctx.send(embed=infoUser)
+	else:
+		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
+
 
 
 @bot.command(pass_context= True)
