@@ -57,7 +57,7 @@ async def addBanMessage(ctx, *, word):
 		await ctx.send("4")
 		author = ctx.message.author
 		await ctx.send("5")
-		infoUser = discord.Embed(title= "Слово `"+word+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+author+" спасибо за то что внес вклад в мое развитие!")
+		infoUser = discord.Embed(title= "Слово `"+str(word)+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+str(author)+" спасибо за то что внес вклад в мое развитие!")
 		await ctx.send("6")
 		await ctx.send(embed=infoUser)
 	else:
