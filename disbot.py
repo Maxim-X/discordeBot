@@ -16,11 +16,16 @@ listBunMessage = ['Сука', 'мат']
 
 @bot.event
 async def on_message(message):
-	for x in listBunMessage:
-		x = x.lower()
+	i=0
+	while i < len(listBunMessage):
+		listBunMessage[i] = listBunMessage[i].lower()
+		i+=1
 	messageUser = message.content.lower()
 	if messageUser in listBunMessage:
+		channel = message.channel
 		await discord.Message.delete(message, delay=None)
+		await channel.send('Оу Оу полегче. `Администрация осуждает данное высказывание.`')
+
 
 
 @bot.command(pass_context= True)
