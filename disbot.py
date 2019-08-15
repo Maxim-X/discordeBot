@@ -44,6 +44,15 @@ async def hello(ctx):
 	await ctx.send("Привет, {}".format(ctx.message.author.mention))
 
 @bot.command(pass_context= True)
+async def addBanMessage(ctx, word):
+	text_file=open("listBunMessage.txt", "r", encoding="utf-8")
+	text_file.writelines(lines)
+	allBanMessage = text_file.readlines()
+	await ctx.send(allBanMessage)
+	text_file.close()
+
+
+@bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
 	InfoUserEmb = discord.Embed(title= "Title", colour= 0xFF00FF, description="werwer")
 	InfoUserEmb.add_field(name = "Name", value= "Value")
