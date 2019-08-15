@@ -20,7 +20,8 @@ async def on_message(message):
 		listBunMessage[i] = listBunMessage[i].lower()
 		i+=1
 	messageUser = message.content.lower()
-	if messageUser.split() in listBunMessage:
+	messageUser = messageUser.split()
+	if set(messageUser).intersection(set(listBunMessage)):
 		channel = message.channel
 		userBan = message.author
 		await discord.Message.delete(message, delay=None)
