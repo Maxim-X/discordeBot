@@ -15,20 +15,21 @@ logger.addHandler(handler)
 listBunMessage = ['сука', 'мат']
 @bot.event
 async def on_message(message):
-	i=0
-	while i < len(listBunMessage):
-		listBunMessage[i] = listBunMessage[i].lower()
-		i+=1
-	messageUser = message.content.lower()
-	messageUser = messageUser.split()
-	if set(messageUser).intersection(set(listBunMessage)):
-		channel = message.channel
-		userBan = message.author
-		await discord.Message.delete(message, delay=None)
-		infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, 
-		description='Оу Оу '+str(userBan)+', полегче.')
-		infoUserBan.set_footer(text="Администрация осуждает данное высказывание.")
-		await channel.send(embed=infoUserBan)
+	# print(message.content)
+	# messageUser = message.content[:]
+	# messageUser = messageUser.lower()
+	# messageUser = messageUser.split()
+	# print(messageUser)
+	# if set(messageUser).intersection(set(listBunMessage)):
+	for ig in listBunMessage:
+		if ig in message.content:
+			channel = message.channel
+			userBan = message.author
+			infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description='Оу Оу '+str(userBan)+', полегче.')
+			infoUserBan.set_footer(text="Администрация осуждает данное высказывание.")
+			await discord.Message.delete(message, delay=None)
+			await channel.send(embed=infoUserBan)
+	await bot.process_commands(message)
 
 
 
