@@ -16,8 +16,10 @@ listBunMessage = ['Сука', 'мат']
 
 @bot.event
 async def on_message(message):
-	x.lower() for x in listBunMessage
-	if message.content.lower() in listBunMessage.lower():
+	for x in listBunMessage:
+		x = x.lower()
+	messageUser = message.content.lower()
+	if messageUser in listBunMessage:
 		await discord.Message.delete(message, delay=None)
 
 
