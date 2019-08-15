@@ -12,6 +12,13 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
+listBunMessage = ['Сука', 'мат']
+
+@bot.event
+async def on_message(message):
+	if message.content == listBunMessage:
+		channel = message.channel
+		await discord.Message.delete(message, delay=None)
 
 
 @bot.command(pass_context= True)
