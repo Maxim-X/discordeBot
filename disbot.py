@@ -25,9 +25,10 @@ async def on_message(message):
 		channel = message.channel
 		userBan = message.author
 		await discord.Message.delete(message, delay=None)
-		InfoUserEmb = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, 
-		description='Оу Оу '+str(userBan)+', полегче. `Администрация осуждает данное высказывание.`')
-		await channel.send(embed=InfoUserEmb)
+		infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, 
+		description='Оу Оу '+str(userBan)+', полегче.')
+		infoUserBan.set_footer(text="Администрация осуждает данное высказывание.")
+		await channel.send(embed=infoUserBan)
 
 
 
