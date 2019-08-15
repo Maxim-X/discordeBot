@@ -16,7 +16,7 @@ listBunMessage = ['Сука', 'мат']
 
 @bot.event
 async def on_message(message):
-	if message.content == listBunMessage:
+	if message.content in listBunMessage:
 		channel = message.channel
 		await discord.Message.delete(message, delay=None)
 
