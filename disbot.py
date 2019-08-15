@@ -48,7 +48,7 @@ async def addBanMessage(ctx, *, word):
 	allword = word.split( )
 	allword = len(allword)
 	if allword == 1:
-		text_file=open("listBunMessage.txt", "a", encoding="utf-8")
+		text_file=open(filename="listBunMessage.txt", mode="w", encoding="utf-8")
 		text_file.write('\n'+word)
 		text_file.close()
 		author = word.author
