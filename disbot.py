@@ -14,8 +14,7 @@ logger.addHandler(handler)
 
 @bot.event
 async def on_message(msg):
-	if msg.content == "qwe":
-		await bot.delete_message(msg)
+	await bot.delete_message(msg)
 
 @bot.command(pass_context= True)
 async def hello(ctx):
