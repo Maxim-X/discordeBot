@@ -12,13 +12,13 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
-listBunMessage = ['сука', 'мат']
+listBunMessage = ['сука', 'мат', 'уебак']
 i=0
 while i < len(listBunMessage):
 	listBunMessage[i] = listBunMessage[i].lower()
 	i+=1
 
-	
+
 @bot.event
 async def on_message(message):
 	# print(message.content)
