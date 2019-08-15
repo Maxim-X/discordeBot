@@ -43,19 +43,19 @@ async def on_message(message):
 async def hello(ctx):
 	await ctx.send("Привет, {}".format(ctx.message.author.mention))
 
-@bot.command(pass_context= True)
-async def addBanMessage(ctx, *, word):
-	allword = word.split( )
-	allword = len(allword)
-	if allword == 1:
-		text_file=open(filename="listBunMessage.txt", mode="w", encoding="utf-8")
-		text_file.write('\n'+word)
-		text_file.close()
-		author = word.author
-		infoUser = discord.Embed(title= "Слово `"+word+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+author+" спасибо за то что внес вклад в мое развитие!")
-		await ctx.send(embed=infoUser)
-	else:
-		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
+# @bot.command(pass_context= True)
+# async def addBanMessage(ctx, *, word):
+# 	allword = word.split( )
+# 	allword = len(allword)
+# 	if allword == 1:
+# 		text_file=open(filename="listBunMessage.txt", mode="w", encoding="utf-8")
+# 		text_file.write('\n'+word)
+# 		text_file.close()
+# 		author = word.author
+# 		infoUser = discord.Embed(title= "Слово `"+word+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+author+" спасибо за то что внес вклад в мое развитие!")
+# 		await ctx.send(embed=infoUser)
+# 	else:
+# 		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
 
 
 
