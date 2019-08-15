@@ -13,6 +13,11 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 @bot.event
+async def on_ready():
+	await ctx.send("Привет, я работаю!")
+
+
+@bot.event
 async def on_message(msg):
 	await bot.delete_message(msg)
 
