@@ -5,7 +5,7 @@ import logging
 import pyowm
 
 
-bot = commands.Bot(command_prefix='=')
+bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
