@@ -13,7 +13,6 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 listBunMessage = ['сука', 'мат']
-
 @bot.event
 async def on_message(message):
 	i=0
@@ -21,8 +20,7 @@ async def on_message(message):
 		listBunMessage[i] = listBunMessage[i].lower()
 		i+=1
 	messageUser = message.content.lower()
-	messageUser.split()
-	if messageUser in listBunMessage:
+	if messageUser.split() in listBunMessage:
 		channel = message.channel
 		userBan = message.author
 		await discord.Message.delete(message, delay=None)
