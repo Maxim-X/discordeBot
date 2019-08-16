@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 import logging
 import pyowm
-import sqlite3
+
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
@@ -19,32 +19,26 @@ while i < len(listBunMessage):
 	i+=1
 
 
-
-
 @bot.command(pass_context= True)
 async def db(ctx):
-	# Создаем соединение с нашей базой данных
-	# В нашем примере у нас это просто файл базы
-	conn = sqlite3.connect('Chinook_Sqlite.sqlite')
-
-	# Создаем курсор - это специальный объект который делает запросы и получает их результаты
-	cursor = conn.cursor()
-
-	# Делаем INSERT запрос к базе данных, используя обычный SQL-синтаксис
-	cursor.execute("INSERT INTO Artist VALUES (Null, 'Maxim!') ")
-
-	# Если мы не просто читаем, но и вносим изменения в базу данных - необходимо сохранить транзакцию
-	conn.commit()
-
-	# Проверяем результат
-	cursor.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 3")
-	results = cursor.fetchall()
-	# print(results)  # [('A Aagrh!',), ('A Cor Do Som',), ('Aaron Copland & London Symphony Orchestra',)]
-	await ctx.send(str(results))
-	# Не забываем закрыть соединение с базой данных
-	conn.close()
+	connection = pymysql.connect(
+		host='localhost',
+		user='id4459149_cl222221_bd',
+		password='1a7L2orZM0bR',
+		db='id4459149_cl222221_bd',
+		charset='utf8mb4',
+		cursorclass=DictCursor
+	)
+	try:
+		with connection.cursor() as cursor:
+			sql1 = "INSERT INTO db_allBanMessage (message) VALUES (%s);"
+			cursor.execute(sql1,('Merly'))
+			connection.commit()
+	finally:
+		connection.close()
 
 
+		
 @bot.command(pass_context= True)
 async def rede(ctx): 
 	text_file=open("listBunMessage.txt", "r", encoding="utf-8")
