@@ -3,7 +3,9 @@ from discord.ext import commands
 import os
 import logging
 import pyowm
-
+import pymysql
+from pymysql.cursors import DictCursor
+import pymysql.cursors
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
