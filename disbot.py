@@ -31,7 +31,7 @@ async def db(ctx):
 	cursor = conn.cursor()
 
 	# Делаем INSERT запрос к базе данных, используя обычный SQL-синтаксис
-	cursor.execute("insert into Artist values (Null, 'A Aagrh!') ")
+	cursor.execute("INSERT INTO Artist VALUES (Null, 'Maxim!') ")
 
 	# Если мы не просто читаем, но и вносим изменения в базу данных - необходимо сохранить транзакцию
 	conn.commit()
@@ -43,7 +43,7 @@ async def db(ctx):
 	await ctx.send(str(results))
 	# Не забываем закрыть соединение с базой данных
 	conn.close()
-	
+
 
 @bot.command(pass_context= True)
 async def rede(ctx): 
