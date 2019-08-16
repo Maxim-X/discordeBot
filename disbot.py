@@ -18,7 +18,15 @@ while i < len(listBunMessage):
 	listBunMessage[i] = listBunMessage[i].lower()
 	i+=1
 
+@bot.command(pass_context= True)
+async def rede(ctx): 
+	text_file=open("listBunMessage.txt", "r", encoding="utf-8")
+	# text_file.writelines(lines)
+	allBanMessage = text_file.readlines()
+	text_file.close()
+	await ctx.send(str(allBanMessage))
 
+	
 @bot.event
 async def on_message(message):
 	# print(message.content)
