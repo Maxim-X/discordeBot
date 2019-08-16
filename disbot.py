@@ -26,7 +26,7 @@ async def rede(ctx):
 	text_file.close()
 	await ctx.send(str(allBanMessage))
 
-	
+
 @bot.event
 async def on_message(message):
 	# print(message.content)
@@ -57,7 +57,7 @@ async def addBanMessage(ctx, *, word):
 	allword = len(allword)
 	if allword == 1:
 		await ctx.send("1")
-		text_file=open("listBunMessage.txt", "a", encoding="utf-8")
+		text_file=open("listBunMessage.txt", "w", encoding="utf-8")
 		await ctx.send("2")
 		text_file.write('\n'+str(word))
 		await ctx.send("3")
