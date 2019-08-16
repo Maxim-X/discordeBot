@@ -57,21 +57,21 @@ async def addBanMessage(ctx, *, word):
 	allword = len(allword)
 	if allword == 1:
 		await ctx.send("1")
-		text_file=open("listBunMessage.txt", "w", encoding="utf-8")
-		msg = word.content
-		await ctx.send(str(msg))
-		text_file.writeline(msg)
+		text_file=open("listBunMessage.txt", "a", encoding="utf-8")
+		msg = word
+		await ctx.send(str(word))
+		text_file.writelines(word+"\n")
 		await ctx.send("3")
 		text_file.close()
 		await ctx.send("4")
-		author = ctx.word.author
+		author = ctx.message.author
 		await ctx.send("5")
 		infoUser = discord.Embed(title= "Слово `"+str(word)+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+str(author)+" спасибо за то что внес вклад в мое развитие!")
 		await ctx.send("6")
 		await ctx.send(embed=infoUser)
 	else:
 		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
-
+		
 
 
 @bot.command(pass_context= True)
