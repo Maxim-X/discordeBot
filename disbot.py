@@ -39,8 +39,8 @@ async def db(ctx):
 	# Проверяем результат
 	cursor.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 3")
 	results = cursor.fetchall()
-	print(results)  # [('A Aagrh!',), ('A Cor Do Som',), ('Aaron Copland & London Symphony Orchestra',)]
-
+	# print(results)  # [('A Aagrh!',), ('A Cor Do Som',), ('Aaron Copland & London Symphony Orchestra',)]
+	await ctx.send(str(results))
 	# Не забываем закрыть соединение с базой данных
 	conn.close()
 	
