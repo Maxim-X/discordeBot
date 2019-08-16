@@ -20,7 +20,7 @@ while i < len(listBunMessage):
 
 @bot.command(pass_context= True)
 async def rede(ctx): 
-	text_file=open("listBunMessage.txt", "r", encoding="utf-8")
+	text_file=open("listBunMessage.txt", "a", encoding="utf-8")
 	# text_file.writelines(lines)
 	allBanMessage = text_file.readlines()
 	text_file.close()
