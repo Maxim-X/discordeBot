@@ -58,13 +58,13 @@ async def addBanMessage(ctx, *, word):
 	if allword == 1:
 		await ctx.send("1")
 		text_file=open("listBunMessage.txt", "w", encoding="utf-8")
-		msg = message.content
+		msg = word.content
 		await ctx.send(str(msg))
 		text_file.writeline(msg)
 		await ctx.send("3")
 		text_file.close()
 		await ctx.send("4")
-		author = ctx.message.author
+		author = ctx.word.author
 		await ctx.send("5")
 		infoUser = discord.Embed(title= "Слово `"+str(word)+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+str(author)+" спасибо за то что внес вклад в мое развитие!")
 		await ctx.send("6")
