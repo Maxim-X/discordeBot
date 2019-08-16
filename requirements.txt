@@ -7,3 +7,4 @@ youtube-dl
 PyNaCl
 requests
 pyowm
+sqlite3

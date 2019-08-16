@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 import logging
 import pyowm
-
+import sqlite3
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
@@ -17,6 +17,33 @@ i=0
 while i < len(listBunMessage):
 	listBunMessage[i] = listBunMessage[i].lower()
 	i+=1
+
+
+
+
+@bot.command(pass_context= True)
+async def db(ctx):
+	# Создаем соединение с нашей базой данных
+	# В нашем примере у нас это просто файл базы
+	conn = sqlite3.connect('Chinook_Sqlite.sqlite')
+
+	# Создаем курсор - это специальный объект который делает запросы и получает их результаты
+	cursor = conn.cursor()
+
+	# Делаем INSERT запрос к базе данных, используя обычный SQL-синтаксис
+	cursor.execute("insert into Artist values (Null, 'A Aagrh!') ")
+
+	# Если мы не просто читаем, но и вносим изменения в базу данных - необходимо сохранить транзакцию
+	conn.commit()
+
+	# Проверяем результат
+	cursor.execute("SELECT Name FROM Artist ORDER BY Name LIMIT 3")
+	results = cursor.fetchall()
+	print(results)  # [('A Aagrh!',), ('A Cor Do Som',), ('Aaron Copland & London Symphony Orchestra',)]
+
+	# Не забываем закрыть соединение с базой данных
+	conn.close()
+	
 
 @bot.command(pass_context= True)
 async def rede(ctx): 
