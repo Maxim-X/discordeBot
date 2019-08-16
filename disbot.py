@@ -56,11 +56,14 @@ async def addBanMessage(ctx, *, word):
 	allword = word.split( )
 	allword = len(allword)
 	if allword == 1:
+		text_file=open("listBunMessage.txt", "r", encoding="utf-8")
+		allBanMessage = text_file.readlines()
+		text_file.close()
 		await ctx.send("1")
 		text_file=open("listBunMessage.txt", "w", encoding="utf-8")
-		msg = word
-		await ctx.send(str(word))
-		text_file.writelines(word+"\n")
+		allBanMessage+=str(word)+"\n"
+		await ctx.send(str(allBanMessage))
+		text_file.writelines(allBanMessage)
 		await ctx.send("3")
 		text_file.close()
 		await ctx.send("4")
