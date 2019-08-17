@@ -8,3 +8,5 @@ PyNaCl
 requests
 pyowm
 pymysql
+requests
+bs4

@@ -6,6 +6,9 @@ import pyowm
 import pymysql
 from pymysql.cursors import DictCursor
 import pymysql.cursors
+import requests
+from bs4 import BeautifulSoup
+import re
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
@@ -20,6 +23,20 @@ while i < len(listBunMessage):
 	listBunMessage[i] = listBunMessage[i].lower()
 	i+=1
 
+
+
+@bot.command(pass_context= True)
+async def pars(ctx):
+	#Расписание
+	url= "http://uksivt.ru/zameny"
+	r=requests.get(url).text
+	soup = BeautifulSoup(r, "lxml")
+
+	# time = datetime.datetime.today().strftime("%d")
+	# timenext = datetime.datetime.today().strftime("%d")
+
+	pagerasp = soup.find('a',{'rel':'noopener'}, string=re.compile('15')).get('href')
+	await ctx.send(str(pagerasp))
 
 @bot.command(pass_context= True)
 async def db(ctx):
