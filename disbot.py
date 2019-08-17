@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import lxml
+import datetime
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
