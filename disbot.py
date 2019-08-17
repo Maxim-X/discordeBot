@@ -29,14 +29,14 @@ while i < len(listBunMessage):
 @bot.command(pass_context= True)
 async def pars(ctx):
 	#Расписание
-	url= "http://uksivt.ru/zameny"
+	url= "https://www.youtube.com/playlist?list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw"
 	r=requests.get(url).text
 	soup = BeautifulSoup(r, "lxml")
 
 	# time = datetime.datetime.today().strftime("%d")
 	# timenext = datetime.datetime.today().strftime("%d")
 
-	pagerasp = soup.find('a',{'rel':'noopener'}, string=re.compile('15')).get('href')
+	pagerasp = soup.find('a',{'class':'yt-simple-endpoint style-scope ytd-playlist-video-renderer'}).get('href')
 	await ctx.send(str(pagerasp))
 
 @bot.command(pass_context= True)
