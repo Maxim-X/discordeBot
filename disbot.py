@@ -30,7 +30,7 @@ async def pars(ctx):
 	#Расписание
 	url= "http://uksivt.ru/zameny"
 	r=requests.get(url).text
-	soup = BeautifulSoup(r, "lxml")
+	soup = BeautifulSoup(r, "xml")
 
 	# time = datetime.datetime.today().strftime("%d")
 	# timenext = datetime.datetime.today().strftime("%d")
