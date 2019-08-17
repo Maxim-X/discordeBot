@@ -25,27 +25,31 @@ while i < len(listBunMessage):
 	i+=1
 
 
-
 @bot.command(pass_context= True)
-async def pars(ctx):
-	#Расписание
-	url= "https://www.youtube.com/playlist?list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw"
-	r=requests.get(url).text
-	soup = BeautifulSoup(r, "lxml")
+async def time(ctx):
+	today = datetime.datetime.today()
+	await ctx.send(today.strftime("%H.%M.%S"))
 
-	# time = datetime.datetime.today().strftime("%d")
-	# timenext = datetime.datetime.today().strftime("%d")
+# @bot.command(pass_context= True)
+# async def pars(ctx):
+# 	#Расписание
+# 	url= "https://www.youtube.com/playlist?list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw"
+# 	r=requests.get(url).text
+# 	soup = BeautifulSoup(r, "lxml")
 
-	pagerasp = soup.find('a').get('href')
-	await ctx.send(str(pagerasp))
+# 	# time = datetime.datetime.today().strftime("%d")
+# 	# timenext = datetime.datetime.today().strftime("%d")
+
+# 	pagerasp = soup.find('a').get('href')
+# 	await ctx.send(str(pagerasp))
 
 @bot.command(pass_context= True)
 async def db(ctx):
 	connection = pymysql.connect(
 		host='localhost',
-		user='id4459149_cl222221_bd',
-		password='1a7L2orZM0bR',
-		db='id4459149_cl222221_bd',
+		user='id4459149_cls222221_bd',
+		password='1a7L2orZMs0bR',
+		db='id4459149_cl22s2221_bd',
 		charset='utf8mb4',
 		cursorclass=DictCursor
 	)
