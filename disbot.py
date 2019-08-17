@@ -8,7 +8,7 @@ from pymysql.cursors import DictCursor
 import pymysql.cursors
 import requests
 from bs4 import BeautifulSoup
-import ref
+import re
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
