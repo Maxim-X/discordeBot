@@ -10,4 +10,4 @@ pyowm
 pymysql
 requests
 bs4
-re
+BeautifulSoup
