@@ -11,3 +11,4 @@ pymysql
 requests
 bs4
 BeautifulSoup4
+lxml
