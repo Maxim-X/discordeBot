@@ -36,7 +36,7 @@ async def pars(ctx):
 	# time = datetime.datetime.today().strftime("%d")
 	# timenext = datetime.datetime.today().strftime("%d")
 
-	pagerasp = soup.find('a',{'class':'yt-simple-endpoint style-scope ytd-playlist-video-renderer'}).get('href')
+	pagerasp = soup.find('a').get('href')
 	await ctx.send(str(pagerasp))
 
 @bot.command(pass_context= True)
