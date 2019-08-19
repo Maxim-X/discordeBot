@@ -180,7 +180,7 @@ async def on_member_update(before, after):
 				roleDELL=list(set(before.roles) - set(after.roles))
 				if len(roleADD) >= 1:
 					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.", color=0xff8000)
-					embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/group.png')
+					embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/0e90414bf2e9d7f19435d5d4ede12483.png')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					await channel.send(embed=embed)
 				elif len(roleDELL) >= 1:
