@@ -51,7 +51,7 @@ async def ddda(ctx):
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
 		todaym = int(todayNew.strftime("%M"))
-		if todayH == 9 :
+		if todayH == 4 :
 			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
 			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
 			await ctx.send(embed=embed)
