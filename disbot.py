@@ -30,7 +30,7 @@ while i < len(listBunMessage):
 @bot.command(pass_context= True)
 async def time(ctx):
 	today = datetime.datetime.today()
-	await ctx.send(today.strftime("%H.%M.%S"), delete_after='5.0')
+	await ctx.send(today.strftime("%H.%M.%S"), delete_after=5.0)
 
 # @bot.command(pass_context= True)
 # async def pars(ctx):
