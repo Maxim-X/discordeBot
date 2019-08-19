@@ -167,6 +167,48 @@ async def clean(ctx, TextChannel = discord.TextChannel):
 
     
 
+@bot.event
+async def on_member_update(before, after):
+
+	print(before.guild.afk_timeout)
+	print(after.guild)
+	for guild in bot.guilds:
+		print(str(guild))
+		for channel in guild.channels:
+			if str(channel) == 'основной':
+				roleADD=list(set(after.roles) - set(before.roles))
+				roleDELL=list(set(before.roles) - set(after.roles))
+				if len(roleADD) >= 1:
+					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.", color=0xff8000)
+					embed.set_thumbnail(url=str(after.avatar_url))
+					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+					await channel.send(embed=embed)
+				elif len(roleDELL) >= 1:
+					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего", color=0xff8000)
+					embed.set_thumbnail(url=str(after.avatar_url))
+					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+					await channel.send(embed=embed)
+
+
+@bot.command(pass_context=True)
+async def cleanChat(ctx, allNumMessage):
+	levelProtect = 0
+	for xRole in ctx.author.roles:
+		if str(xRole) == 'Яндекс.Уборщик' and levelProtect != 2:
+			levelProtect = 1
+		if str(xRole) == 'Максим':
+			levelProtect = 2
+
+	if levelProtect == 2:
+		await ctx.channel.purge(limit=int(allNumMessage))
+	elif levelProtect == 1:
+		if int(allNumMessage) <= 10:
+			await ctx.channel.purge(limit=int(allNumMessage))
+		else:
+			await ctx.send('Пользователь со статусом `Яндекс.Уборщик` может удалить до 10 сообщений за раз.\nЕсли вы хотите очистить чат полностью обратитесь к `Maxim`')
+	else:
+		await ctx.send("Пользователь без статуса `Яндекс.Уборщик` не может массово удалять сообщения.")
+
     
 token = os.environ.get('BOT_TOKEN')
 
