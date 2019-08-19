@@ -56,7 +56,7 @@ async def ddda(ctx):
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 9 :
+		if todayH == 10 :
 			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
 			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
 			await ctx.send(embed=embed)
