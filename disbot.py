@@ -47,6 +47,11 @@ async def time(ctx):
 
 @bot.command()
 async def ddda(ctx):
+	todayNew = datetime.datetime.today()
+	todayH = int(todayNew.strftime("%H"))
+	todaym = int(todayNew.strftime("%M"))
+	await ctx.send(str(todayH))
+	await ctx.send(str(todaym))
 	while(1==1):
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
