@@ -13,3 +13,4 @@ bs4
 BeautifulSoup4
 lxml
 datetime
+asyncio

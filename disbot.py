@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 import re
 import lxml
 import datetime
+import asyncio
 
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
@@ -43,6 +44,20 @@ async def time(ctx):
 
 # 	pagerasp = soup.find('a').get('href')
 # 	await ctx.send(str(pagerasp))
+
+@bot.command()
+async def ddda(ctx):
+	while(1==1):
+		todayNew = datetime.datetime.today()
+		todayH = int(todayNew.strftime("%H"))
+		todaym = int(todayNew.strftime("%M"))
+		if todaym == 28 :
+			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
+			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
+			await ctx.send(embed=embed)
+			await ctx.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+			await asyncio.sleep(60) #82800
+		await asyncio.sleep(60) #3600
 
 @bot.command(pass_context= True)
 async def db(ctx):
