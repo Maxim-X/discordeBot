@@ -30,7 +30,7 @@ while i < len(listBunMessage):
 @bot.command(pass_context= True)
 async def time(ctx):
 	today = datetime.datetime.today()
-	await ctx.send(today.strftime("%H.%M.%S"), delete_after=5.0)
+	await ctx.send(today.strftime("%H.%M.%S"))
 
 # @bot.command(pass_context= True)
 # async def pars(ctx):
@@ -67,33 +67,27 @@ async def ddda(ctx):
 			sleepHOne = 3600 - (todaym * 60)
 			await asyncio.sleep(int(sleepHOne)) #3600
 
-@bot.command(pass_context= True)
-async def db(ctx):
-	connection = pymysql.connect(
-		host='localhost',
-		user='id4459149_cls222221_bd',
-		password='1a7L2orZMs0bR',
-		db='id4459149_cl22s2221_bd',
-		charset='utf8mb4',
-		cursorclass=DictCursor
-	)
-	try:
-		with connection.cursor() as cursor:
-			sql1 = "INSERT INTO db_allBanMessage (message) VALUES (%s);"
-			cursor.execute(sql1,('Merly'))
-			connection.commit()
-	finally:
-		connection.close()
+# @bot.command(pass_context= True)
+# async def db(ctx):
+# 	connection = pymysql.connect(
+# 		host='localhost',
+# 		user='id4459149_cls222221_bd',
+# 		password='1a7L2orZMs0bR',
+# 		db='id4459149_cl22s2221_bd',
+# 		charset='utf8mb4',
+# 		cursorclass=DictCursor
+# 	)
+# 	try:
+# 		with connection.cursor() as cursor:
+# 			sql1 = "INSERT INTO db_allBanMessage (message) VALUES (%s);"
+# 			cursor.execute(sql1,('Merly'))
+# 			connection.commit()
+# 	finally:
+# 		connection.close()
 
 
 		
-@bot.command(pass_context= True)
-async def rede(ctx): 
-	text_file=open("listBunMessage.txt", "r", encoding="utf-8")
-	# text_file.writelines(lines)
-	allBanMessage = text_file.readlines()
-	text_file.close()
-	await ctx.send(str(allBanMessage))
+#ALL EVENTS ----------------------------------------
 
 
 @bot.event
@@ -114,6 +108,44 @@ async def on_message(message):
 			await channel.send(embed=infoUserBan)
 	await bot.process_commands(message)
 
+
+@bot.event
+async def on_member_update(before, after):
+	for guild in bot.guilds:
+		print(str(guild))
+		for channel in guild.channels:
+			if str(channel) == 'основной':
+
+				# Пользователь начал играть
+				if after.activity != None:
+					if before.activity != None:
+						oldGameStatus = before.activity.name
+					else:
+						oldGameStatus = ''
+					newGameStatus = after.activity.name
+					if oldGameStatus != newGameStatus:
+						embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.", color=0xed5565)
+						embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
+						embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+						await channel.send(embed=embed)
+				# / Пользователь начал играть
+
+				# / Пользователь получил новую роль
+				roleADD=list(set(after.roles) - set(before.roles))
+				roleDELL=list(set(before.roles) - set(after.roles))
+				if len(roleADD) >= 1:
+					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.", color=0xff8000)
+					embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/0e90414bf2e9d7f19435d5d4ede12483.png')
+					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+					await channel.send(embed=embed)
+				elif len(roleDELL) >= 1:
+					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего", color=0xff8000)
+					embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/6f162f641297d68746ab3e17a044c0b5.png')
+					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+					await channel.send(embed=embed)
+				# / Пользователь получил новую роль
+
+#ALL EVENTS ----------------------------------------
 
 
 @bot.command(pass_context= True)
@@ -166,29 +198,6 @@ async def clean(ctx, TextChannel = discord.TextChannel):
 		allMessageChanelList.append(message)
 	await ctx.send(allMessageChanelList)
 
-    
-
-@bot.event
-async def on_member_update(before, after):
-
-	print(before.guild.afk_timeout)
-	print(after.guild)
-	for guild in bot.guilds:
-		print(str(guild))
-		for channel in guild.channels:
-			if str(channel) == 'основной':
-				roleADD=list(set(after.roles) - set(before.roles))
-				roleDELL=list(set(before.roles) - set(after.roles))
-				if len(roleADD) >= 1:
-					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.", color=0xff8000)
-					embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/0e90414bf2e9d7f19435d5d4ede12483.png')
-					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-					await channel.send(embed=embed)
-				elif len(roleDELL) >= 1:
-					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего", color=0xff8000)
-					embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/6f162f641297d68746ab3e17a044c0b5.png')
-					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-					await channel.send(embed=embed)
 
 
 @bot.command(pass_context=True)
