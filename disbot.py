@@ -47,15 +47,15 @@ async def time(ctx):
 
 @bot.command()
 async def ddda(ctx):
-	todayNew = datetime.datetime.today()
-	todayH = int(todayNew.strftime("%H"))
-	todaym = int(todayNew.strftime("%M"))
-	await ctx.send(str(todayH))
-	await ctx.send(str(todaym))
 	while(1==1):
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
 		todaym = int(todayNew.strftime("%M"))
+		if todayH + 5 < 24:
+			todayH = todayH + 5
+		else:
+			todayH = todayH + 5 - 24
+
 		if todayH == 4 :
 			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
 			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
