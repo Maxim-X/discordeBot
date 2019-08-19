@@ -185,7 +185,7 @@ async def on_member_update(before, after):
 					await channel.send(embed=embed)
 				elif len(roleDELL) >= 1:
 					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего", color=0xff8000)
-					embed.set_thumbnail(url=str(after.avatar_url))
+					embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/45bc25fa8755a84fb4d1596a83336d0f.png')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					await channel.send(embed=embed)
 
