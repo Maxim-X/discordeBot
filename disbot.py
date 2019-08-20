@@ -124,7 +124,7 @@ async def on_member_update(before, after):
 						oldGameStatus = ''
 					newGameStatus = after.activity.name
 					if oldGameStatus != newGameStatus:
-						embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n(Данное сообщени удалится через 15 минут)", color=0xed5565)
+						embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n\n(Данное сообщени удалится через 15 минут)", color=0xed5565)
 						embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
 						embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 						await channel.send(embed=embed, delete_after=60*15)
@@ -134,12 +134,12 @@ async def on_member_update(before, after):
 				roleADD=list(set(after.roles) - set(before.roles))
 				roleDELL=list(set(before.roles) - set(after.roles))
 				if len(roleADD) >= 1:
-					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.\n(Данное сообщени удалится через 5 минут)", color=0x26b99a)
+					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.\n\n(Данное сообщени удалится через 5 минут)", color=0x26b99a)
 					embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					await channel.send(embed=embed, delete_after=60*5)
 				elif len(roleDELL) >= 1:
-					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего.\n(Данное сообщени удалится через 5 минут)", color=0x26b99a)
+					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего.\n\n(Данное сообщени удалится через 5 минут)", color=0x26b99a)
 					embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					await channel.send(embed=embed, delete_after=60*5)
