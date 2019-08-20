@@ -126,8 +126,8 @@ async def on_member_update(before, after):
 					if oldGameStatus != newGameStatus:
 						embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.", color=0xed5565)
 						embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
-						embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-						await channel.send(embed=embed)
+						embed.set_footer(text="Сервер "+str(bot.guilds[0].name)+" (Данное сообщени удалится через 15 минут)")
+						await channel.send(embed=embed, delete_after=60*15)
 				# / Пользователь начал играть
 
 				# / Пользователь получил новую роль
@@ -136,13 +136,13 @@ async def on_member_update(before, after):
 				if len(roleADD) >= 1:
 					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.", color=0x26b99a)
 					embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
-					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-					await channel.send(embed=embed)
+					embed.set_footer(text="Сервер "+str(bot.guilds[0].name)+" (Данное сообщени удалится через 5 минут)")
+					await channel.send(embed=embed, delete_after=60*5)
 				elif len(roleDELL) >= 1:
 					embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего", color=0x26b99a)
 					embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
-					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-					await channel.send(embed=embed)
+					embed.set_footer(text="Сервер "+str(bot.guilds[0].name)+" (Данное сообщени удалится через 5 минут)")
+					await channel.send(embed=embed, delete_after=60*5)
 				# / Пользователь получил новую роль
 
 #ALL EVENTS ----------------------------------------
