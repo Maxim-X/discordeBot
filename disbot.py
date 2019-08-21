@@ -102,6 +102,74 @@ async def goodMorning():
 			sleepHOne = 3600 - (todaym * 60)
 			await asyncio.sleep(int(sleepHOne)) #3600
 
+async def freeGameEpic():
+	while not bot.is_closed():
+		await bot.wait_until_ready()
+		channel = bot.get_channel(610541252160651269)
+		todayNew = datetime.datetime.today()
+		todayWeekDay = int(todayNew.strftime("%A"))
+		todayH = int(todayNew.strftime("%H"))
+		if todayH + 5 < 24:
+			todayH = todayH + 5
+		else:
+			todayH = todayH + 5 - 24
+		if todayWeekDay == 'Wednesday':
+			if todayH >= 18:
+				url= "https://www.epicgames.com/store/ru/collection/free-game-collection"
+				r=requests.get(url).text
+				soup = BeautifulSoup(r, "lxml")
+				pageFree = soup.find('div',{'class':'StoreRow-wrapper_32933b82'})
+				# print(str(pageFree))
+
+				soupPage = BeautifulSoup(str(pageFree), "lxml")
+				AllNameGameNew=''
+				AllPageFree = soupPage.findAll('h3')
+				AllNameGame = []
+				AllGameImg = []
+				AllGameCena = []
+				GameAllCena=[]
+				for NameGame in AllPageFree:
+					AllNameGame.append("``"+str(NameGame.contents).replace("['","").replace("']","")+"``")
+					AllGameImg.append(soupPage.find('img',{'alt':''+str(NameGame.contents).replace("['","").replace("']","")+''}))
+				AllGameCena = soupPage.findAll('s')
+				for NameGameC in AllGameCena:
+					GameAllCena.append(""+str(NameGameC.contents).replace("['","").replace("']","").replace("\\xa0","").replace("'","").replace(",00","").replace("₽","")+"")
+				if int(GameAllCena[0]) >= int(GameAllCena[1]):
+					ImgGameId = 0
+					GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')})
+					ImgGame = GameImgAll[ImgGameId].get('src')
+				else:
+					ImgGameId = 1
+					GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')})
+					ImgGame = GameImgAll[ImgGameId].get('src')
+				payCenaGame = int(GameAllCena[0]) + int(GameAllCena[1])
+				if len(AllNameGame) >= 2:
+					AllNameGameNew = ' и '.join(AllNameGame)
+				embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(AllNameGameNew)+"\n\nДанные игры суммарно стоят "+str(payCenaGame)+".00₽, но сейчас они бесплатны до "+str('12 сент')+"", color=0x0078f2)
+				embed.set_thumbnail(url="https://image.prntscr.com/image/fpuKs8vaRiiA_Xc6eE742Q.png")
+				embed.set_footer(text="Сервер")
+				await ctx.send(embed=embed)
+				await ctx.send(str(ImgGame))
+				await channel.send('1')
+				await channel.send('Сплю: '+sleepHOne+' секунд')
+				await asyncio.sleep(int(sleepHOne))
+				# await ctx.send(AllGameImgNew)
+			else:
+				todayM = int(todayNew.strftime("%M"))
+				sleepHOne = 3600 - (todaym * 60)
+				await channel.send('Сплю: 604800 секунд')
+				await asyncio.sleep(604800)
+
+
+
+		else:
+			todayM = int(todayNew.strftime("%M"))
+			sleepHOne = 3600 - (todayM * 60)
+			sleepHOne += (86400 - (todayH * 60 * 60))
+			await channel.send('Сплю: '+sleepHOne+' секунд')
+			await asyncio.sleep(int(sleepHOne))
+
+
 @bot.event
 async def on_message(message):
 	# print(message.content)
@@ -236,5 +304,6 @@ async def cleanChat(ctx, allNumMessage):
     
 token = os.environ.get('BOT_TOKEN')
 bot.bg_task = bot.loop.create_task(goodMorning())
+bot.bg_task = bot.loop.create_task(freeGameEpic())
 bot.run(str(token))
 
