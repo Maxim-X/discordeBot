@@ -113,9 +113,9 @@ class MyClient(discord.Client):
 				todayH = todayH + 5 - 24
 
 			if todayH == 3 :
-				embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
+				embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:\nСтремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
 				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
-				embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
+				embed.set_footer(text="Сервер")
 				await channel.send(embed=embed)
 				await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
 				await asyncio.sleep(86400) #82800
