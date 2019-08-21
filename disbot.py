@@ -12,7 +12,7 @@ import re
 import lxml
 import datetime
 import asyncio
-
+1
 bot = commands.Bot(command_prefix='>')
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
