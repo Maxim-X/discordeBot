@@ -144,6 +144,7 @@ async def freeGameEpic():
 					AllGameImg.append(soupPage.find('img',{'alt':''+str(NameGame.contents).replace("['","").replace("']","")+''}))
 				AllGameCena = soupPage.findAll('s') 
 				for NameGameC in AllGameCena:
+					print(str(NameGameC.contents))
 					GameAllCena.append(""+str(NameGameC.contents).replace("['","").replace("']","").replace("\\xa0","").replace("'","").replace(",00","").replace("₽","").replace("$","").replace(",",".")+"")
 				if float(GameAllCena[0]) >= float(GameAllCena[1]):
 					ImgGameId = 0
