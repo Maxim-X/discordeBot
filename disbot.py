@@ -103,18 +103,26 @@ async def goodMorning():
 			await asyncio.sleep(int(sleepHOne)) #3600
 
 async def freeGameEpic():
+	print('--------')
 	while not bot.is_closed():
 		await bot.wait_until_ready()
+		print('0')
 		channel = bot.get_channel(610541252160651269)
+		print('0')
 		todayNew = datetime.datetime.today()
-		todayWeekDay = int(todayNew.strftime("%A"))
+		print('0')
+		todayWeekDay = str(todayNew.strftime("%A"))
+		print('0')
 		todayH = int(todayNew.strftime("%H"))
+		print('1')
 		if todayH + 5 < 24:
 			todayH = todayH + 5
 		else:
 			todayH = todayH + 5 - 24
 		if todayWeekDay == 'Wednesday':
+			print('2')
 			if todayH >= 18:
+				print('3')
 				url= "https://www.epicgames.com/store/ru/collection/free-game-collection"
 				r=requests.get(url).text
 				soup = BeautifulSoup(r, "lxml")
@@ -148,17 +156,19 @@ async def freeGameEpic():
 				embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(AllNameGameNew)+"\n\nДанные игры суммарно стоят "+str(payCenaGame)+".00₽, но сейчас они бесплатны до "+str('12 сент')+"", color=0x0078f2)
 				embed.set_thumbnail(url="https://image.prntscr.com/image/fpuKs8vaRiiA_Xc6eE742Q.png")
 				embed.set_footer(text="Сервер")
-				await ctx.send(embed=embed)
-				await ctx.send(str(ImgGame))
+				await channel.send(embed=embed)
+				await channel.send(str(ImgGame))
 				await channel.send('1')
-				await channel.send('Сплю: '+sleepHOne+' секунд')
-				await asyncio.sleep(int(sleepHOne))
-				# await ctx.send(AllGameImgNew)
-			else:
-				todayM = int(todayNew.strftime("%M"))
-				sleepHOne = 3600 - (todaym * 60)
 				await channel.send('Сплю: 604800 секунд')
 				await asyncio.sleep(604800)
+				# await ctx.send(AllGameImgNew)
+			else:
+				print('4')
+				await channel.send('4')
+				todayM = int(todayNew.strftime("%M"))
+				sleepHOne = 3600 - (todaym * 60)
+				await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+				await asyncio.sleep(int(sleepHOne))
 
 
 
