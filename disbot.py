@@ -91,7 +91,7 @@ async def goodMorning():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 4:
+		if todayH == 9:
 			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:\nСтремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
 			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 			embed.set_footer(text="Сервер")
