@@ -107,10 +107,10 @@ class MyClient(discord.Client):
 			todayNew = datetime.datetime.today()
 			todayH = int(todayNew.strftime("%H"))
 			todaym = int(todayNew.strftime("%M"))
-			if todayH + 0 < 24:
-				todayH = todayH + 0
+			if todayH + 5 < 24:
+				todayH = todayH + 5
 			else:
-				todayH = todayH + 0 - 24
+				todayH = todayH + 5 - 24
 
 			if todayH == 3 :
 				embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
