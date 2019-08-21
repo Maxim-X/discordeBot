@@ -77,51 +77,30 @@ async def db(ctx):
 		
 #ALL EVENTS ----------------------------------------
 
-class MyClient(discord.Client):
-	def __init__(self, *args, **kwargs):
-		super().__init__(*args, **kwargs)
+	
 
-	# create the background task and run it in the background
-		# self.bg_task = self.loop.create_task(self.my_background_task())
-		self.bg_task = self.loop.create_task(self.goodMorning())
+async def goodMorning():
+	while not bot.is_closed():
+		await bot.wait_until_ready()
+		channel = bot.get_channel(610541252160651269)
+		todayNew = datetime.datetime.today()
+		todayH = int(todayNew.strftime("%H"))
+		todaym = int(todayNew.strftime("%M"))
+		if todayH + 5 < 24:
+			todayH = todayH + 5
+		else:
+			todayH = todayH + 5 - 24
 
-	async def on_ready(self):
-		print('Logged in as')
-		print(self.user.name)
-		print(self.user.id)
-		print('------')
-
-	# async def my_background_task(self):
-	# 	await self.wait_until_ready()
-	# 	counter = 0
-	# 	channel = self.get_channel(610541252160651269) # channel ID goes here
-	# 	while not self.is_closed():
-	# 		counter += 1
-	# 		await channel.send(counter)
-	# 		await asyncio.sleep(60) # task runs every 60 seconds	
-
-	async def goodMorning(self):
-		while not self.is_closed():
-			await self.wait_until_ready()
-			channel = self.get_channel(610541252160651269)
-			todayNew = datetime.datetime.today()
-			todayH = int(todayNew.strftime("%H"))
-			todaym = int(todayNew.strftime("%M"))
-			if todayH + 5 < 24:
-				todayH = todayH + 5
-			else:
-				todayH = todayH + 5 - 24
-
-			if todayH == 4:
-				embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:\nСтремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
-				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
-				embed.set_footer(text="Сервер")
-				await channel.send(embed=embed)
-				await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
-				await asyncio.sleep(86400) #82800
-			else:
-				sleepHOne = 3600 - (todaym * 60)
-				await asyncio.sleep(int(sleepHOne)) #3600
+		if todayH == 4:
+			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:\nСтремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
+			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
+			embed.set_footer(text="Сервер")
+			await channel.send(embed=embed)
+			await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+			await asyncio.sleep(86400) #82800
+		else:
+			sleepHOne = 3600 - (todaym * 60)
+			await asyncio.sleep(int(sleepHOne)) #3600
 
 @bot.event
 async def on_message(message):
@@ -256,7 +235,6 @@ async def cleanChat(ctx, allNumMessage):
 
     
 token = os.environ.get('BOT_TOKEN')
-botMy = MyClient()
-botMy.run(str(token))
+bot.bg_task = bot.loop.create_task(goodMorning())
 bot.run(str(token))
 
