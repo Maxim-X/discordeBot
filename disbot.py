@@ -159,7 +159,7 @@ async def freeGameEpic():
 				# payCenaGame = float(GameAllCena[0]) + float(GameAllCena[1])
 				if len(AllNameGame) >= 2:
 					AllNameGameNew = ' и '.join(AllNameGame)
-				embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(AllNameGameNew)+"\n\nДанные игры бесплатны до "+str('12 сент')+"", color=0x0078f2)
+				embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(AllNameGameNew)+"\n\nДанные игры будут бесплатны целую неделю, успей добавить их в свою библиотеку!", color=0x0078f2)
 				embed.set_thumbnail(url="https://image.prntscr.com/image/fpuKs8vaRiiA_Xc6eE742Q.png")
 				embed.set_footer(text="Сервер")
 				await channel.send(embed=embed)
