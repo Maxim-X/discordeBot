@@ -212,7 +212,7 @@ async def clean(ctx, TextChannel = discord.TextChannel):
 		allMessageChanelList.append(message)
 	await ctx.send(allMessageChanelList)
 
-
+ 
 
 @bot.command(pass_context=True)
 async def cleanChat(ctx, allNumMessage):
