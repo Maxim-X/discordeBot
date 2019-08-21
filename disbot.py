@@ -100,7 +100,7 @@ class MyClient(discord.Client):
 	# 		await channel.send(counter)
 	# 		await asyncio.sleep(60) # task runs every 60 seconds	
 
-	async def goodMon(self):
+	async def goodMorning(self):
 		while not self.is_closed():
 			await self.wait_until_ready()
 			channel = self.get_channel(610541252160651269)
@@ -112,7 +112,7 @@ class MyClient(discord.Client):
 			else:
 				todayH = todayH + 5 - 24
 
-			if todayH == 3 :
+			if todayH == 4:
 				embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:\nСтремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
 				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 				embed.set_footer(text="Сервер")
