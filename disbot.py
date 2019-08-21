@@ -33,45 +33,45 @@ async def time(ctx):
 	await ctx.send(today.strftime("%H.%M.%S"))
 
 
-# @bot.command()
-# async def ddda(ctx):
-# 	while(1==1):
-# 		todayNew = datetime.datetime.today()
-# 		todayH = int(todayNew.strftime("%H"))
-# 		todaym = int(todayNew.strftime("%M"))
-# 		if todayH + 5 < 24:
-# 			todayH = todayH + 5
-# 		else:
-# 			todayH = todayH + 5 - 24
+@bot.command()
+async def ddda(ctx):
+	while(1==1):
+		todayNew = datetime.datetime.today()
+		todayH = int(todayNew.strftime("%H"))
+		todaym = int(todayNew.strftime("%M"))
+		if todayH + 5 < 24:
+			todayH = todayH + 5
+		else:
+			todayH = todayH + 5 - 24
 
-# 		if todayH == 10 :
-# 			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
-# 			embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/3fe82fae8fb064fecf28ca34a3f1ec38.png')
-# 			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
-# 			await ctx.send(embed=embed)
-# 			await ctx.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
-# 			await asyncio.sleep(86400) #82800
-# 		else:
-# 			sleepHOne = 3600 - (todaym * 60)
-# 			await asyncio.sleep(int(sleepHOne)) #3600
+		if todayH == 10 :
+			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
+			embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/3fe82fae8fb064fecf28ca34a3f1ec38.png')
+			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
+			await ctx.send(embed=embed)
+			await ctx.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+			await asyncio.sleep(86400) #82800
+		else:
+			sleepHOne = 3600 - (todaym * 60)
+			await asyncio.sleep(int(sleepHOne)) #3600
 
-# @bot.command(pass_context= True)
-# async def db(ctx):
-# 	connection = pymysql.connect(
-# 		host='localhost',
-# 		user='id4459149_cls222221_bd',
-# 		password='1a7L2orZMs0bR',
-# 		db='id4459149_cl22s2221_bd',
-# 		charset='utf8mb4',
-# 		cursorclass=DictCursor
-# 	)
-# 	try:
-# 		with connection.cursor() as cursor:
-# 			sql1 = "INSERT INTO db_allBanMessage (message) VALUES (%s);"
-# 			cursor.execute(sql1,('Merly'))
-# 			connection.commit()
-# 	finally:
-# 		connection.close()
+@bot.command(pass_context= True)
+async def db(ctx):
+	connection = pymysql.connect(
+		host='localhost',
+		user='id4459149_cls222221_bd',
+		password='1a7L2orZMs0bR',
+		db='id4459149_cl22s2221_bd',
+		charset='utf8mb4',
+		cursorclass=DictCursor
+	)
+	try:
+		with connection.cursor() as cursor:
+			sql1 = "INSERT INTO db_allBanMessage (message) VALUES (%s);"
+			cursor.execute(sql1,('Merly'))
+			connection.commit()
+	finally:
+		connection.close()
 
 
 		
@@ -133,32 +133,7 @@ async def on_member_update(before, after):
 					await channel.send(embed=embed, delete_after=60*5)
 				# / Пользователь получил новую роль
 
-@bot.event
-def time():
-	todayNew = datetime.datetime.today()
-	todayH = int(todayNew.strftime("%H"))
-	todaym = int(todayNew.strftime("%M"))
-	print(todayH+':'+todaym)
-	# if todayH + 5 < 24:
-	# 	todayH = todayH + 5
-	# else:
-	# 	todayH = todayH + 5 - 24
 
-	# if todayH == 10 and  todaym == 0:
-	# 	embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
-	# 	embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/3fe82fae8fb064fecf28ca34a3f1ec38.png')
-	# 	embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
-	# 	await ctx.send(embed=embed)
-	# 	await ctx.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
-	# 	await asyncio.sleep(86400) #82800
-	# else:
-	# 	sleepHOne = 3600 - (todaym * 60)
-	# 	await asyncio.sleep(int(sleepHOne)) #3600
-
-
-
-kdkd = discord.TextChannel
-bot.loop.create_task(time())
 
 #ALL EVENTS ----------------------------------------
 
