@@ -33,27 +33,27 @@ async def time(ctx):
 	await ctx.send(today.strftime("%H.%M.%S"))
 
 
-@bot.command()
-async def ddda(ctx):
-	while(1==1):
-		todayNew = datetime.datetime.today()
-		todayH = int(todayNew.strftime("%H"))
-		todaym = int(todayNew.strftime("%M"))
-		if todayH + 5 < 24:
-			todayH = todayH + 5
-		else:
-			todayH = todayH + 5 - 24
+# @bot.command()
+# async def ddda(ctx):
+# 	while(1==1):
+# 		todayNew = datetime.datetime.today()
+# 		todayH = int(todayNew.strftime("%H"))
+# 		todaym = int(todayNew.strftime("%M"))
+# 		if todayH + 5 < 24:
+# 			todayH = todayH + 5
+# 		else:
+# 			todayH = todayH + 5 - 24
 
-		if todayH == 10 :
-			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
-			embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/3fe82fae8fb064fecf28ca34a3f1ec38.png')
-			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
-			await ctx.send(embed=embed)
-			await ctx.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
-			await asyncio.sleep(86400) #82800
-		else:
-			sleepHOne = 3600 - (todaym * 60)
-			await asyncio.sleep(int(sleepHOne)) #3600
+# 		if todayH == 10 :
+# 			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
+# 			embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/3fe82fae8fb064fecf28ca34a3f1ec38.png')
+# 			embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
+# 			await ctx.send(embed=embed)
+# 			await ctx.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+# 			await asyncio.sleep(86400) #82800
+# 		else:
+# 			sleepHOne = 3600 - (todaym * 60)
+# 			await asyncio.sleep(int(sleepHOne)) #3600
 
 @bot.command(pass_context= True)
 async def db(ctx):
@@ -77,6 +77,51 @@ async def db(ctx):
 		
 #ALL EVENTS ----------------------------------------
 
+class MyClient(discord.Client):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+
+	# create the background task and run it in the background
+		# self.bg_task = self.loop.create_task(self.my_background_task())
+		self.bg_task = self.loop.create_task(self.goodMon())
+
+	async def on_ready(self):
+		print('Logged in as')
+		print(self.user.name)
+		print(self.user.id)
+		print('------')
+
+	# async def my_background_task(self):
+	# 	await self.wait_until_ready()
+	# 	counter = 0
+	# 	channel = self.get_channel(610541252160651269) # channel ID goes here
+	# 	while not self.is_closed():
+	# 		counter += 1
+	# 		await channel.send(counter)
+	# 		await asyncio.sleep(60) # task runs every 60 seconds	
+
+	async def goodMon(self):
+		while not self.is_closed():
+			await self.wait_until_ready()
+			channel = self.get_channel(610541252160651269)
+			todayNew = datetime.datetime.today()
+			todayH = int(todayNew.strftime("%H"))
+			todaym = int(todayNew.strftime("%M"))
+			if todayH + 0 < 24:
+				todayH = todayH + 0
+			else:
+				todayH = todayH + 0 - 24
+
+			if todayH == 3 :
+				embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:", color=0xfaff22)
+				embed.set_thumbnail(url='https://s8.hostingkartinok.com/uploads/images/2019/08/3fe82fae8fb064fecf28ca34a3f1ec38.png')
+				embed.set_footer(text="Стремитесь не к успеху, а к ценностям, которые он дает​.")
+				await channel.send(embed=embed)
+				await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+				await asyncio.sleep(86400) #82800
+			else:
+				sleepHOne = 3600 - (todaym * 60)
+				await asyncio.sleep(int(sleepHOne)) #3600
 
 @bot.event
 async def on_message(message):
@@ -211,5 +256,5 @@ async def cleanChat(ctx, allNumMessage):
 
     
 token = os.environ.get('BOT_TOKEN')
-
+bot = MyClient()
 bot.run(str(token))
