@@ -153,7 +153,7 @@ async def freeGameEpic():
 					ImgGameId = 1
 					GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')})
 					ImgGame = GameImgAll[ImgGameId].get('src')
-				payCenaGame = int(GameAllCena[0]) + int(GameAllCena[1])
+				payCenaGame = float(GameAllCena[0]) + float(GameAllCena[1])
 				if len(AllNameGame) >= 2:
 					AllNameGameNew = ' и '.join(AllNameGame)
 				embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(AllNameGameNew)+"\n\nДанные игры суммарно стоят "+str(payCenaGame*60)+".00₽, но сейчас они бесплатны до "+str('12 сент')+"", color=0x0078f2)
