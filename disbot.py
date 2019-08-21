@@ -83,7 +83,7 @@ class MyClient(discord.Client):
 
 	# create the background task and run it in the background
 		# self.bg_task = self.loop.create_task(self.my_background_task())
-		self.bg_task = self.loop.create_task(self.goodMon())
+		self.bg_task = self.loop.create_task(self.goodMorning())
 
 	async def on_ready(self):
 		print('Logged in as')
