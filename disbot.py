@@ -146,15 +146,15 @@ async def freeGameEpic():
 				# for NameGameC in AllGameCena:
 				# 	print(str(NameGameC.contents))
 				# 	GameAllCena.append(""+str(NameGameC.contents).replace("['","").replace("']","").replace("\\xa0","").replace("'","").replace(",00","").replace("₽","").replace("$","").replace(",",".")+"")
-				if float(GameAllCena[0]) >= float(GameAllCena[1]):
-					ImgGameId = 0
-					GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')}) 
-					ImgGame = GameImgAll[ImgGameId].get('src')
-				else:
-					ImgGameId = 1
-					GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')})
-					ImgGame = GameImgAll[ImgGameId].get('src')
-				payCenaGame = float(GameAllCena[0]) + float(GameAllCena[1])
+				# if float(GameAllCena[0]) >= float(GameAllCena[1]):
+				# 	ImgGameId = 0
+				# 	GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')}) 
+				# 	ImgGame = GameImgAll[ImgGameId].get('src')
+				# else:
+				# 	ImgGameId = 1
+				# 	GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')})
+				# 	ImgGame = GameImgAll[ImgGameId].get('src')
+				# payCenaGame = float(GameAllCena[0]) + float(GameAllCena[1])
 				if len(AllNameGame) >= 2:
 					AllNameGameNew = ' и '.join(AllNameGame)
 				embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(AllNameGameNew)+"\n\nДанные игры бесплатны до "+str('12 сент')+"", color=0x0078f2)
