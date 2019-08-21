@@ -257,5 +257,6 @@ async def cleanChat(ctx, allNumMessage):
     
 token = os.environ.get('BOT_TOKEN')
 botMy = MyClient()
-bot.run(str(token))
 botMy.run(str(token))
+bot.run(str(token))
+
