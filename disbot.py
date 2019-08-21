@@ -164,9 +164,8 @@ async def freeGameEpic():
 				# await ctx.send(AllGameImgNew)
 			else:
 				print('4')
-				await channel.send('4')
 				todayM = int(todayNew.strftime("%M"))
-				sleepHOne = 3600 - (todaym * 60)
+				sleepHOne = 3600 - (todayM * 60)
 				await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(int(sleepHOne))
 
