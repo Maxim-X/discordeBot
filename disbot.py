@@ -133,8 +133,7 @@ async def on_member_update(before, after):
 					await channel.send(embed=embed, delete_after=60*5)
 				# / Пользователь получил новую роль
 
-@client.event
-@commands.check(idddw)
+@bot.event
 def time():
 	todayNew = datetime.datetime.today()
 	todayH = int(todayNew.strftime("%H"))
