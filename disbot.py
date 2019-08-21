@@ -114,9 +114,11 @@ async def freeGameEpic():
 		todayWeekDay = str(todayNew.strftime("%A"))
 		print('0')
 		todayH = int(todayNew.strftime("%H"))
+		todayM = int(todayNew.strftime("%M"))
 		print('1')
 		print('1')
 		print(str(todayH))
+		print(str(todayM))
 		if todayH + 5 < 24:
 			todayH = todayH + 5
 		else:
@@ -124,7 +126,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH >= 19:
+			if todayH == 19 and todayM == 0:
 				print('3')
 				url= "https://www.epicgames.com/store/ru/collection/free-game-collection"
 				r=requests.get(url).text
