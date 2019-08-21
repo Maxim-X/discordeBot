@@ -145,7 +145,7 @@ async def freeGameEpic():
 				AllGameCena = soupPage.findAll('s') 
 				for NameGameC in AllGameCena:
 					GameAllCena.append(""+str(NameGameC.contents).replace("['","").replace("']","").replace("\\xa0","").replace("'","").replace(",00","").replace("₽","").replace("$","")+"")
-				if int(GameAllCena[0]) >= int(GameAllCena[1]):
+				if float(GameAllCena[0]) >= float(GameAllCena[1]):
 					ImgGameId = 0
 					GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')})
 					ImgGame = GameImgAll[ImgGameId].get('src')
