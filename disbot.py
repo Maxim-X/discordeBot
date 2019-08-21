@@ -125,7 +125,7 @@ async def freeGameEpic():
 		if todayWeekDay == 'Wednesday':
 			print('2')
 			if todayH >= 19:
-				print('3')
+				
 				url= "https://www.epicgames.com/store/ru/collection/free-game-collection"
 				r=requests.get(url).text
 				soup = BeautifulSoup(r, "lxml")
@@ -139,6 +139,7 @@ async def freeGameEpic():
 				AllGameImg = []
 				AllGameCena = []
 				GameAllCena=[]
+				print('3')
 				for NameGame in AllPageFree:
 					AllNameGame.append("``"+str(NameGame.contents).replace("['","").replace("']","")+"``")
 					AllGameImg.append(soupPage.find('img',{'alt':''+str(NameGame.contents).replace("['","").replace("']","")+''}))
