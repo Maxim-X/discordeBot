@@ -136,7 +136,7 @@ async def freeGameEpic():
 				AllNameGameNew=''
 				AllPageFree = soupPage.findAll('h3')
 				AllNameGame = []
-				AllGameImg = []
+				AllGameImg = [] 
 				AllGameCena = []
 				GameAllCena=[]
 				for NameGame in AllPageFree:
