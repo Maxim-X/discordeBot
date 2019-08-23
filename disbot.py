@@ -228,6 +228,7 @@ async def on_member_update(before, after):
 										allGameUser.append(str(user.display_name))
 								if len(allGameUser) >= 2:
 									gameTeam = True
+									allGameUser = ' , '.join(allGameUser)
 								else:
 									gameTeam = False
 								print(allGameUser)
