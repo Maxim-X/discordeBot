@@ -204,27 +204,29 @@ async def on_message(message):
 
 @bot.event
 async def on_member_update(before, after):
+	# Пользователь начал играть
+	if after.activity != None:
+		if before.activity != None:
+			oldGameStatus = before.activity.name
+		else:
+			oldGameStatus = ''
+		newGameStatus = after.activity.name
+	# Пользователь начал играть
 	for guild in bot.guilds:
 		if int(guild.id) == 610541252156456998:
 			for channel in guild.channels:
 				if str(channel.type) == 'voice':
-					allGameUser = dict()
 					for user in channel.members:
-						allGameUser[str(user.activity.name)] = str(user.display_name)
-					print(allGameUser)
+						if str(user.display_name) == str(after.user.display_name):
+							allGameUser = []
+							for user in channel.members:
+								if str(user.activity.name) == str(newGameStatus):
+									allGameUser.append(str(user.display_name))
+							print(allGameUser)
 				if str(channel) == 'основной':
 
-					# Пользователь начал играть
-					if after.activity != None:
-						if before.activity != None:
-							oldGameStatus = before.activity.name
-						else:
-							oldGameStatus = ''
-						newGameStatus = after.activity.name
-
-
-
 						if oldGameStatus != newGameStatus:
+
 							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n``(Данное сообщени удалится через 15 минут)``", color=0xed5565)
 							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
 							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
