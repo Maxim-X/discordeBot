@@ -205,7 +205,7 @@ async def on_message(message):
 @bot.event
 async def on_member_update(before, after):
 	for guild in bot.guilds:
-		if int(channel.id) == 610541252156456998:
+		if int(guild.id) == 610541252156456998:
 			for channel in guild.channels:
 				if str(channel) == 'основной':
 
