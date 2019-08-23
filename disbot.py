@@ -209,7 +209,6 @@ async def on_member_update(before, after):
 			for channel in guild.channels:
 				allGameUser = []
 				for user in channel.members:
-					allGameUser = dict.fromkeys(seq[, value])
 					allGameUser[str(user.activity.name)] = str(user.display_name)
 					print(allGameUser)
 				if str(channel) == 'основной':
