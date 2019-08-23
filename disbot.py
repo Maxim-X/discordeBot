@@ -207,11 +207,12 @@ async def on_member_update(before, after):
 	for guild in bot.guilds:
 		if int(guild.id) == 610541252156456998:
 			for channel in guild.channels:
-				if channel.type == voice:
-					allGameUser = []
-					for user in channel.members:
-						allGameUser[str(user.activity.name)] = str(user.display_name)
-					print(allGameUser)
+				print(str(channel.type))
+				# if channel.type == voice:
+				# 	allGameUser = []
+				# 	for user in channel.members:
+				# 		allGameUser[str(user.activity.name)] = str(user.display_name)
+				# 	print(allGameUser)
 				if str(channel) == 'основной':
 
 					# Пользователь начал играть
