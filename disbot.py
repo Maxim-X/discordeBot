@@ -217,6 +217,7 @@ async def on_member_update(before, after):
 		if int(guild.id) == 610541252156456998:
 			for channel in guild.channels:
 				if after.activity != None:
+					gameTeam = False
 					if str(channel.type) == 'voice':
 						NameVoiceChannel = channel.name
 						for user in channel.members:
