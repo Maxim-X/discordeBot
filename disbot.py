@@ -124,9 +124,9 @@ async def freeGameEpic():
 		else:
 			todayH = todayH + 5 - 24
 		print(str(todayH))
-		if todayWeekDay == 'Thursday':
+		if todayWeekDay == 'Friday':
 			print('2')
-			if todayH == 19 and todayM == 0:
+			if todayH == 2 and todayM == 0:
 				print('3')
 				url= "https://www.epicgames.com/store/ru/collection/free-game-collection"
 				r=requests.get(url).text
@@ -166,8 +166,8 @@ async def freeGameEpic():
 				# await channel.send(str(ImgGame))
 				await channel.send('https://www.epicgames.com/store/ru/collection/free-game-collection')
 				await channel.send('1')
-				await channel.send('Сплю: 604800 секунд')
-				await asyncio.sleep(604800)
+				await channel.send('Сплю: 601200 секунд')
+				await asyncio.sleep(601200)
 				# await ctx.send(AllGameImgNew)
 			else:
 				print('4')
