@@ -207,6 +207,11 @@ async def on_member_update(before, after):
 	for guild in bot.guilds:
 		if int(guild.id) == 610541252156456998:
 			for channel in guild.channels:
+				allGameUser = []
+				for user in channel.members:
+					allGameUser = dict.fromkeys(seq[, value])
+					allGameUser[str(user.activity.name)] = str(user.display_name)
+					print(allGameUser)
 				if str(channel) == 'основной':
 
 					# Пользователь начал играть
