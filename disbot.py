@@ -224,13 +224,11 @@ async def on_member_update(before, after):
 									allGameUser.append(str(user.display_name))
 							print(allGameUser)
 				if str(channel) == 'основной':
-
-						if oldGameStatus != newGameStatus:
-
-							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n``(Данное сообщени удалится через 15 минут)``", color=0xed5565)
-							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
-							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-							await channel.send(embed=embed, delete_after=60*15)
+					if oldGameStatus != newGameStatus:
+						embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n``(Данное сообщени удалится через 15 минут)``", color=0xed5565)
+						embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
+						embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+						await channel.send(embed=embed, delete_after=60*15)
 					# / Пользователь начал играть
 
 					# / Пользователь получил новую роль
