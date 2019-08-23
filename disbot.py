@@ -208,7 +208,7 @@ async def on_member_update(before, after):
 		if int(guild.id) == 610541252156456998:
 			for channel in guild.channels:
 				if str(channel.type) == 'voice':
-					allGameUser = []
+					allGameUser = dict()
 					for user in channel.members:
 						allGameUser[str(user.activity.name)] = str(user.display_name)
 					print(allGameUser)
