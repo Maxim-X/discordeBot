@@ -294,7 +294,8 @@ async def addBanMessage(ctx, *, word):
 		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
 
 @bot.command(pass_context= True)
-async def sendMeassage(ctx,*, title):
+async def sendMessage(ctx,*, title):
+	await ctx.Message.delete(ctx.Message, delay=None)
 	name = ''
 	on = False
 	for x in title:
