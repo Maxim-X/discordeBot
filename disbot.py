@@ -126,7 +126,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Thursday':
 			print('2')
-			if todayH == 2 and todayM == 0:
+			if todayH == 19 and todayM == 0:
 				print('3')
 				url= "https://www.epicgames.com/store/ru/collection/free-game-collection"
 				r=requests.get(url).text
@@ -293,6 +293,10 @@ async def addBanMessage(ctx, *, word):
 	else:
 		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
 
+@bot.command(pass_context= True)
+async def sendMeassage(ctx, name,*, title):
+	embed = discord.Embed(title= str(name), colour= 0xf9d506, description=str(title))
+	await ctx.send(embed=embed)
 
 
 @bot.command(pass_context= True)
