@@ -309,11 +309,12 @@ async def sendMessage(ctx,*, title):
 	titleText = titleText.replace('(','').replace(')','')
 	wordsImg = ("<img>", "</img>")
 	Img = re.findall(r'<img>(.*?)</img>',titleText)
+	print(Img)
 	titleText = title[:title.find(wordsImg[0]) + len(wordsImg[0])] + title[title.find(wordsImg[1]):]
 	titleText = titleText.replace('<img>','').replace('</img>','')
 	embed = discord.Embed(title= ""+name+"", colour= 0xf9d506, description= ""+titleText+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	embed.set_image(url=""+Img+"")
+	embed.set_image(url=""+str(Img)+"")
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
 
