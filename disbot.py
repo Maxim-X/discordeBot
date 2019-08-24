@@ -294,8 +294,17 @@ async def addBanMessage(ctx, *, word):
 		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
 
 @bot.command(pass_context= True)
-async def sendMeassage(ctx, name,*, title):
-	embed = discord.Embed(title= str(name), colour= 0xf9d506, description=str(title))
+async def sendMeassage(ctx,*, title):
+	name = ''
+	on = False
+	for x in title:
+		if str(x) == ')':
+			on = False
+		if on:
+			name += str(x) 
+		if str(x) == '(':
+			on = True
+	embed = discord.Embed(title= ""+name+"", colour= 0xf9d506, description= ""+title+"")
 	await ctx.send(embed=embed)
 
 
