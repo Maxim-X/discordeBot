@@ -308,6 +308,7 @@ async def sendMessage(ctx,*, title):
 	titleText = title[:title.find(words[0]) + len(words[0])] + title[title.find(words[1]):]
 	titleText = titleText.replace('(','').replace(')','')
 	embed = discord.Embed(title= ""+name+"", colour= 0xf9d506, description= ""+titleText+"")
+	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
 
