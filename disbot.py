@@ -310,7 +310,7 @@ async def sendMessage(ctx,*, title):
 	wordsImg = ("<img>", "</img>")
 	Img = re.findall(r'<img>(.*?)</img>',titleText)
 	print(str(Img[0]))
-	titleText = title[:title.find(wordsImg[0]) + len(wordsImg[0])] + title[title.find(wordsImg[1]):]
+	titleText = titleText[:titleText.find(wordsImg[0]) + len(wordsImg[0])] + titleText[titleText.find(wordsImg[1]):]
 	titleText = titleText.replace('<img>','').replace('</img>','')
 	embed = discord.Embed(title= ""+name+"", colour= 0xf9d506, description= ""+titleText+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
