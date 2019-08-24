@@ -304,6 +304,7 @@ async def sendMeassage(ctx,*, title):
 			name += str(x) 
 		if str(x) == '(':
 			on = True
+		x=''
 	embed = discord.Embed(title= ""+name+"", colour= 0xf9d506, description= ""+title+"")
 	await ctx.send(embed=embed)
 
