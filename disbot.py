@@ -295,6 +295,15 @@ async def addBanMessage(ctx, *, word):
 
 @bot.command(pass_context= True)
 async def sendMessage(ctx,*, title):
+	name = ''
+	on = False
+	for x in title:
+		if str(x) == ')':
+			on = False
+		if on:
+			name += str(x) 
+		if str(x) == '(':
+			on = True
 	words = ("(", ")")
 	titleText = title[:title.find(words[0]) + len(words[0])] + title[title.find(words[1]):]
 	titleText = titleText.replace('(','').replace(')','')
