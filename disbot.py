@@ -334,13 +334,13 @@ async def pogoda(ctx, city):
 	temp = w.get_temperature('celsius')["temp"]
 	await ctx.send("Погода в городе "+str(city)+": "+str(temp)+"℃")
 
-@bot.command()
-async def clean(ctx, TextChannel = discord.TextChannel):
-	# messages = channel.history(limit=123).flatten()
-	allMessageChanelList = []
-	for message in channel.history(limit=200, oldest_first= True):
-		allMessageChanelList.append(message)
-	await ctx.send(allMessageChanelList)
+# @bot.command()
+# async def clean(ctx, TextChannel = discord.TextChannel):
+# 	# messages = channel.history(limit=123).flatten()
+# 	allMessageChanelList = []
+# 	for message in channel.history(limit=200, oldest_first= True):
+# 		allMessageChanelList.append(message)
+# 	await ctx.send(allMessageChanelList)
 
  
 
