@@ -295,7 +295,6 @@ async def addBanMessage(ctx, *, word):
 
 @bot.command(pass_context= True)
 async def sendMessage(ctx,*, title):
-	await ctx.Message.delete(ctx.Message, delay=None)
 	name = ''
 	on = False
 	for x in title:
@@ -310,6 +309,7 @@ async def sendMessage(ctx,*, title):
 	titleText = titleText.replace('(','').replace(')','')
 	embed = discord.Embed(title= ""+name+"", colour= 0xf9d506, description= ""+titleText+"")
 	await ctx.send(embed=embed)
+	await ctx.Message.delete(ctx.Message, delay=None)
 
 
 @bot.command(pass_context= True)
