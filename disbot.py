@@ -308,8 +308,8 @@ async def sendMessage(ctx,*, title):
 	titleText = title[:title.find(words[0]) + len(words[0])] + title[title.find(words[1]):]
 	titleText = titleText.replace('(','').replace(')','')
 	embed = discord.Embed(title= ""+name+"", colour= 0xf9d506, description= ""+titleText+"")
-	await ctx.send(embed=embed)
 	await ctx.Message.delete(ctx.Message, delay=None)
+	await ctx.send(embed=embed)
 
 
 @bot.command(pass_context= True)
