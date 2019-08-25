@@ -58,25 +58,29 @@ async def pars(ctx):
 	print(login_form)
 	print("Всего lf - "+str(len(login_form)))
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
-	# print(nameGame.text)
 	nameGameOk = nameGame[0].text
+	if :
+		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
+		ImgGame = allImgGame[0].get_attribute("src")
+		allTime = login_form[0].find_elements_by_xpath("//time")
+		print(nameGameOk)
+		print(str(ImgGame))
+		print(str(allTime[0].text))
+		timeGame = str(allTime[0].text)
+		embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине Epic Games | Store бесплатно раздается: "+str(nameGameOk)+"\n\nДанная игра будет бесплатна до"+str(timeGame.replace('.',''))+", успей добавить ее в свою библиотеку!", color=0x0078f2)
+	else:
+		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
+		ImgGame = allImgGame[1].get_attribute("src")
+		allTime = login_form[1].find_elements_by_xpath("//time")
+		gameTime = allTime[0].text
+		await asyncio.sleep(5)
+		driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
+		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
+		nameGameOk = nameGame[0].text +", "+ nameGame[1].text
+		embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине Epic Games | Store бесплатно раздается: "+str(nameGameOk)+"\n\nДанные игры будут бесплатны до"+str(timeGame.replace('.',''))+", успей добавить их в свою библиотеку!", color=0x0078f2)
 
-
-	allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
-	ImgGame = allImgGame[0].get_attribute("src")
-
-	allTime = login_form[0].find_elements_by_xpath("//time")
-	# print(len(allTime))
-	# for timeGamde in allTime:
-	#     print(timeGamde.text)
-	# timeGame = allTime.text
-	# ImgGame = allImgGame[0].tag_name('src')
-	print(nameGameOk)
-	print(str(ImgGame))
-	print(str(allTime[0].text))
-	timeGame = str(allTime[0].text)
 	driver.quit()
-	embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине Epic Games | Store бесплатно раздается: "+str(nameGameOk)+"\n\nДанная игра будут бесплатна до"+str(timeGame.replace('.',''))+", успей добавить их в свою библиотеку!", color=0x0078f2)
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер")
 	await channel.send(embed=embed)
