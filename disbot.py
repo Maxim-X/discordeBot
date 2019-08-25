@@ -53,7 +53,7 @@ async def pars(ctx):
 	# elem = browser.find_element_by_name('p')  # Find the search box
 	# elem.send_keys('seleniumhq' + Keys.RETURN)
 	# time.sleep(5)
-	await asyncio.sleep(10)
+	await asyncio.sleep(5)
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 	print(login_form)
 	print("Всего lf - "+str(len(login_form)))
@@ -179,9 +179,9 @@ async def freeGameEpic():
 		else:
 			todayH = todayH + 5 - 24
 		print(str(todayH))
-		if todayWeekDay == 'Sunday':
+		if todayWeekDay == 'Friday':
 			print('2')
-			if todayH == 20 and todayM == 5:
+			if todayH == 18 and todayM == 0:
 				chrome_options = webdriver.ChromeOptions()
 				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 				chrome_options.add_argument("--headless")
@@ -194,7 +194,7 @@ async def freeGameEpic():
 				# elem = browser.find_element_by_name('p')  # Find the search box
 				# elem.send_keys('seleniumhq' + Keys.RETURN)
 				# time.sleep(5)
-				await asyncio.sleep(10)
+				await asyncio.sleep(5)
 				login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 				print(login_form)
 				print("Всего lf - "+str(len(login_form)))
@@ -227,7 +227,7 @@ async def freeGameEpic():
 				await channel.send(embed=embed)
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
-				await channel.send('Сплю: '+sleepHOne+' секунд')
+				await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(sleepHOne)
 			else:
 				print('4')
