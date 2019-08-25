@@ -58,7 +58,7 @@ async def pars(ctx):
 	print(login_form)
 	print("Всего lf - "+str(len(login_form)))
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
-	nameGameOk = nameGame[1].text
+	nameGameOk = nameGame[0].text
 	if nameGameOk != 'Free Games Collection':
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[0].get_attribute("src")
@@ -70,8 +70,8 @@ async def pars(ctx):
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description="Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``"+str(nameGameOk)+"``\n\nДанная игра будет бесплатна до "+str(timeGame.replace('.',''))+", успей добавить ее в свою библиотеку!", color=0x0078f2)
 	else:
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
-		ImgGame = allImgGame[1].get_attribute("src")
-		allTime = login_form[1].find_elements_by_xpath("//time")
+		ImgGame = allImgGame[0].get_attribute("src")
+		allTime = login_form[0].find_elements_by_xpath("//time")
 		timeGame = allTime[0].text
 		await asyncio.sleep(5)
 		driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
