@@ -52,6 +52,8 @@ async def pars(ctx):
 	# elem.send_keys('seleniumhq' + Keys.RETURN)
 	# time.sleep(5)
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
+	print(login_form)
+	print("Всего lf - "+str(len(login_form)))
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
 	# print(nameGame.text)
 	nameGameOk = nameGame[0].text
