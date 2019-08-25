@@ -39,6 +39,8 @@ async def time(ctx):
 
 @bot.command(pass_context= True)
 async def pars(ctx):
+	await bot.wait_until_ready()
+	channel = bot.get_channel(610541252160651269)
 	chrome_options = webdriver.ChromeOptions()
 	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 	chrome_options.add_argument("--headless")
