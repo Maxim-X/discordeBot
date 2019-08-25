@@ -179,51 +179,56 @@ async def freeGameEpic():
 		else:
 			todayH = todayH + 5 - 24
 		print(str(todayH))
-		if todayWeekDay == 'Friday':
+		if todayWeekDay == 'Sunday':
 			print('2')
-			if todayH == 19 and todayM == 0:
-				print('3')
-				url= "https://www.epicgames.com/store/ru/collection/free-game-collection"
-				r=requests.get(url).text
-				soup = BeautifulSoup(r, "lxml")
-				pageFree = soup.find('div',{'class':'StoreRow-wrapper_32933b82'})
-				# print(str(pageFree))
+			if todayH == 20 and todayM == 5:
+				chrome_options = webdriver.ChromeOptions()
+				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+				chrome_options.add_argument("--headless")
+				chrome_options.add_argument("--disable-dev-shm-usage")
+				chrome_options.add_argument("--no-sandbox")
+				driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+				driver.get('https://www.epicgames.com/store/ru/')
+				# assert 'Yahoo' in browser.title
 
-				soupPage = BeautifulSoup(str(pageFree), "lxml")
-				AllNameGameNew=''
-				AllPageFree = soupPage.findAll('h3')
-				AllNameGame = []
-				AllGameImg = []
-				AllGameCena = []
-				GameAllCena=[]
-				for NameGame in AllPageFree:
-					AllNameGame.append("``"+str(NameGame.contents).replace("['","").replace("']","")+"``")
-					AllGameImg.append(soupPage.find('img',{'alt':''+str(NameGame.contents).replace("['","").replace("']","")+''}))
-				AllGameCena = soupPage.findAll('s') 
-				# for NameGameC in AllGameCena:
-				# 	print(str(NameGameC.contents))
-				# 	GameAllCena.append(""+str(NameGameC.contents).replace("['","").replace("']","").replace("\\xa0","").replace("'","").replace(",00","").replace("₽","").replace("$","").replace(",",".")+"")
-				# if float(GameAllCena[0]) >= float(GameAllCena[1]):
-				# 	ImgGameId = 0
-				# 	GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')}) 
-				# 	ImgGame = GameImgAll[ImgGameId].get('src')
-				# else:
-				# 	ImgGameId = 1
-				# 	GameImgAll = soupPage.findAll('img', {'src':re.compile('^http')})
-				# 	ImgGame = GameImgAll[ImgGameId].get('src')
-				# payCenaGame = float(GameAllCena[0]) + float(GameAllCena[1])
-				if len(AllNameGame) >= 2:
-					AllNameGameNew = ' и '.join(AllNameGame)
-				embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(AllNameGameNew)+"\n\nДанные игры будут бесплатны целую неделю, успей добавить их в свою библиотеку!", color=0x0078f2)
-				embed.set_thumbnail(url="https://image.prntscr.com/image/fpuKs8vaRiiA_Xc6eE742Q.png")
-				embed.set_footer(text="Сервер")
+				# elem = browser.find_element_by_name('p')  # Find the search box
+				# elem.send_keys('seleniumhq' + Keys.RETURN)
+				# time.sleep(5)
+				await asyncio.sleep(10)
+				login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
+				print(login_form)
+				print("Всего lf - "+str(len(login_form)))
+				nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
+				nameGameOk = nameGame[0].text
+				if nameGameOk != 'Free Games Collection':
+					allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
+					ImgGame = allImgGame[0].get_attribute("src")
+					allTime = login_form[0].find_elements_by_xpath("//time")
+					print(nameGameOk)
+					print(str(ImgGame))
+					print(str(allTime[0].text))
+					timeGame = str(allTime[0].text)
+					embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description="Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``"+str(nameGameOk)+"``\n\nДанная игра будет бесплатна до "+str(timeGame.replace('.',''))+", успей добавить ее в свою библиотеку!", color=0x0078f2)
+				else:
+					allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
+					ImgGame = allImgGame[0].get_attribute("src")
+					allTime = login_form[0].find_elements_by_xpath("//time")
+					timeGame = allTime[0].text
+					await asyncio.sleep(5)
+					driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+					# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
+					nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
+					nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
+					embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description="Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: "+str(nameGameOk)+"\n\nДанные игры будут бесплатны до "+str(timeGame.replace('.',''))+", успей добавить их в свою библиотеку!", color=0x0078f2)
+
+				driver.quit()
+				embed.set_image(url=""+str(ImgGame)+"")
+				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
-				# await channel.send(str(ImgGame))
-				await channel.send('https://www.epicgames.com/store/ru/collection/free-game-collection')
-				await channel.send('1')
-				await channel.send('Сплю: 601200 секунд')
-				await asyncio.sleep(601200)
-				# await ctx.send(AllGameImgNew)
+				todayM = int(todayNew.strftime("%M"))
+				sleepHOne = 3600 - (todayM * 60)
+				await channel.send('Сплю: '+sleepHOne+' секунд')
+				await asyncio.sleep(sleepHOne)
 			else:
 				print('4')
 				todayM = int(todayNew.strftime("%M"))
@@ -233,7 +238,6 @@ async def freeGameEpic():
 		else:
 			todayM = int(todayNew.strftime("%M"))
 			sleepHOne = 3600 - (todayM * 60)
-			sleepHOne += (82800 - (todayH * 60 * 60))
 			await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 			await asyncio.sleep(int(sleepHOne))
 
