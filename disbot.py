@@ -76,7 +76,7 @@ async def pars(ctx):
 	print(str(allTime[0].text))
 	timeGame = str(allTime[0].text)
 	driver.quit()
-	embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(nameGameOk)+"\n\nДанные игры будут бесплатны до"+str(timeGame)+", успей добавить их в свою библиотеку!", color=0x0078f2)
+	embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине Epic Games | Store бесплатно раздается: "+str(nameGameOk)+"\n\nДанная игра будут бесплатна до"+str(timeGame.replace('.',''))+", успей добавить их в свою библиотеку!", color=0x0078f2)
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер")
 	await channel.send(embed=embed)
