@@ -53,7 +53,7 @@ async def pars(ctx):
 	# time.sleep(5)
 	login_form = driver.find_element_by_id('egh')
 	for x in login_form:
-		print x.text
+		print(x.text)
 	driver.quit()
 
 # Now you can start using Selenium
