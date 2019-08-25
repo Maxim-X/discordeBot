@@ -72,7 +72,7 @@ async def pars(ctx):
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[1].get_attribute("src")
 		allTime = login_form[1].find_elements_by_xpath("//time")
-		gameTime = allTime[0].text
+		timeGame = allTime[0].text
 		await asyncio.sleep(5)
 		driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
