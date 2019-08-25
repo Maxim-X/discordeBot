@@ -66,9 +66,13 @@ async def pars(ctx):
 	#     print(timeGamde.text)
 	# timeGame = allTime.text
 	# ImgGame = allImgGame[0].tag_name('src')
+	gameTime = allTime[0].text
 	print(nameGameOk)
 	print(str(ImgGame))
-	print(str(allTime[0].text))
+	embed=discord.Embed(title="Привет всем участникам канала!", description="Сейчас в магазине EpicGames бесплатно раздается: "+str(nameGameOk)+"\n\nДанные игры будут бесплатны до"+str(gameTime)+", успей добавить их в свою библиотеку!", color=0x0078f2)
+	embed.set_thumbnail(url=""+str(ImgGame)+"")
+	embed.set_footer(text="Сервер")
+	await channel.send(embed=embed)
 	driver.quit()
 
 # Now you can start using Selenium
