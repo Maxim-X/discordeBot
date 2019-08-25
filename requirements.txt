@@ -14,3 +14,4 @@ BeautifulSoup4
 lxml
 datetime
 asyncio
+selenium
