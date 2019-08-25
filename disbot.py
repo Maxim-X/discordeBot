@@ -51,7 +51,7 @@ async def pars(ctx):
 	# elem = browser.find_element_by_name('p')  # Find the search box
 	# elem.send_keys('seleniumhq' + Keys.RETURN)
 	# time.sleep(5)
-	new_page = driver.find_element_by_tag_name('html')
+	time.sleep(10)
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 	print(login_form)
 	print("Всего lf - "+str(len(login_form)))
