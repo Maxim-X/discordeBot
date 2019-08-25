@@ -59,7 +59,7 @@ async def pars(ctx):
 	print("Всего lf - "+str(len(login_form)))
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
 	nameGameOk = nameGame[0].text
-	if :
+	if nameGameOk != 'Free Games Collection':
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[0].get_attribute("src")
 		allTime = login_form[0].find_elements_by_xpath("//time")
