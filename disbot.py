@@ -263,6 +263,7 @@ async def on_message(message):
 
 @bot.event
 async def on_member_update(before, after):
+	print('1')
 	# Пользователь начал играть
 	if after.activity != None:
 		if before.activity != None:
@@ -271,22 +272,34 @@ async def on_member_update(before, after):
 		else:
 			oldGameStatus = ''
 	# Пользователь начал играть
+	print('1')
 
 	for guild in bot.guilds:
+		print('1')
 		if int(guild.id) == 412939700748419084:
+			print('1')
 			for channel in guild.channels:
+				print('1')
 
 				if after.activity != None:
+					print('1')
 					gameTeam = False
+					print('1')
 					if str(channel.type) == 'voice':
+						print('1')
 						NameVoiceChannel = channel.name
+						print('1')
 						for user in channel.members:
+							print('1')
 							if str(user.display_name) == str(after.display_name):
+								print('1')
 								allGameUser = []
 								for user in channel.members:
+									print('1')
 									if str(user.activity.name) == str(newGameStatus):
 										allGameUser.append(str(user.display_name))
 								if len(allGameUser) >= 2:
+									print('1')
 									gameTeam = True
 									allGameUser = ' , '.join(allGameUser)
 								else:
