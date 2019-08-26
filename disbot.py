@@ -423,7 +423,7 @@ async def cleanChat(ctx, allNumMessage):
 		await ctx.send("Пользователь без статуса `Яндекс.Уборщик` не может массово удалять сообщения.")
 
     
-token = os.environ.get('BOT_TOKEN')
+token = 'NTcxMzUzNDI3NzI1MjU0NjU3.XWKz4A.PEW12skf28xGyeg6vwOfgrWfCWw'
 bot.bg_task = bot.loop.create_task(goodMorning())
 bot.bg_task = bot.loop.create_task(freeGameEpic())
 bot.run(str(token))
