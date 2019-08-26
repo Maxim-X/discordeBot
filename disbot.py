@@ -273,7 +273,7 @@ async def on_member_update(before, after):
 	# Пользователь начал играть
 
 	for guild in bot.guilds:
-		if int(guild.id) == 610541252156456998:
+		if int(guild.id) == 412939700748419084:
 			for channel in guild.channels:
 				if after.activity != None:
 					gameTeam = False
