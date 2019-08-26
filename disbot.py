@@ -267,9 +267,9 @@ async def on_member_update(before, after):
 	if after.activity != None:
 		if before.activity != None:
 			oldGameStatus = before.activity.name
+			newGameStatus = after.activity.name
 		else:
 			oldGameStatus = ''
-		newGameStatus = after.activity.name
 	# Пользователь начал играть
 
 	for guild in bot.guilds:
