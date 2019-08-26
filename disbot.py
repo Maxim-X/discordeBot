@@ -40,7 +40,7 @@ async def time(ctx):
 @bot.command(pass_context= True)
 async def pars(ctx):
 	await bot.wait_until_ready()
-	channel = bot.get_channel(610541252160651269)
+	channel = bot.get_channel(412939700748419086)
 	chrome_options = webdriver.ChromeOptions()
 	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 	chrome_options.add_argument("--headless")
@@ -82,7 +82,7 @@ async def pars(ctx):
 
 	driver.quit()
 	embed.set_image(url=""+str(ImgGame)+"")
-	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	embed.set_footer(text="Сервер "+str(bot.guilds[1].name))
 	await channel.send(embed=embed)
 
 # Now you can start using Selenium
@@ -137,7 +137,7 @@ async def db(ctx):
 async def goodMorning():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(610541252160651269)
+		channel = bot.get_channel(412939700748419086)
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
 		todaym = int(todayNew.strftime("%M"))
@@ -162,7 +162,7 @@ async def freeGameEpic():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
 		print('0')
-		channel = bot.get_channel(610541252160651269)
+		channel = bot.get_channel(412939700748419086)
 		print('0')
 		todayNew = datetime.datetime.today()
 		print('0')
@@ -223,22 +223,22 @@ async def freeGameEpic():
 
 				driver.quit()
 				embed.set_image(url=""+str(ImgGame)+"")
-				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+				embed.set_footer(text="Сервер "+str(bot.guilds[1].name))
 				await channel.send(embed=embed)
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
-				await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(sleepHOne)
 			else:
 				print('4')
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
-				await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(int(sleepHOne))
 		else:
 			todayM = int(todayNew.strftime("%M"))
 			sleepHOne = 3600 - (todayM * 60)
-			await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 			await asyncio.sleep(int(sleepHOne))
 
 
@@ -294,17 +294,17 @@ async def on_member_update(before, after):
 
 
 
-					if str(channel) == 'основной':
+					if str(channel) == 'general':
 						if gameTeam:
 							embed=discord.Embed(title="Пользователи "+str(after.display_name)+" играют в `"+str(newGameStatus)+"`", description="Если вы хотите присоединиться, заходите в голосовой канал "+str(NameVoiceChannel)+"", color=0xed5565)
 							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
-							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							embed.set_footer(text="Сервер "+str(bot.guilds[1].name))
 							await channel.send(embed=embed)
 
 						if oldGameStatus != newGameStatus and not gameTeam:
 							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n``(Данное сообщение удалится через 15 минут)``", color=0xed5565)
 							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
-							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							embed.set_footer(text="Сервер "+str(bot.guilds[1].name))
 							await channel.send(embed=embed, delete_after=60*15)
 						# / Пользователь начал играть
 
@@ -314,12 +314,12 @@ async def on_member_update(before, after):
 						if len(roleADD) >= 1:
 							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.\n``(Данное сообщение удалится через 5 минут)``", color=0x26b99a)
 							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
-							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							embed.set_footer(text="Сервер "+str(bot.guilds[1].name))
 							await channel.send(embed=embed, delete_after=60*5)
 						elif len(roleDELL) >= 1:
 							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего.\n``(Данное сообщение удалится через 5 минут)``", color=0x26b99a)
 							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
-							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							embed.set_footer(text="Сервер "+str(bot.guilds[1].name))
 							await channel.send(embed=embed, delete_after=60*5)
 						# / Пользователь получил новую роль
 
