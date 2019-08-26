@@ -280,9 +280,8 @@ async def on_member_update(before, after):
 			print('1')
 			for channel in guild.channels:
 				print(str(channel.name))
-				print(str(after.activity.name))
-
 				if after.activity != None:
+					print(str(after.activity.name))
 					print('1')
 					gameTeam = False
 					print('1')
