@@ -298,7 +298,7 @@ async def on_member_update(before, after):
 
         for channel in guild.channels:
             print("-----------"+str(channel.name)+" : "+str(channel.type))
-            if str(channel.name) == 'test_bot' and str(channel.type) == 'text':
+            if str(channel.name) == 'general' and str(channel.type) == 'text':
                 # print("-===="+str(channel.name))
                 if after.activity != None:
                     if gameTeam:
