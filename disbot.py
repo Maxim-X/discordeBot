@@ -40,7 +40,7 @@ async def time(ctx):
 @bot.command(pass_context= True)
 async def pars(ctx):
 	await bot.wait_until_ready()
-	channel = bot.get_channel(610541252160651269)
+	channel = bot.get_channel(412939700748419086)
 	chrome_options = webdriver.ChromeOptions()
 	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 	chrome_options.add_argument("--headless")
@@ -137,7 +137,7 @@ async def db(ctx):
 async def goodMorning():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(610541252160651269)
+		channel = bot.get_channel(412939700748419086)
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
 		todaym = int(todayNew.strftime("%M"))
@@ -162,7 +162,7 @@ async def freeGameEpic():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
 		print('0')
-		channel = bot.get_channel(610541252160651269)
+		channel = bot.get_channel(412939700748419086)
 		print('0')
 		todayNew = datetime.datetime.today()
 		print('0')
@@ -273,7 +273,7 @@ async def on_member_update(before, after):
 	# Пользователь начал играть
 
 	for guild in bot.guilds:
-		if int(guild.id) == 610541252156456998:
+		if int(guild.id) == 412939700748419084:
 			for channel in guild.channels:
 				if after.activity != None:
 					gameTeam = False
