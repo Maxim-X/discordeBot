@@ -227,18 +227,18 @@ async def freeGameEpic():
 				await channel.send(embed=embed)
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
-				await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(sleepHOne)
 			else:
 				print('4')
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
-				await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(int(sleepHOne))
 		else:
 			todayM = int(todayNew.strftime("%M"))
 			sleepHOne = 3600 - (todayM * 60)
-			await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 			await asyncio.sleep(int(sleepHOne))
 
 
