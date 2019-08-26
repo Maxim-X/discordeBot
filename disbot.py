@@ -150,7 +150,7 @@ async def goodMorning():
 			#Вот свежий выпуск игровых новостей:\n
 			embed=discord.Embed(title="Доброе утрой!", description="Стремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
 			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
-			embed.set_footer(text="Сервер")
+			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 			await channel.send(embed=embed)
 			# await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
 			await asyncio.sleep(86400) #82800
