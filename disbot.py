@@ -266,15 +266,16 @@ async def on_member_update(before, after):
 	# Пользователь начал играть
 	if after.activity != None:
 		if before.activity != None:
-			oldGameStatus = before.activity.game.name
+			oldGameStatus = before.activity.name
 		else:
 			oldGameStatus = ''
-		newGameStatus = after.activity.game.name
+		newGameStatus = after.activity.name
 	# Пользователь начал играть
 
 	for guild in bot.guilds:
 		if int(guild.id) == 412939700748419084:
 			for channel in guild.channels:
+
 				if after.activity != None:
 					gameTeam = False
 					if str(channel.type) == 'voice':
@@ -283,7 +284,7 @@ async def on_member_update(before, after):
 							if str(user.display_name) == str(after.display_name):
 								allGameUser = []
 								for user in channel.members:
-									if str(user.activity.game.name) == str(newGameStatus):
+									if str(user.activity.name) == str(newGameStatus):
 										allGameUser.append(str(user.display_name))
 								if len(allGameUser) >= 2:
 									gameTeam = True
