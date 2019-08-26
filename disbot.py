@@ -307,8 +307,9 @@ async def on_member_update(before, after):
 								print(allGameUser)
 
 
-
+					print("-----===="+str(channel))
 					if str(channel) == 'general':
+						print("-===="+str(channel))
 						if gameTeam:
 							embed=discord.Embed(title="Пользователи "+str(after.display_name)+" играют в `"+str(newGameStatus)+"`", description="Если вы хотите присоединиться, заходите в голосовой канал "+str(NameVoiceChannel)+"", color=0xed5565)
 							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
