@@ -275,11 +275,12 @@ async def on_member_update(before, after):
 	print('1')
 
 	for guild in bot.guilds:
-		print('1')
+		print(str(guild.id))
 		if int(guild.id) == 412939700748419084:
 			print('1')
 			for channel in guild.channels:
-				print('1')
+				print(str(channel.name))
+				print(str(after.activity.name))
 
 				if after.activity != None:
 					print('1')
