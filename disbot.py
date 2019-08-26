@@ -147,11 +147,12 @@ async def goodMorning():
 			todayH = todayH + 5 - 24
 
 		if todayH == 9:
-			embed=discord.Embed(title="Доброе утрой!", description="Вот свежий выпуск игровых новостей:\nСтремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
+			#Вот свежий выпуск игровых новостей:\n
+			embed=discord.Embed(title="Доброе утрой!", description="Стремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
 			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 			embed.set_footer(text="Сервер")
 			await channel.send(embed=embed)
-			await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+			# await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
 			await asyncio.sleep(86400) #82800
 		else:
 			sleepHOne = 3600 - (todaym * 60)
