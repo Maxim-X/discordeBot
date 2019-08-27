@@ -73,18 +73,20 @@ async def pars(ctx):
 		print(str(ImgGame))
 		print(str(allTime[0].text))
 		timeGame = str(allTime[0].text)
-		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description="Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``"+str(nameGameOk)+"``\n\nДанная игра будет бесплатна до "+str(timeGame.replace('.',''))+", успей добавить ее в свою библиотеку!", color=0x0078f2)
+		timeGameOk = timeGame.replace('.','')
+		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n{UrlGame}", color=0x0078f2)
 	else:
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[0].get_attribute("src")
 		allTime = login_form[0].find_elements_by_xpath("//time")
 		timeGame = allTime[0].text
+		timeGameOk = timeGame.replace('.','')
 		await asyncio.sleep(5)
 		driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
-		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description="Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: "+str(nameGameOk)+"\n\nДанные игры будут бесплатны до "+str(timeGame.replace('.',''))+", успей добавить их в свою библиотеку!", color=0x0078f2)
+		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n{UrlGame}", color=0x0078f2)
 		UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
 
 
