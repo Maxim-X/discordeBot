@@ -276,37 +276,36 @@ async def on_message(message):
 
 @bot.event
 async def on_member_update(before, after):
-    print('1')
-    # Пользователь начал играть
-    if after.activity != None:
-        if before.activity != None:
-            oldGameStatus = before.activity.name
-            
-        else:
-            oldGameStatus = ''
-        newGameStatus = after.activity.name
-    # Пользователь начал играть
-    
+	print('1')
+	# Пользователь начал играть
+	if after.activity != None:
+		if before.activity != None:
+			oldGameStatus = before.activity.name
+		else:
+			oldGameStatus = ''
+		newGameStatus = after.activity.name
+	# Пользователь начал играть
 
-    for guild in bot.guilds:
-    	if str(guild.id) == '412939700748419084':
-	        gameTeam = False
-	        for channel in guild.channels:
-	            if after.activity != None:
-	                if str(channel.type) == 'voice':
-	                    NameVoiceChannel = channel.name
-	                    for user in channel.members:
-	                        if str(user.display_name) == str(after.display_name):
-	                            allGameUser = []
-	                            for user in channel.members:
-	                                if str(user.activity.name) == str(newGameStatus):
-	                                    allGameUser.append(str(user.display_name))
-	                            if len(allGameUser) >= 2:
-	                                gameTeam = True
-	                                allGameUser1 = ' , '.join(allGameUser)
-	                                print(allGameUser1)
-	                            else:
-	                                gameTeam = False
+	
+	for guild in bot.guilds:
+		if str(guild.id) == '412939700748419084':
+			gameTeam = False
+			for channel in guild.channels:
+				if after.activity != None:
+					if str(channel.type) == 'voice':
+						NameVoiceChannel = channel.name
+						for user in channel.members:
+							if str(user.display_name) == str(after.display_name):
+								allGameUser = []
+								for user in channel.members:
+									if str(user.activity.name) == str(newGameStatus):
+										allGameUser.append(str(user.display_name))
+								if len(allGameUser) >= 2:
+									gameTeam = True
+									allGameUser1 = ' , '.join(allGameUser)
+									print(allGameUser1)
+								else:
+									gameTeam = False
 
 
 			for channel in guild.channels:
