@@ -261,7 +261,7 @@ async def on_member_join(member):
 					embed.set_thumbnail(url=''+str(member.avatar_url)+'')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					await channel.send(embed=embed)
-					await member.add_roles(discord.utils.get(user.guild.roles, name='Новичок'))
+					await member.add_roles(discord.utils.get(member.guild.roles, name='Новичок'))
 					
 
 
