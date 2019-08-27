@@ -29,6 +29,14 @@ i=0
 while i < len(listBunMessage):
 	listBunMessage[i] = listBunMessage[i].lower()
 	i+=1
+#--- Парсинг сайтов
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+#--- Парсинг сайтов
 
 
 @bot.command(pass_context= True)
@@ -43,12 +51,6 @@ async def time(ctx):
 async def pars(ctx):
 	await bot.wait_until_ready()
 	channel = bot.get_channel(412939700748419086)
-	chrome_options = webdriver.ChromeOptions()
-	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-	chrome_options.add_argument("--headless")
-	chrome_options.add_argument("--disable-dev-shm-usage")
-	chrome_options.add_argument("--no-sandbox")
-	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	driver.get('https://www.epicgames.com/store/ru/')
 	# assert 'Yahoo' in browser.title
 
@@ -157,11 +159,16 @@ async def goodMorning():
 			'Жизнь – игра, не проиграй себя,','Лучше рисоваться многими знаниями, чем хорошо владеть немногими.',
 			'На самом деле, жизнь проста. Мы сами настойчиво её усложняем.']
 			goodMornText = random.choice(listGoodMorn)
-			embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"", color=0xfaff22)
+
+			driver.get('https://www.youtube.com/playlist?list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+			pageListUrl = driver.find_element_by_xpath('//ytd-playlist-thumbnail/a').get_attribute("href")
+
+			driver.quit()
+			embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"\n Свежий выпуск игровых новостей ждет вас чуть ниже, удачи!", color=0xfaff22)
 			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 			await channel.send(embed=embed)
-			# await channel.send('https://www.youtube.com/watch?v=JR5staaSWdc&list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+			await channel.send(str(pageListUrl))
 			await asyncio.sleep(86400) #82800
 		else:
 			sleepHOne = 3600 - (todaym * 60)
@@ -192,12 +199,6 @@ async def freeGameEpic():
 		if todayWeekDay == 'Friday':
 			print('2')
 			if todayH == 18 and todayM == 0:
-				chrome_options = webdriver.ChromeOptions()
-				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-				chrome_options.add_argument("--headless")
-				chrome_options.add_argument("--disable-dev-shm-usage")
-				chrome_options.add_argument("--no-sandbox")
-				driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 				driver.get('https://www.epicgames.com/store/ru/')
 				# assert 'Yahoo' in browser.title
 
