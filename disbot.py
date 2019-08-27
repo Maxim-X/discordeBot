@@ -256,7 +256,7 @@ async def on_member_join(member):
 	for guild in bot.guilds:
 		if str(guild.id) == '412939700748419084':
 			for channel in guild.channels:
-				if str(channel.id) == '615296305144660008':
+				if str(channel.id) == '412939700748419086':
 					embed=discord.Embed(title="Пользователь ``"+str(member.display_name)+"`` присоединился к нашему серверу.", description="Добро пожаловать! Располагайся, чувствуй себя как дома.\nФура достойных каток и интересных тимейтов уже выехала.", color=0x5458bc)
 					embed.set_thumbnail(url=''+str(member.avatar_url)+'')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
@@ -320,7 +320,7 @@ async def on_member_update(before, after):
 
 			for channel in guild.channels:
 				print("-----------"+str(channel.name)+" : "+str(channel.type))
-				if str(channel.name) == 'test_bot' and str(channel.type) == 'text':
+				if str(channel.id) == '412939700748419086':
 				# print("-===="+str(channel.name))
 					if after.activity != None:
 						if gameTeam:
