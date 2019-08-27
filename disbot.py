@@ -249,7 +249,7 @@ async def on_member_join(member):
 			for channel in guild.channels:
 				if str(channel.id) == '615296305144660008':
 					embed=discord.Embed(title="Пользователь ``"+str(member.display_name)+"`` присоединился к нашему серверу.", description="Добро пожаловать! Располагайся, чувствуй себя как дома, фура достойных каток и интересных тимейтов уже выехала.", color=0x5458bc)
-					embed.set_thumbnail(url=''+str(member.avatar)+'')
+					embed.set_thumbnail(url=''+str(member.avatar_url)+'')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					await channel.send(embed=embed)
 					
