@@ -13,6 +13,7 @@ import lxml
 import datetime
 import asyncio
 from selenium import webdriver
+import random
 
 
 bot = commands.Bot(command_prefix='>')
@@ -23,6 +24,7 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 listBunMessage = ['сука', 'мат', 'уебак']
+
 i=0
 while i < len(listBunMessage):
 	listBunMessage[i] = listBunMessage[i].lower()
@@ -148,7 +150,14 @@ async def goodMorning():
 
 		if todayH == 9:
 			#Вот свежий выпуск игровых новостей:\n
-			embed=discord.Embed(title="Доброе утро!", description="Стремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
+			listGoodMorn = ['Стремитесь не к успеху, а к ценностям, которые он дает​.',
+			'Разочаровавшись в одном, не наказывайте другого. Все люди разные. Не теряйте способность верить и любить.',
+			'Нет ничего сильнее идеи, время которой пришло!','Иногда мне кажется, что все, чем я хочу заниматься в жизни — это слушать музыку.',
+			'В погоне за похвалой лучшая приманка — скромность. Maxim © PS: поддерживаю. ',
+			'Жизнь – игра, не проиграй себя,','Лучше рисоваться многими знаниями, чем хорошо владеть немногими.',
+			'На самом деле, жизнь проста. Мы сами настойчиво её усложняем.']
+			goodMornText = random.choice(listGoodMorn)
+			embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"", color=0xfaff22)
 			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 			await channel.send(embed=embed)
@@ -286,7 +295,7 @@ async def on_member_update(before, after):
 		newGameStatus = after.activity.name
 	# Пользователь начал играть
 
-	
+
 	for guild in bot.guilds:
 		if str(guild.id) == '412939700748419084':
 			gameTeam = False
