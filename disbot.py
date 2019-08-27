@@ -294,7 +294,7 @@ async def on_member_update(before, after):
 	                                allGameUser1 = ' , '.join(allGameUser)
 	                            else:
 	                                gameTeam = False
-	 					print(allGameUser1)
+	                    print(allGameUser1)
 
 
 	        for channel in guild.channels:
