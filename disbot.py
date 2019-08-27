@@ -37,7 +37,26 @@ async def time(ctx):
 	await ctx.send(today.strftime("%H.%M.%S"))
 
 
-
+@bot.command(pass_context= True)
+async def news(ctx):
+	driver.get('https://www.playground.ru/news/pc/')
+	pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
+	pageGame = pageListUrl.get_attribute('href')
+	driver.get(str(pageGame))
+	nameNews = driver.find_element_by_xpath('//h1[@class="article-title"]')
+	print(str(nameNews.text))
+	nameNews = nameNews.text
+	imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
+	titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
+	print(str(imgNews))
+	print(str(titleNews.text))
+	titleNews = titleNews.text
+	driver.quit()
+	embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n[Читать далее...]({pageGame})", color=0x0078f2)
+	embed.set_image(url=""+str(imgNews)+"")
+	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	await channel.send(embed=embed)
+		
 
 @bot.command(pass_context= True)
 async def pars(ctx):
