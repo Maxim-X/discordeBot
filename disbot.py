@@ -48,7 +48,7 @@ async def newsGamePlayGround():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 13 and todaym == 30 or todayH == 12 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 17 and todaym == 30 or todayH == 18 and todaym == 30:
+		if todayH == 13 and todaym == 30 or todayH == 12 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 17 and todaym == 30 or todayH == 18 and todaym == 33:
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
