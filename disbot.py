@@ -29,14 +29,6 @@ i=0
 while i < len(listBunMessage):
 	listBunMessage[i] = listBunMessage[i].lower()
 	i+=1
-#--- Парсинг сайтов
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-#--- Парсинг сайтов
 
 
 @bot.command(pass_context= True)
@@ -51,6 +43,14 @@ async def time(ctx):
 async def pars(ctx):
 	await bot.wait_until_ready()
 	channel = bot.get_channel(615296305144660008)#412939700748419086
+	#--- Парсинг сайтов
+	chrome_options = webdriver.ChromeOptions()
+	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+	chrome_options.add_argument("--headless")
+	chrome_options.add_argument("--disable-dev-shm-usage")
+	chrome_options.add_argument("--no-sandbox")
+	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+	#--- Парсинг сайтов
 	driver.get('https://www.epicgames.com/store/ru/')
 	# assert 'Yahoo' in browser.title
 
@@ -207,6 +207,14 @@ async def freeGameEpic():
 		if todayWeekDay == 'Friday':
 			print('2')
 			if todayH == 18 and todayM == 0:
+				#--- Парсинг сайтов
+				chrome_options = webdriver.ChromeOptions()
+				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+				chrome_options.add_argument("--headless")
+				chrome_options.add_argument("--disable-dev-shm-usage")
+				chrome_options.add_argument("--no-sandbox")
+				driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+				#--- Парсинг сайтов
 				driver.get('https://www.epicgames.com/store/ru/')
 				# assert 'Yahoo' in browser.title
 
