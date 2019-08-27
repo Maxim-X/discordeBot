@@ -47,6 +47,7 @@ async def news(ctx):
 	chrome_options.add_argument("--no-sandbox")
 	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
+	channel = bot.get_channel(615296305144660008)
 	driver.get('https://www.playground.ru/news/pc/')
 	pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
 	pageGame = pageListUrl.get_attribute('href')
