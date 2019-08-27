@@ -148,7 +148,7 @@ async def goodMorning():
 
 		if todayH == 9:
 			#Вот свежий выпуск игровых новостей:\n
-			embed=discord.Embed(title="Доброе утрой!", description="Стремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
+			embed=discord.Embed(title="Доброе утро!", description="Стремитесь не к успеху, а к ценностям, которые он дает​.", color=0xfaff22)
 			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 			await channel.send(embed=embed)
@@ -241,6 +241,18 @@ async def freeGameEpic():
 			sleepHOne = 3600 - (todayM * 60)
 			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 			await asyncio.sleep(int(sleepHOne))
+
+@bot.event
+async def on_member_join(member):
+	for guild in bot.guilds:
+		if str(guild.id) == '412939700748419084':
+			for channel in guild.channels:
+				if str(channel.id) == '615296305144660008':
+					embed=discord.Embed(title="Пользователь ``"+str(member.display_name)+"`` присоединился к нашему серверу.", description="Добро пожаловать! Располагайся, чувствуй себя как дома, фура достойных каток и интересных тимейтов уже выехала.", color=0x5458bc)
+					embed.set_thumbnail(url=''+str(member.avatar)+'')
+					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+					await channel.send(embed=embed)
+					
 
 
 @bot.event
