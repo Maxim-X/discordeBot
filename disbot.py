@@ -257,7 +257,7 @@ async def on_member_join(member):
 		if str(guild.id) == '412939700748419084':
 			for channel in guild.channels:
 				if str(channel.id) == '615296305144660008':
-					embed=discord.Embed(title="Пользователь ``"+str(member.display_name)+"`` присоединился к нашему серверу.", description="Добро пожаловать! Располагайся, чувствуй себя как дома.\nфура достойных каток и интересных тимейтов уже выехала.", color=0x5458bc)
+					embed=discord.Embed(title="Пользователь ``"+str(member.display_name)+"`` присоединился к нашему серверу.", description="Добро пожаловать! Располагайся, чувствуй себя как дома.\nФура достойных каток и интересных тимейтов уже выехала.", color=0x5458bc)
 					embed.set_thumbnail(url=''+str(member.avatar_url)+'')
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					await channel.send(embed=embed)
