@@ -67,7 +67,8 @@ async def pars(ctx):
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[0].get_attribute("src")
 		allTime = login_form[0].find_elements_by_xpath("//time")
-		allUrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'FreeGame-gameCard')]").get_attribute('href')
+		allUrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'FreeGame-gameCard')]")
+		UrlGame = allUrlGame[0].get_attribute('href')
 		print(nameGameOk)
 		print(str(ImgGame))
 		print(str(allTime[0].text))
@@ -84,14 +85,14 @@ async def pars(ctx):
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description="Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: "+str(nameGameOk)+"\n\nДанные игры будут бесплатны до "+str(timeGame.replace('.',''))+", успей добавить их в свою библиотеку!", color=0x0078f2)
-		allUrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
+		UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
 
 
 	driver.quit()
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await channel.send(embed=embed)
-	await channel.send(str(allUrlGame))
+	await channel.send(str(UrlGame))
 
 # Now you can start using Selenium
 
