@@ -74,7 +74,7 @@ async def pars(ctx):
 		print(str(allTime[0].text))
 		timeGame = str(allTime[0].text)
 		timeGameOk = timeGame.replace('.','')
-		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n{UrlGame}", color=0x0078f2)
+		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0x0078f2)
 	else:
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[0].get_attribute("src")
@@ -86,7 +86,7 @@ async def pars(ctx):
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
-		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n{UrlGame}", color=0x0078f2)
+		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0x0078f2)
 		UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
 
 
@@ -94,7 +94,6 @@ async def pars(ctx):
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await channel.send(embed=embed)
-	await channel.send(str(UrlGame))
 
 # Now you can start using Selenium
 
