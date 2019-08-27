@@ -61,7 +61,7 @@ async def news(ctx):
 	print(str(titleNews.text))
 	titleNews = titleNews.text
 	driver.quit()
-	embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n[Читать далее...]({pageGame})", color=0x0078f2)
+	embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
 	embed.set_image(url=""+str(imgNews)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await channel.send(embed=embed)
