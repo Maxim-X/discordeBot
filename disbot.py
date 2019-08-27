@@ -48,7 +48,7 @@ async def newsGamePlayGround():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 15 and todaym == 20 or todayH == 17 and todaym == 20 or todayH == 13 and todaym == 20 or todayH == 12 and todaym == 0 or todayH == 18 and todaym == 22:
+		if todayH == 13 and todaym == 30 or todayH == 12 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 17 and todaym == 30 or todayH == 18 and todaym == 30:
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -75,6 +75,10 @@ async def newsGamePlayGround():
 			embed.set_image(url=""+str(imgNews)+"")
 			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 			await channel.send(embed=embed)
+			sleepHOne = 3600 - (todaym * 60)
+			await asyncio.sleep(int(sleepHOne)) #3600
+		else:
+			await asyncio.sleep(60)
 
 @bot.command(pass_context= True)
 async def pars(ctx):
