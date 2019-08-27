@@ -48,7 +48,7 @@ async def newsGamePlayGround():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 13 and todaym == 30 or todayH == 12 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 17 and todaym == 30 or todayH == 18 and todaym == 40:
+		if todayH == 13 and todaym == 30 or todayH == 12 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 17 and todaym == 30 or todayH == 19 and todaym == 4:
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -57,7 +57,7 @@ async def newsGamePlayGround():
 			chrome_options.add_argument("--no-sandbox")
 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 			#--- Парсинг сайтов
-			channel = bot.get_channel(615296305144660008)
+			channel = bot.get_channel(412939700748419086)
 			driver.get('https://www.playground.ru/news/pc/')
 			pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
 			pageGame = pageListUrl.get_attribute('href')
