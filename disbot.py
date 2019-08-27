@@ -290,7 +290,7 @@ async def on_member_update(before, after):
 	                            for user in channel.members:
 	                                if str(user.activity.name) == str(newGameStatus):
 	                                    allGameUser.append(str(user.display_name))
-	                            if len(allGameUser) >= 2:
+	                            if len(allGameUser) >= 1:
 	                                gameTeam = True
 	                                allGameUser = ' , '.join(allGameUser)
 	                            else:
