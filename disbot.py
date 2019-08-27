@@ -309,38 +309,40 @@ async def on_member_update(before, after):
 	                                gameTeam = False
 
 
-	        for channel in guild.channels:
-	            print("-----------"+str(channel.name)+" : "+str(channel.type))
-	            if str(channel.name) == 'test_bot' and str(channel.type) == 'text':
-	                # print("-===="+str(channel.name))
-	                if after.activity != None:
-	                    if gameTeam:
-	                        embed=discord.Embed(title="Пользователи "+str(allGameUser1)+" играют в `"+str(newGameStatus)+"`", description="Если вы хотите присоединиться, заходите в голосовой канал "+str(NameVoiceChannel)+"", color=0xed5565)
-	                        embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
-	                        embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	                        await channel.send(embed=embed)
-	                if after.activity != None:
-	                    if oldGameStatus != newGameStatus and not gameTeam:
-	                        embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n``(Данное сообщение удалится через 60 минут)``", color=0xed5565)
-	                        embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
-	                        embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	                        await channel.send(embed=embed, delete_after=60*60)
-	                    # / Пользователь начал играть
+			for channel in guild.channels:
+				print("-----------"+str(channel.name)+" : "+str(channel.type))
+				if str(channel.name) == 'test_bot' and str(channel.type) == 'text':
+				# print("-===="+str(channel.name))
+					if after.activity != None:
+						if gameTeam:
+							embed=discord.Embed(title="Пользователи "+str(allGameUser1)+" играют в `"+str(newGameStatus)+"`", description="Если вы хотите присоединиться, заходите в голосовой канал "+str(NameVoiceChannel)+"", color=0xed5565)
+							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
+							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							await channel.send(embed=embed)
+					if after.activity != None:
+						if oldGameStatus != newGameStatus and not gameTeam:
+							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" запустил игру\n`"+str(newGameStatus)+"`", description="У вас есть шанс взять в свою команду скилового игрока.\n``(Данное сообщение удалится через 60 минут)``", color=0xed5565)
+							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
+							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							await channel.send(embed=embed, delete_after=60*60)
+						# / Пользователь начал играть
 
-	                    # / Пользователь получил новую роль
-	                roleADD=list(set(after.roles) - set(before.roles))
-	                roleDELL=list(set(before.roles) - set(after.roles))
-	                if len(roleADD) >= 1:
-	                    embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.\n``(Данное сообщение удалится через 85 минут)``", color=0x26b99a)
-	                    embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
-	                    embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	                    await channel.send(embed=embed, delete_after=60*85)
-	                elif len(roleDELL) >= 1:
-	                    embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего.\n``(Данное сообщение удалится через 85 минут)``", color=0x26b99a)
-	                    embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
-	                    embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	                    await channel.send(embed=embed, delete_after=60*85)
-	                        # / Пользователь получил новую роль
+						# / Пользователь получил новую роль
+					roleADD=list(set(after.roles) - set(before.roles))
+					roleDELL=list(set(before.roles) - set(after.roles))
+					if len(roleADD) >= 1:
+						if str(after.display_name) != str(roleADD[0]):
+							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" получил новую роль `"+str(roleADD[0])+"`", description="Носи данный знак с честью или сразу считай его клеймом.\n``(Данное сообщение удалится через 85 минут)``", color=0x26b99a)
+							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
+							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							await channel.send(embed=embed, delete_after=60*85)
+					elif len(roleDELL) >= 1:
+						if str(after.display_name) != str(roleADD[0]):
+							embed=discord.Embed(title="Пользователь "+str(after.display_name)+" лишился своей роли `"+str(roleDELL[0])+"`", description="Тут и добавить то нечего.\n``(Данное сообщение удалится через 85 минут)``", color=0x26b99a)
+							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/id-card.png')
+							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+							await channel.send(embed=embed, delete_after=60*85)
+							# / Пользователь получил новую роль
 
 
 
