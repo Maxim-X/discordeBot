@@ -180,6 +180,45 @@ async def db(ctx):
 			connection.commit()
 	finally:
 		connection.close()
+		
+@bot.command(pass_context= True)
+async def goodMorning():
+	while not bot.is_closed():
+		await bot.wait_until_ready()
+		channel = bot.get_channel(615296305144660008) # 412939700748419086
+		todayNew = datetime.datetime.today()
+		todayH = int(todayNew.strftime("%H"))
+		todaym = int(todayNew.strftime("%M"))
+		if todayH + 5 < 24:
+			todayH = todayH + 5
+		else:
+			todayH = todayH + 5 - 24
+
+		if todayH == 9:
+			#Вот свежий выпуск игровых новостей:\n
+			listGoodMorn = ['Стремитесь не к успеху, а к ценностям, которые он дает​.',
+			'Разочаровавшись в одном, не наказывайте другого. Все люди разные. Не теряйте способность верить и любить.',
+			'Нет ничего сильнее идеи, время которой пришло!','Иногда мне кажется, что все, чем я хочу заниматься в жизни — это слушать музыку.',
+			'В погоне за похвалой лучшая приманка — скромность. Maxim © PS: поддерживаю. ',
+			'Жизнь – игра, не проиграй себя,','Лучше рисоваться многими знаниями, чем хорошо владеть немногими.',
+			'На самом деле, жизнь проста. Мы сами настойчиво её усложняем.']
+			goodMornText = random.choice(listGoodMorn)
+			todayWeekDay = str(todayNew.strftime("%A"))
+
+			driver.quit()
+			embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"\n Свежий выпуск игровых новостей ждет вас чуть ниже, удачи!", color=0xfaff22)
+			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
+			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+			await channel.send(embed=embed)
+			if todayWeekDay != 'Saturday' or todayWeekDay != 'Sunday':
+				driver.get('https://www.youtube.com/playlist?list=PLZfhqd1-Hl3CHweF-pR0c0zFveLB-HSWw')
+				pageListUrl = driver.find_element_by_xpath('//ytd-playlist-thumbnail/a').get_attribute("href")
+				await channel.send(str(pageListUrl))
+
+			await asyncio.sleep(86400) #82800
+		else:
+			sleepHOne = 3600 - (todaym * 60)
+			await asyncio.sleep(int(sleepHOne)) #3600
 
 
 		
