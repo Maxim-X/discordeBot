@@ -3,12 +3,10 @@ aiohttp
 websockets
 chardet
 asyncio
-youtube-dl
 PyNaCl
 requests
 pyowm
 pymysql
-requests
 bs4
 BeautifulSoup4
 lxml
