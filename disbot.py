@@ -571,8 +571,8 @@ async def cleanChat(ctx, allNumMessage):
 
 @bot.command(pass_context=True, aliases=['j', 'joi'])
 async def join(ctx):
-	discord.opus.load_opus()
-	if not discord.opus.is_loaded():
+    discord.opus.load_opus()
+    if not discord.opus.is_loaded():
         raise RunTimeError('Opus failed to load')
     channel = ctx.message.author.voice.channel
     voice = get(bot.voice_clients, guild=ctx.guild)
