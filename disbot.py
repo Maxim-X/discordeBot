@@ -58,7 +58,7 @@ async def newsGamePlayGround():
 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 			#--- Парсинг сайтов
 			channel = bot.get_channel(412939700748419086)
-			driver.get('https://www.playground.ru/news/pc/')
+			driver.get('https://www.playground.ru/news/')
 			pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
 			pageGame = pageListUrl.get_attribute('href')
 			driver.get(str(pageGame))
