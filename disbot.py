@@ -182,7 +182,7 @@ async def db(ctx):
 		connection.close()
 
 @bot.command(pass_context= True)
-async def goodMorning123():
+async def goodMorning123(ctx):
 	while not bot.is_closed():
 		await bot.wait_until_ready()
 		channel = bot.get_channel(615296305144660008) # 412939700748419086
