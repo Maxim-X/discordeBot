@@ -381,6 +381,7 @@ async def on_member_update(before, after):
 									gameTeam = True
 									allGameUser1 = ' , '.join(allGameUser)
 									print(allGameUser1)
+									nameChannelV = str(channel.name)
 								else:
 									gameTeam = False
 
@@ -391,7 +392,7 @@ async def on_member_update(before, after):
 				# print("-===="+str(channel.name))
 					if after.activity != None:
 						if gameTeam:
-							embed=discord.Embed(title="Пользователи "+str(allGameUser1)+" играют в `"+str(newGameStatus)+"`", description="Если вы хотите присоединиться, заходите в голосовой канал "+str(NameVoiceChannel)+"", color=0xed5565)
+							embed=discord.Embed(title="Пользователи "+str(allGameUser1)+" играют в `"+str(newGameStatus)+"`", description="Если вы хотите присоединиться, заходите в голосовой канал "+str(nameChannelV)+"", color=0xed5565)
 							embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/19/gamepad.png')
 							embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 							await channel.send(embed=embed)
