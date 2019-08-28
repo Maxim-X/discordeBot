@@ -294,7 +294,7 @@ async def freeGameEpic():
 		else:
 			todayH = todayH + 5 - 24
 		print(str(todayH))
-		if todayWeekDay == 'Friday':
+		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
 			if todayH == 18 and todayM == 0:
 				#--- Парсинг сайтов
