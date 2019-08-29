@@ -119,7 +119,7 @@ async def pars(ctx):
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 	else:
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
-		ImgGame = allImgGame[1].get_attribute("src")
+		ImgGame = allImgGame[0].get_attribute("src")
 		allTime = login_form[0].find_elements_by_xpath("//time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
