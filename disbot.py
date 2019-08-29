@@ -93,7 +93,7 @@ async def pars(ctx):
 	chrome_options.add_argument("--no-sandbox")
 	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
-	driver.get('https://www.epicgames.com/store/ru/')
+	driver.get('https://www.epicgames.com')
 	# assert 'Yahoo' in browser.title
 
 	# elem = browser.find_element_by_name('p')  # Find the search box
