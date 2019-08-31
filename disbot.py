@@ -251,11 +251,12 @@ async def goodMorning():
 			goodMornText = random.choice(listGoodMorn)
 			todayWeekDay = str(todayNew.strftime("%A"))
 
-			embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"\n Свежий выпуск игровых новостей ждет вас чуть ниже, удачи!", color=0xfaff22)
-			embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
-			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-			await channel.send(embed=embed)
+			
 			if todayWeekDay != 'Saturday' or todayWeekDay != 'Sunday':
+				embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"\n Свежий выпуск игровых новостей ждет вас чуть ниже, удачи!", color=0xfaff22)
+				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
+				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+				await channel.send(embed=embed)
 				#--- Парсинг сайтов
 				chrome_options = webdriver.ChromeOptions()
 				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -268,6 +269,11 @@ async def goodMorning():
 				pageListUrl = driver.find_element_by_xpath('//ytd-playlist-thumbnail/a').get_attribute("href")
 				driver.quit()
 				await channel.send(str(pageListUrl))
+			else:
+				embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"", color=0xfaff22)
+				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
+				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+				await channel.send(embed=embed)
 
 			await asyncio.sleep(86400) #82800
 		else:
