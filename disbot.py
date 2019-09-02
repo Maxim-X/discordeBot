@@ -241,14 +241,24 @@ async def goodMorning():
 			todayH = todayH + 5 - 24
 
 		if todayH == 9:
+			#--- Парсинг сайтов
+			chrome_options = webdriver.ChromeOptions()
+			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+			chrome_options.add_argument("--headless")
+			chrome_options.add_argument("--disable-dev-shm-usage")
+			chrome_options.add_argument("--no-sandbox")
+			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+			#--- Парсинг сайтов
+			goodMornText = driver.find_elements_by_xpath("//p[starts-with(@id, 'sluchaino')]")
+			driver.quit()
 			#Вот свежий выпуск игровых новостей:\n
-			listGoodMorn = ['Стремитесь не к успеху, а к ценностям, которые он дает​.',
-			'Разочаровавшись в одном, не наказывайте другого. Все люди разные. Не теряйте способность верить и любить.',
-			'Нет ничего сильнее идеи, время которой пришло!','Иногда мне кажется, что все, чем я хочу заниматься в жизни — это слушать музыку.',
-			'В погоне за похвалой лучшая приманка — скромность. Maxim © PS: поддерживаю. ',
-			'Жизнь – игра, не проиграй себя,','Лучше рисоваться многими знаниями, чем хорошо владеть немногими.',
-			'На самом деле, жизнь проста. Мы сами настойчиво её усложняем.']
-			goodMornText = random.choice(listGoodMorn)
+			# listGoodMorn = ['Стремитесь не к успеху, а к ценностям, которые он дает​.',
+			# 'Разочаровавшись в одном, не наказывайте другого. Все люди разные. Не теряйте способность верить и любить.',
+			# 'Нет ничего сильнее идеи, время которой пришло!','Иногда мне кажется, что все, чем я хочу заниматься в жизни — это слушать музыку.',
+			# 'В погоне за похвалой лучшая приманка — скромность. Maxim © PS: поддерживаю. ',
+			# 'Жизнь – игра, не проиграй себя,','Лучше рисоваться многими знаниями, чем хорошо владеть немногими.',
+			# 'На самом деле, жизнь проста. Мы сами настойчиво её усложняем.']
+			# goodMornText = random.choice(listGoodMorn)
 			todayWeekDay = str(todayNew.strftime("%A"))
 
 			
