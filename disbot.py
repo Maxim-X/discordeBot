@@ -419,7 +419,7 @@ async def on_member_update(before, after):
 
 
 	for guild in bot.guilds:
-		if str(guild.id) == '412939700748419084':
+		if str(guild.id) == '412939700748419084' and not after.bot:
 			gameTeam = False
 			for channel in guild.channels:
 				if after.activity != None:
@@ -479,6 +479,7 @@ async def on_member_update(before, after):
 
 
 #ALL EVENTS ----------------------------------------
+
 
 
 @bot.command(pass_context= True)
