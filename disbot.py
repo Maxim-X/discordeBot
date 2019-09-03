@@ -263,7 +263,7 @@ async def goodMorning():
 			todayWeekDay = str(todayNew.strftime("%A"))
 
 			
-			if todayWeekDay != 'Saturday' or todayWeekDay != 'Sunday':
+			if todayWeekDay != 'Saturday' and todayWeekDay != 'Sunday':
 				embed=discord.Embed(title="Доброе утро!", description=""+str(goodMorningTextOk)+"\n Свежий выпуск игровых новостей ждет вас чуть ниже, удачи!", color=0xfaff22)
 				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
