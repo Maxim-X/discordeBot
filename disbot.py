@@ -250,6 +250,7 @@ async def goodMorning():
 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 			#--- Парсинг сайтов
 			goodMornText = driver.find_elements_by_xpath("//p[starts-with(@id, 'sluchaino')]")
+			goodMorningTextOk = goodMornText[0].text
 			driver.quit()
 			#Вот свежий выпуск игровых новостей:\n
 			# listGoodMorn = ['Стремитесь не к успеху, а к ценностям, которые он дает​.',
@@ -263,7 +264,7 @@ async def goodMorning():
 
 			
 			if todayWeekDay != 'Saturday' or todayWeekDay != 'Sunday':
-				embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"\n Свежий выпуск игровых новостей ждет вас чуть ниже, удачи!", color=0xfaff22)
+				embed=discord.Embed(title="Доброе утро!", description=""+str(goodMorningTextOk)+"\n Свежий выпуск игровых новостей ждет вас чуть ниже, удачи!", color=0xfaff22)
 				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
@@ -280,7 +281,7 @@ async def goodMorning():
 				driver.quit()
 				await channel.send(str(pageListUrl))
 			else:
-				embed=discord.Embed(title="Доброе утро!", description=""+str(goodMornText)+"", color=0xfaff22)
+				embed=discord.Embed(title="Доброе утро!", description=""+str(goodMorningTextOk)+"", color=0xfaff22)
 				embed.set_thumbnail(url='https://fotohosting.su/images/2019/08/21/mountain.png')
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
