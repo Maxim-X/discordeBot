@@ -249,6 +249,8 @@ async def goodMorning():
 			chrome_options.add_argument("--no-sandbox")
 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 			#--- Парсинг сайтов
+			driver.get('https://finewords.ru/sluchajnye-citaty')
+			await asyncio.sleep(5)
 			goodMornText = driver.find_elements_by_xpath("//p[starts-with(@id, 'sluchaino')]")
 			goodMorningTextOk = goodMornText[0].text
 			driver.quit()
