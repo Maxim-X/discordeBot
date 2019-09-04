@@ -231,7 +231,7 @@ async def db(ctx):
 async def goodMorning():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(615296305144660008)
+		channel = bot.get_channel(412939700748419086)
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
 		todaym = int(todayNew.strftime("%M"))
@@ -240,7 +240,7 @@ async def goodMorning():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 21:
+		if todayH == 9:
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
