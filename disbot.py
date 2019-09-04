@@ -231,7 +231,7 @@ async def db(ctx):
 async def goodMorning():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(412939700748419086)
+		channel = bot.get_channel(615296305144660008)
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
 		todaym = int(todayNew.strftime("%M"))
@@ -286,7 +286,8 @@ async def goodMorning():
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
 
-			await asyncio.sleep(86400) #82800
+			sleepHOne = 3600 - (todaym * 60)
+			await asyncio.sleep(int(sleepHOne)) #3600
 		else:
 			sleepHOne = 3600 - (todaym * 60)
 			await asyncio.sleep(int(sleepHOne)) #3600
