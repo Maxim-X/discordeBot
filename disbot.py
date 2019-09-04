@@ -240,7 +240,7 @@ async def goodMorning():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 21:
+		if todayH == 9:
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
