@@ -130,13 +130,10 @@ async def pars(ctx):
 
 		
 	driver.quit()
+	todayNew = datetime.datetime.today()
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await channel.send(embed=embed)
-	todayM = int(todayNew.strftime("%M"))
-	sleepHOne = 3600 - (todayM * 60)
-	# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
-	await asyncio.sleep(sleepHOne)
 
 @bot.command(pass_context= True)
 async def GamePlayGroundZakaz(ctx, *, url):
@@ -196,26 +193,6 @@ async def GamePlayGroundZakaz(ctx, *, url):
 # 		else:
 # 			sleepHOne = 3600 - (todaym * 60)
 # 			await asyncio.sleep(int(sleepHOne)) #3600
-
-@bot.command(pass_context= True)
-async def db(ctx):
-	connection = pymysql.connect(
-		host='localhost',
-		user='id4459149_cls222221_bd',
-		password='1a7L2orZMs0bR',
-		db='id4459149_cl22s2221_bd',
-		charset='utf8mb4',
-		cursorclass=DictCursor
-	)
-	try:
-		with connection.cursor() as cursor:
-			sql1 = "INSERT INTO db_allBanMessage (message) VALUES (%s);"
-			cursor.execute(sql1,('Merly'))
-			connection.commit()
-	finally:
-		connection.close()
-
-
 
 
 		
@@ -293,7 +270,7 @@ async def freeGameEpic():
 	print('--------')
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(615296305144660008) #412939700748419086
+		channel = bot.get_channel(615296305144660008) #615296305144660008
 		todayNew = datetime.datetime.today()
 		todayWeekDay = str(todayNew.strftime("%A"))
 		todayH = int(todayNew.strftime("%H"))
