@@ -292,7 +292,7 @@ async def freeGameEpic():
 				driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 				#--- Парсинг сайтов
 				driver.get('https://www.epicgames.com/store/ru/')
-				# assert 'Yahoo' in browser.title
+				# assert 'Yahoo' in browser.title 
 
 				# elem = browser.find_element_by_name('p')  # Find the search box
 				# elem.send_keys('seleniumhq' + Keys.RETURN)
