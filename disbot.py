@@ -62,12 +62,9 @@ async def newsGamePlayGround():
 			pageGame = pageListUrl.get_attribute('href')
 			driver.get(str(pageGame))
 			nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
-			print(str(nameNews.text))
 			nameNews = nameNews.text
 			imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
 			titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
-			print(str(imgNews))
-			print(str(titleNews.text))
 			titleNews = titleNews.text
 			driver.quit()
 			embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
@@ -101,21 +98,14 @@ async def pars(ctx):
 	# time.sleep(5)
 	await asyncio.sleep(5)
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
-	print(login_form)
-	print("Всего lf - "+str(len(login_form)))
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
 	nameGameOk = nameGame[0].text
-	for x in nameGame:
-		print(x.text)
-	if nameGameOk != 'Free Games Collection':
+	if nameGameOk != 'Free Games Collection' and nameGameOk != 'Free Game Collection':
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[0].get_attribute("src")
 		allTime = login_form[0].find_elements_by_xpath("//time")
 		allUrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'FreeGame-gameCard')]")
 		UrlGame = allUrlGame[0].get_attribute('href')
-		print(nameGameOk)
-		print(str(ImgGame))
-		print(str(allTime[0].text))
 		timeGame = str(allTime[0].text)
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
@@ -126,19 +116,25 @@ async def pars(ctx):
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
 		await asyncio.sleep(5)
-		driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+		if nameGameOk == 'Free Games Collection':
+			driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+		else:
+			driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
-		UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
+		UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
+
 		
-
-
 	driver.quit()
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	await ctx.send(embed=embed)
+	await channel.send(embed=embed)
+	todayM = int(todayNew.strftime("%M"))
+	sleepHOne = 3600 - (todayM * 60)
+	# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+	await asyncio.sleep(sleepHOne)
 
 @bot.command(pass_context= True)
 async def GamePlayGroundZakaz(ctx, *, url):
@@ -165,12 +161,9 @@ async def GamePlayGroundZakaz(ctx, *, url):
 	pageGame = str(url)
 	driver.get(pageGame)
 	nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
-	print(str(nameNews.text))
 	nameNews = nameNews.text
 	imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
 	titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
-	print(str(imgNews))
-	print(str(titleNews.text))
 	titleNews = titleNews.text
 	driver.quit()
 	embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
@@ -298,19 +291,11 @@ async def freeGameEpic():
 	print('--------')
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		print('0')
 		channel = bot.get_channel(615296305144660008) #412939700748419086
-		print('0')
 		todayNew = datetime.datetime.today()
-		print('0')
 		todayWeekDay = str(todayNew.strftime("%A"))
-		print('0')
 		todayH = int(todayNew.strftime("%H"))
 		todayM = int(todayNew.strftime("%M"))
-		print('1')
-		print('1')
-		print(str(todayH))
-		print(str(todayM))
 		if todayH + 5 < 24:
 			todayH = todayH + 5
 		else:
@@ -358,7 +343,10 @@ async def freeGameEpic():
 					timeGame = allTime[0].text
 					timeGameOk = timeGame.replace('.','')
 					await asyncio.sleep(5)
-					driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+					if nameGameOk == 'Free Games Collection':
+						driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+					else:
+						driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
 					# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 					nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 					nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
