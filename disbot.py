@@ -270,7 +270,7 @@ async def freeGameEpic():
 	print('--------')
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(615296305144660008) #615296305144660008
+		channel = bot.get_channel(412939700748419086) #615296305144660008
 		todayNew = datetime.datetime.today()
 		todayWeekDay = str(todayNew.strftime("%A"))
 		todayH = int(todayNew.strftime("%H"))
