@@ -284,7 +284,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH == 19 and todayM == 0:
+			if todayH == 19 and todayM == 17:
 				#--- Парсинг сайтов
 				chrome_options = webdriver.ChromeOptions()
 				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -305,7 +305,7 @@ async def freeGameEpic():
 				print("Всего lf - "+str(len(login_form)))
 				nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
 				nameGameOk = nameGame[0].text
-				if nameGameOk != 'Free Games Collection' and nameGameOk != 'Free Game Collection':
+				if nameGameOk != 'Бесплатные игры':
 					allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 					ImgGame = allImgGame[0].get_attribute("src")
 					allTime = login_form[0].find_elements_by_xpath("//time")
