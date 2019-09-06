@@ -115,13 +115,13 @@ async def pars(ctx):
 		allTime = login_form[0].find_elements_by_xpath("//time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
-		await asyncio.sleep(5)
 		if nameGameOk == 'Free Games Collection':
 			driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
 			UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
 		else:
 			driver.get('https://www.epicgames.com/store/ru/collection/free-game-collection')
 			UrlGame = 'https://www.epicgames.com/store/ru/collection/free-game-collection'
+		await asyncio.sleep(5)
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
@@ -282,7 +282,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH == 18 and todayM == 17:
+			if todayH == 18 and todayM == 25:
 				#--- Парсинг сайтов
 				chrome_options = webdriver.ChromeOptions()
 				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -321,13 +321,13 @@ async def freeGameEpic():
 					allTime = login_form[0].find_elements_by_xpath("//time")
 					timeGame = allTime[0].text
 					timeGameOk = timeGame.replace('.','')
-					await asyncio.sleep(5)
 					if nameGameOk == 'Free Games Collection':
 						driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
 						UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
 					else:
 						driver.get('https://www.epicgames.com/store/ru/collection/free-game-collection')
 						UrlGame = 'https://www.epicgames.com/store/ru/collection/free-game-collection'
+					await asyncio.sleep(5)
 					# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 					nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 					nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
