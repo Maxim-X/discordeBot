@@ -102,7 +102,7 @@ async def pars(ctx):
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-gameCardMetaGame')]")
 	nameGameOk = nameGame[0].text
-	if nameGameOk != 'Free Games Collection' and nameGameOk != 'Free Game Collection':
+	if nameGameOk != 'Бесплатные игры':
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-inner')]")
 		ImgGame = allImgGame[0].get_attribute("src")
 		allTime = login_form[0].find_elements_by_xpath("//time")
