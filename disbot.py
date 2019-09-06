@@ -47,7 +47,7 @@ async def newsGamePlayGround():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 13 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 18 and todaym == 52 or todayH == 19 and todaym == 30:
+		if todayH == 13 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 18 and todaym == 56 or todayH == 19 and todaym == 30:
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -57,14 +57,23 @@ async def newsGamePlayGround():
 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 			#--- Парсинг сайтов
 			channel = bot.get_channel(615296305144660008)
+			print('---111---')
 			driver.get('https://www.playground.ru/news/')
+			print('---111---')
 			pageListUrl = driver.find_element_by_xpath('//article[@class="post"]//a')
+			print('---111---')
 			pageGame = pageListUrl.get_attribute('href')
+			print('---111---')
 			driver.get(str(pageGame))
+			print('---111---')
 			nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
+			print('---111---')
 			nameNews = nameNews.text
+			print('---111---')
 			imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
+			print('---111---')
 			titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
+			print('---111---')
 			titleNews = titleNews.text
 			print('---111---')
 			driver.quit()
