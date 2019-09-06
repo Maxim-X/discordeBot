@@ -335,7 +335,7 @@ async def freeGameEpic():
 					
 
 					
-				driver.quit()
+				driver.quit() 
 				embed.set_image(url=""+str(ImgGame)+"")
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
