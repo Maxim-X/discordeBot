@@ -75,7 +75,7 @@ async def newsGamePlayGround():
 			await channel.send(embed=embed)
 			todayNew = datetime.datetime.today()
 			todaym = int(todayNew.strftime("%M"))
-			sleepHOne = 3600 - (todaym * 60)
+			sleepHOne = 3600
 			await asyncio.sleep(int(sleepHOne)) #3600
 		else:
 			await asyncio.sleep(60)
