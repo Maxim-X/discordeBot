@@ -119,7 +119,7 @@ async def pars(ctx):
 		if nameGameOk == 'Free Games Collection':
 			driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
 		else:
-			driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+			driver.get('https://www.epicgames.com/store/ru/collection/free-game-collection')
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
