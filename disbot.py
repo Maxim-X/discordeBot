@@ -282,7 +282,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH == 18 and todayM == 14:
+			if todayH == 18 and todayM == 17:
 				#--- Парсинг сайтов
 				chrome_options = webdriver.ChromeOptions()
 				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
