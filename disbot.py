@@ -137,7 +137,7 @@ async def pars(ctx):
 
 @bot.command(pass_context= True)
 async def GamePlayGroundZakaz(ctx, *, url):
-	todayNew = datetime.datetime.today()
+	todayNew = datetime.datetime.today() 
 	todayH = int(todayNew.strftime("%H"))
 	todaym = int(todayNew.strftime("%M"))
 	if todayH + 5 < 24:
