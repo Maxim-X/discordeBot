@@ -299,7 +299,7 @@ async def freeGameEpic():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
 		print('0')
-		channel = bot.get_channel(412939700748419086)
+		channel = bot.get_channel(615296305144660008) #412939700748419086
 		print('0')
 		todayNew = datetime.datetime.today()
 		print('0')
@@ -318,7 +318,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH == 18 and todayM == 0:
+			if todayH == 16 and todayM == 56:
 				#--- Парсинг сайтов
 				chrome_options = webdriver.ChromeOptions()
 				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
