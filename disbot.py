@@ -282,7 +282,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH == 18:
+			if todayH == 18 todayM == 10:
 				#--- Парсинг сайтов
 				chrome_options = webdriver.ChromeOptions()
 				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -339,18 +339,21 @@ async def freeGameEpic():
 				embed.set_image(url=""+str(ImgGame)+"")
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
+				todayNew = datetime.datetime.today()
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
 				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(sleepHOne)
 			else:
 				print('4')
+				todayNew = datetime.datetime.today()
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
 				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(int(sleepHOne))
 				print('Сплю: '+str(sleepHOne)+' секунд')
 		else:
+			todayNew = datetime.datetime.today()
 			todayM = int(todayNew.strftime("%M"))
 			sleepHOne = 3600 - (todayM * 60)
 			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
