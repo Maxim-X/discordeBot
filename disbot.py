@@ -56,12 +56,12 @@ async def newsGamePlayGround():
 			chrome_options.add_argument("--no-sandbox")
 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 			#--- Парсинг сайтов
-			channel = bot.get_channel(412939700748419086)
+			channel = bot.get_channel(619497569298546709)
 			driver.get('https://www.playground.ru/news/')
-			pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
+			pageListUrl = driver.find_element_by_xpath('//article[@class="post"]//a')
 			pageGame = pageListUrl.get_attribute('href')
 			driver.get(str(pageGame))
-			nameNews = driver.find_element_by_xpath('//h1[@class="article-title"]')
+			nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
 			print(str(nameNews.text))
 			nameNews = nameNews.text
 			imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
@@ -158,13 +158,13 @@ async def GamePlayGroundZakaz(ctx, *, url):
 	chrome_options.add_argument("--no-sandbox")
 	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
-	channel = bot.get_channel(412939700748419086)
+	channel = bot.get_channel(619497569298546709)
 	# driver.get('https://www.playground.ru/news/')
 	# pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
 	# pageGame = pageListUrl.get_attribute('href')
 	pageGame = str(url)
 	driver.get(pageGame)
-	nameNews = driver.find_element_by_xpath('//h1[@class="article-title"]')
+	nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
 	print(str(nameNews.text))
 	nameNews = nameNews.text
 	imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
