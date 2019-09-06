@@ -324,13 +324,15 @@ async def freeGameEpic():
 					await asyncio.sleep(5)
 					if nameGameOk == 'Free Games Collection':
 						driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+						UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
 					else:
-						driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+						driver.get('https://www.epicgames.com/store/ru/collection/free-game-collection')
+						UrlGame = 'https://www.epicgames.com/store/ru/collection/free-game-collection'
 					# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 					nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
 					nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
 					embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
-					UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
+					
 
 					
 				driver.quit()
