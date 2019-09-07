@@ -47,7 +47,7 @@ async def newsGamePlayGround():
 		else:
 			todayH = todayH + 5 - 24
 
-		if todayH == 13 and todaym == 30 or todayH == 15 and todaym == 30 or todayH == 18 and todaym == 30 or todayH == 19 and todaym == 30:
+		if todayH == 13 or todayH == 15 or todayH == 18 or todayH == 19:
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -78,7 +78,11 @@ async def newsGamePlayGround():
 			sleepHOne = 3600
 			await asyncio.sleep(int(sleepHOne)) #3600
 		else:
-			await asyncio.sleep(60)
+			todayNew = datetime.datetime.today()
+			todayM = int(todayNew.strftime("%M"))
+			sleepHOne = 3600 - (todayM * 60)
+			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+			await asyncio.sleep(int(sleepHOne))
 
 @bot.command(pass_context= True)
 async def pars(ctx):
