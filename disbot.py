@@ -578,6 +578,6 @@ async def cleanChat(ctx, allNumMessage):
 token = os.environ.get('BOT_TOKEN')
 bot.bg_task = bot.loop.create_task(goodMorning())
 bot.bg_task = bot.loop.create_task(freeGameEpic())
-bot.bg_task = bot.loop.create_task(newsGamePlayGround())
+# bot.bg_task = bot.loop.create_task(newsGamePlayGround())
 bot.run(str(token))
 
