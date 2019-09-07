@@ -36,54 +36,54 @@ async def time(ctx):
 	await ctx.send(today.strftime("%H.%M.%S"))
 
 
-async def newsGamePlayGround():
-	while not bot.is_closed():
-		await bot.wait_until_ready()
-		todayNew = datetime.datetime.today()
-		todayH = int(todayNew.strftime("%H"))
-		todaym = int(todayNew.strftime("%M"))
-		if todayH + 5 < 24:
-			todayH = todayH + 5
-		else:
-			todayH = todayH + 5 - 24
+# async def newsGamePlayGround():
+# 	while not bot.is_closed():
+# 		await bot.wait_until_ready()
+# 		todayNew = datetime.datetime.today()
+# 		todayH = int(todayNew.strftime("%H"))
+# 		todaym = int(todayNew.strftime("%M"))
+# 		if todayH + 5 < 24:
+# 			todayH = todayH + 5
+# 		else:
+# 			todayH = todayH + 5 - 24
 
-		if todayH == 13 or todayH == 15 or todayH == 18 or todayH == 19:
-			#--- Парсинг сайтов
-			chrome_options = webdriver.ChromeOptions()
-			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-			chrome_options.add_argument("--headless")
-			chrome_options.add_argument("--disable-dev-shm-usage")
-			chrome_options.add_argument("--no-sandbox")
-			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-			#--- Парсинг сайтов
-			channel = bot.get_channel(615296305144660008)
-			driver.implicitly_wait(10)
-			driver.get('https://www.playground.ru/news/')
-			pageListUrl = driver.find_element_by_xpath('//article[@class="post"]//a')
-			pageGame = pageListUrl.get_attribute('href')
-			driver.get(str(pageGame))
-			nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
-			nameNews = nameNews.text
-			imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
-			titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
-			titleNews = titleNews.text
-			print('---111---')
-			driver.quit()
-			embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
-			embed.set_image(url=""+str(imgNews)+"")
-			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-			print('---111---')
-			await channel.send(embed=embed)
-			todayNew = datetime.datetime.today()
-			todaym = int(todayNew.strftime("%M"))
-			sleepHOne = 3600
-			await asyncio.sleep(int(sleepHOne)) #3600
-		else:
-			todayNew = datetime.datetime.today()
-			todayM = int(todayNew.strftime("%M"))
-			sleepHOne = 3600 - (todayM * 60)
-			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
-			await asyncio.sleep(int(sleepHOne))
+# 		if todayH == 13 or todayH == 15 or todayH == 18 or todayH == 19:
+# 			#--- Парсинг сайтов
+# 			chrome_options = webdriver.ChromeOptions()
+# 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+# 			chrome_options.add_argument("--headless")
+# 			chrome_options.add_argument("--disable-dev-shm-usage")
+# 			chrome_options.add_argument("--no-sandbox")
+# 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+# 			#--- Парсинг сайтов
+# 			channel = bot.get_channel(615296305144660008)
+# 			driver.implicitly_wait(10)
+# 			driver.get('https://www.playground.ru/news/')
+# 			pageListUrl = driver.find_element_by_xpath('//article[@class="post"]//a')
+# 			pageGame = pageListUrl.get_attribute('href')
+# 			driver.get(str(pageGame))
+# 			nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
+# 			nameNews = nameNews.text
+# 			imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
+# 			titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
+# 			titleNews = titleNews.text
+# 			print('---111---')
+# 			driver.quit()
+# 			embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
+# 			embed.set_image(url=""+str(imgNews)+"")
+# 			embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+# 			print('---111---')
+# 			await channel.send(embed=embed)
+# 			todayNew = datetime.datetime.today()
+# 			todaym = int(todayNew.strftime("%M"))
+# 			sleepHOne = 3600
+# 			await asyncio.sleep(int(sleepHOne)) #3600
+# 		else:
+# 			todayNew = datetime.datetime.today()
+# 			todayM = int(todayNew.strftime("%M"))
+# 			sleepHOne = 3600 - (todayM * 60)
+# 			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+# 			await asyncio.sleep(int(sleepHOne))
 
 @bot.command(pass_context= True)
 async def pars(ctx):
