@@ -45,7 +45,7 @@ async def newsGamePlayGround():
 		if todayH + 5 < 24:
 			todayH = todayH + 5
 		else:
-			todayH = todayH + 5 - 24
+			todayH = todayH + 5 - 24 
 
 		if todayH == 13 or todayH == 15 or todayH == 18 or todayH == 19:
 			#--- Парсинг сайтов
