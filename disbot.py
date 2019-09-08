@@ -60,7 +60,7 @@ async def newsGamePlayGround():
 				chrome_options.add_argument("--no-sandbox")
 				driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 				#--- Парсинг сайтов
-				channel = bot.get_channel(615296305144660008)
+				channel = bot.get_channel(619497569298546709)
 				print('---1---')
 				driver.get('https://www.playground.ru/news/')
 				print('---1---')
