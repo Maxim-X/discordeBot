@@ -48,6 +48,9 @@ async def newsGamePlayGround():
 			todayH = todayH + 5 - 24 
 
 		if todayH == 13 or todayH == 15 or todayH == 18 or todayH == 19:
+			timeSleep = random.randint(60, 120)
+			print('Сплю: '+str(timeSleep)+' секунд')
+			await asyncio.sleep(int(timeSleep))
 			#--- Парсинг сайтов
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
