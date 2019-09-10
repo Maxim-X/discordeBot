@@ -498,6 +498,17 @@ async def hello(ctx):
 	await ctx.send("Привет, {}".format(ctx.message.author.mention))
 
 @bot.command(pass_context= True)
+async def mem(ctx):
+	driver.get('https://admem.ru/rndm')
+	imgMem = driver.find_element_by_xpath('//div[@class="post"]//img')
+	imgMemSrc = imgMem.get_attribute('src')
+	driver.quit()
+	embed=discord.Embed(title="Рандомный мем!", description="За качество не ручаюсь, я все же бот а не Джордж Карлин.")
+	embed.set_image(url=str(imgMemSrc))
+	await ctx.send(embed=embed)
+
+
+@bot.command(pass_context= True)
 async def addBanMessage(ctx, *, word):
 	allword = word.split( )
 	allword = len(allword)
