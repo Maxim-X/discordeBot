@@ -511,7 +511,7 @@ async def mem(ctx):
 	imgMem = driver.find_element_by_xpath('//div[@class="post"]//img')
 	imgMemSrc = imgMem.get_attribute('src')
 	driver.quit()
-	embed=discord.Embed(title="Рандомный мем!", colour= 0x6c82cb, description="За качество не ручаюсь, я все же бот а не Джордж Карлин.")
+	embed=discord.Embed(title="Рандомный мем!", colour= 0x4281f4, description="За качество не ручаюсь, я все же бот а не Джордж Карлин.")
 	embed.set_image(url=str(imgMemSrc))
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await ctx.send(embed=embed)
