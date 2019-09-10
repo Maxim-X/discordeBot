@@ -513,6 +513,7 @@ async def mem(ctx):
 	driver.quit()
 	embed=discord.Embed(title="Рандомный мем!", description="За качество не ручаюсь, я все же бот а не Джордж Карлин.")
 	embed.set_image(url=str(imgMemSrc))
+	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await ctx.send(embed=embed)
 
 
