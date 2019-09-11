@@ -104,6 +104,7 @@ async def newsGamePlayGround():
 
 @bot.command(pass_context= True)
 async def pars(ctx):
+	await ctx.message.delete()
 	await bot.wait_until_ready()
 	channel = bot.get_channel(615296305144660008)#412939700748419086
 	#--- Парсинг сайтов
@@ -157,7 +158,7 @@ async def pars(ctx):
 	todayNew = datetime.datetime.today()
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	await channel.send(embed=embed)
+	await ctx.send(embed=embed)
 
 @bot.command(pass_context= True)
 async def GamePlayGroundZakaz(ctx, *, url):
@@ -594,7 +595,7 @@ async def cleanChat(ctx, allNumMessage):
 	for xRole in ctx.author.roles:
 		if str(xRole) == 'Яндекс.Уборщик' and levelProtect != 2:
 			levelProtect = 1
-		if str(xRole) == 'Максим':
+		if str(xRole) == 'МАКСИМ':
 			levelProtect = 2
 
 	if levelProtect == 2:
