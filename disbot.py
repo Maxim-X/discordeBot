@@ -26,8 +26,7 @@ def chromeOpen():
 	chrome_options.add_argument("--headless")
 	chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
-	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-	return driver
+	return webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
 
 @bot.command(pass_context= True)
@@ -107,7 +106,7 @@ async def pars(ctx):
 	await ctx.message.delete()
 	await bot.wait_until_ready()
 	channel = bot.get_channel(615296305144660008)#412939700748419086
-	chromeOpen()
+	driver = chromeOpen()
 	driver.get('https://www.epicgames.com/store/ru/')
 	# assert 'Yahoo' in browser.title
 
