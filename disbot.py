@@ -106,7 +106,7 @@ async def pars(ctx):
 	await ctx.message.delete()
 	await bot.wait_until_ready()
 	channel = bot.get_channel(615296305144660008)#412939700748419086
-	chromeOpen();
+	chromeOpen()
 	driver.get('https://www.epicgames.com/store/ru/')
 	# assert 'Yahoo' in browser.title
 
