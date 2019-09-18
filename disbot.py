@@ -16,19 +16,18 @@ from selenium import webdriver
 import random
 from discord.utils import get
 bot = commands.Bot(command_prefix='>')
-# logger = logging.getLogger('discord')
-# logger.setLevel(logging.DEBUG)
-# handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-# handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
-# logger.addHandler(handler)
 
-listBunMessage = ['сука', 'мат', 'уебак']
 
-i=0
-while i < len(listBunMessage):
-	listBunMessage[i] = listBunMessage[i].lower()
-	i+=1
 
+def chromeOpen():
+	#--- Парсинг сайтов
+	chrome_options = webdriver.ChromeOptions()
+	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+	chrome_options.add_argument("--headless")
+	chrome_options.add_argument("--disable-dev-shm-usage")
+	chrome_options.add_argument("--no-sandbox")
+	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+	#--- Парсинг сайтов
 
 @bot.command(pass_context= True)
 async def time(ctx):
@@ -107,14 +106,7 @@ async def pars(ctx):
 	await ctx.message.delete()
 	await bot.wait_until_ready()
 	channel = bot.get_channel(615296305144660008)#412939700748419086
-	#--- Парсинг сайтов
-	chrome_options = webdriver.ChromeOptions()
-	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-	chrome_options.add_argument("--headless")
-	chrome_options.add_argument("--disable-dev-shm-usage")
-	chrome_options.add_argument("--no-sandbox")
-	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-	#--- Парсинг сайтов
+	chromeOpen();
 	driver.get('https://www.epicgames.com/store/ru/')
 	# assert 'Yahoo' in browser.title
 
@@ -398,23 +390,23 @@ async def on_member_join(member):
 					
 
 
-@bot.event
-async def on_message(message):
-	# print(message.content)
-	messageUser = message.content[:]
-	messageUser = messageUser.lower()
-	messageUser = messageUser.split()
-	# print(messageUser)
-	# if set(messageUser).intersection(set(listBunMessage)):
-	for ig in listBunMessage:
-		if ig in messageUser:
-			channel = message.channel
-			userBan = message.author
-			infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description=''+str(userBan)+', если хочешь использовать мат, заходи в голосовой чат.')
-			infoUserBan.set_footer(text="Администрация осуждает данное высказывание. `© Maxim`")
-			await discord.Message.delete(message, delay=None)
-			await channel.send(embed=infoUserBan)
-	await bot.process_commands(message)
+# @bot.event
+# async def on_message(message):
+# 	# print(message.content)
+# 	messageUser = message.content[:]
+# 	messageUser = messageUser.lower()
+# 	messageUser = messageUser.split()
+# 	# print(messageUser)
+# 	# if set(messageUser).intersection(set(listBunMessage)):
+# 	for ig in listBunMessage:
+# 		if ig in messageUser:
+# 			channel = message.channel
+# 			userBan = message.author
+# 			infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description=''+str(userBan)+', если хочешь использовать мат, заходи в голосовой чат.')
+# 			infoUserBan.set_footer(text="Администрация осуждает данное высказывание. `© Maxim`")
+# 			await discord.Message.delete(message, delay=None)
+# 			await channel.send(embed=infoUserBan)
+# 	await bot.process_commands(message)
 
 
 # @bot.event
