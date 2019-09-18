@@ -51,14 +51,7 @@ async def newsGamePlayGround():
 				timeSleep = random.randint(60, 120)
 				print('Сплю: '+str(timeSleep)+' секунд')
 				await asyncio.sleep(int(timeSleep))
-				#--- Парсинг сайтов
-				chrome_options = webdriver.ChromeOptions()
-				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-				chrome_options.add_argument("--headless")
-				chrome_options.add_argument("--disable-dev-shm-usage")
-				chrome_options.add_argument("--no-sandbox")
-				driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-				#--- Парсинг сайтов
+				driver = chromeOpen()
 				channel = bot.get_channel(619497569298546709)
 				print('---1---')
 				driver.get('https://www.playground.ru/news/')
@@ -162,14 +155,7 @@ async def GamePlayGroundZakaz(ctx, *, url):
 	else:
 		todayH = todayH + 5 - 24
 
-	#--- Парсинг сайтов
-	chrome_options = webdriver.ChromeOptions()
-	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-	chrome_options.add_argument("--headless")
-	chrome_options.add_argument("--disable-dev-shm-usage")
-	chrome_options.add_argument("--no-sandbox")
-	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-	#--- Парсинг сайтов
+	driver = chromeOpen()
 	channel = bot.get_channel(619497569298546709)
 	# driver.get('https://www.playground.ru/news/')
 	# pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
@@ -230,14 +216,7 @@ async def goodMorning():
 			todayH = todayH + 5 - 24
 
 		if todayH == 9:
-			#--- Парсинг сайтов
-			chrome_options = webdriver.ChromeOptions()
-			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-			chrome_options.add_argument("--headless")
-			chrome_options.add_argument("--disable-dev-shm-usage")
-			chrome_options.add_argument("--no-sandbox")
-			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-			#--- Парсинг сайтов
+			driver = chromeOpen()
 			driver.get('https://finewords.ru/sluchajnye-citaty')
 			await asyncio.sleep(5)
 			goodMornText = driver.find_elements_by_xpath("//p[starts-with(@id, 'sluchaino')]")
@@ -300,14 +279,7 @@ async def freeGameEpic():
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
 			if todayH == 18 and todayM == 0:
-				#--- Парсинг сайтов
-				chrome_options = webdriver.ChromeOptions()
-				chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-				chrome_options.add_argument("--headless")
-				chrome_options.add_argument("--disable-dev-shm-usage")
-				chrome_options.add_argument("--no-sandbox")
-				driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-				#--- Парсинг сайтов
+				driver = chromeOpen()
 				driver.get('https://www.epicgames.com/store/ru/')
 				# assert 'Yahoo' in browser.title 
 
@@ -378,16 +350,13 @@ async def freeGameEpic():
 
 @bot.event
 async def on_member_join(member):
-	for guild in bot.guilds:
-		if str(guild.id) == '412939700748419084':
-			for channel in guild.channels:
-				if str(channel.id) == '412939700748419086':
-					embed=discord.Embed(title="Пользователь ``"+str(member.display_name)+"`` присоединился к нашему серверу.", description="Добро пожаловать! Располагайся, чувствуй себя как дома.\nФура достойных каток и интересных тимейтов уже выехала.", color=0x5458bc)
-					embed.set_thumbnail(url=''+str(member.avatar_url)+'')
-					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-					await channel.send(embed=embed)
-					await member.add_roles(discord.utils.get(member.guild.roles, name='Новичок'))
-					
+	channel = bot.get_channel(412939700748419086)
+	embed=discord.Embed(title="Пользователь ``"+str(member.display_name)+"`` присоединился к нашему серверу.", description="Добро пожаловать! Располагайся, чувствуй себя как дома.\nФура достойных каток и интересных тимейтов уже выехала.", color=0x5458bc)
+	embed.set_thumbnail(url=''+str(member.avatar_url)+'')
+	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	await channel.send(embed=embed)
+	await member.add_roles(discord.utils.get(member.guild.roles, name='Новичок'))
+				
 
 
 # @bot.event
@@ -492,14 +461,7 @@ async def hello(ctx):
 
 @bot.command(pass_context= True)
 async def mem(ctx):
-	#--- Парсинг сайтов
-	chrome_options = webdriver.ChromeOptions()
-	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-	chrome_options.add_argument("--headless")
-	chrome_options.add_argument("--disable-dev-shm-usage")
-	chrome_options.add_argument("--no-sandbox")
-	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-	#--- Парсинг сайтов
+	driver = chromeOpen()
 	driver.get('https://admem.ru/rndm')
 	imgMem = driver.find_element_by_xpath('//div[@class="post"]//img')
 	imgMemSrc = imgMem.get_attribute('src')
