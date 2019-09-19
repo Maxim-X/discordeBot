@@ -56,7 +56,7 @@ async def newsGamePlayGround():
 				print('---1---')
 				driver.get('https://www.playground.ru/news/')
 				print('---1---')
-				pageListUrl = driver.find_element_by_xpath('//article[@class="post"]//a')
+				pageListUrl = driver.find_element_by_xpath('//article[@class="post"]// h3[@class="post-title"] //a')
 				print('---1---')
 				pageGame = pageListUrl.get_attribute('href')
 				print('Ссылка:' +str(pageGame))
