@@ -382,11 +382,22 @@ async def deleteVoiceChannel():
 			todayH = todayH + 5
 		else:
 			todayH = todayH + 5 - 24
-		if todayH == 0:
+		if todayH == 15:
 			channel = bot.get_channel(623944345522798603)
 			for channelInd in channel.voice_channels:
 				if(len(channelInd.members) == 0):
 					await channelInd.delete()
+			todayNew = datetime.datetime.today()
+			todayM = int(todayNew.strftime("%M"))
+			sleepHOne = 86400 - (todayM * 60)
+			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+			await asyncio.sleep(int(sleepHOne))
+		else:
+			todayNew = datetime.datetime.today()
+			todayM = int(todayNew.strftime("%M"))
+			sleepHOne = 3600 - (todayM * 60)
+			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
+			await asyncio.sleep(int(sleepHOne))
 
 
 # @bot.event
