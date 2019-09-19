@@ -375,6 +375,7 @@ async def on_member_update(before, after):
 
 async def deleteVoiceChannel():
 	while not bot.is_closed():
+		await bot.wait_until_ready()
 		todayNew = datetime.datetime.today()
 		todayH = int(todayNew.strftime("%H"))
 		todayM = int(todayNew.strftime("%M"))
@@ -382,8 +383,8 @@ async def deleteVoiceChannel():
 			todayH = todayH + 5
 		else:
 			todayH = todayH + 5 - 24
-		print("Часов"+str(todayH))
-		if todayH == 0:
+		print("Часов "+str(todayH))
+		if todayH == 1:
 			channel = bot.get_channel(623944345522798603)
 			for channelInd in channel.voice_channels:
 				if(len(channelInd.members) == 0):
