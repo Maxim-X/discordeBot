@@ -369,7 +369,14 @@ async def on_member_update(before, after):
 				if (channelInd.name == str(newGameStatus)):
 					haveGame = True
 			if(not haveGame):
-				await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
+				massAllVC = channel.voice_channels
+				if(len(massAllVC) < 5)
+					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
+				else:
+					channelDelInd = massAllVC[4]
+					await channelDelInd.delete()
+					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
+
 		# Пользователь начал играть
 
 
