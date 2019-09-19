@@ -357,6 +357,36 @@ async def on_member_join(member):
 	await channel.send(embed=embed)
 	await member.add_roles(discord.utils.get(member.guild.roles, name='Новичок'))
 				
+@bot.event
+async def on_member_update(before, after):
+	# Пользователь начал играть
+	if before.activity == None:
+		newGameStatus = after.activity.name
+		if after.activity != None and newGameStatus != '':
+			channel = bot.get_channel(623944345522798603)
+			haveGame = False
+			for channelInd in channel.voice_channels:
+				if (channelInd.name == str(newGameStatus)):
+					haveGame = True
+			if(not haveGame):
+				await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
+		# Пользователь начал играть
+
+
+async def deleteVoiceChannel():
+	while not bot.is_closed():
+		todayNew = datetime.datetime.today()
+		todayH = int(todayNew.strftime("%H"))
+		todayM = int(todayNew.strftime("%M"))
+		if todayH + 5 < 24:
+			todayH = todayH + 5
+		else:
+			todayH = todayH + 5 - 24
+		if todayH == 0:
+			channel = bot.get_channel(623944345522798603)
+			for channelInd in channel.voice_channels:
+				if(len(channelInd.members) == 0)
+					channelInd.delete()
 
 
 # @bot.event
@@ -566,10 +596,10 @@ async def cleanChat(ctx, allNumMessage):
 
 
 
-    
 token = os.environ.get('BOT_TOKEN')
 bot.bg_task = bot.loop.create_task(goodMorning())
 bot.bg_task = bot.loop.create_task(freeGameEpic())
 bot.bg_task = bot.loop.create_task(newsGamePlayGround())
+bot.bg_task = bot.loop.create_task(deleteVoiceChannel())
 bot.run(str(token))
 
