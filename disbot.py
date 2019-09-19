@@ -386,7 +386,7 @@ async def deleteVoiceChannel():
 			channel = bot.get_channel(623944345522798603)
 			for channelInd in channel.voice_channels:
 				if(len(channelInd.members) == 0):
-					channelInd.delete()
+					await channelInd.delete()
 
 
 # @bot.event
