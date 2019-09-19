@@ -384,7 +384,7 @@ async def deleteVoiceChannel():
 		else:
 			todayH = todayH + 5 - 24
 		print("Часов "+str(todayH))
-		if todayH == 1:
+		if todayH == 15:
 			channel = bot.get_channel(623944345522798603)
 			for channelInd in channel.voice_channels:
 				if(len(channelInd.members) == 0):
