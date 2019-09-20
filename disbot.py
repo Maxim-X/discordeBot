@@ -34,6 +34,18 @@ async def time(ctx):
 	today = datetime.datetime.today()
 	await ctx.send(today.strftime("%H.%M.%S"))
 
+await bot.process_commands(message)
+
+@bot.command(pass_context= True)
+async def music(ctx):
+	channel = ctx.message.author.voice.channel
+	voice = get(bot.voice_clients, guild=ctx.guild)
+	if voice and voice.is_connected():
+		await voice.move_to(channel)
+	else:
+		voice = await channel.connect()
+	await ctx.process_commands(">mem")
+
 
 async def newsGamePlayGround():
 	while not bot.is_closed():
