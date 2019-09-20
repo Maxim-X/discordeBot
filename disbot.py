@@ -415,7 +415,7 @@ async def on_message(message):
 	if randIntOtvMessage == 0:
 		massAllOtvMessage = ['https://media.giphy.com/media/YWWeEeFThzFS6VKmyX/giphy.gif','https://media.giphy.com/media/2Y7lZAxlutI5MuVEzb/giphy.gif','https://media.giphy.com/media/a5viI92PAF89q/giphy.gif','https://media.giphy.com/media/d3mlE7uhX8KFgEmY/giphy.gif','https://media.giphy.com/media/FxEwsOF1D79za/giphy.gif','https://media.giphy.com/media/Lcn0yF1RcLANG/giphy.gif','https://media.giphy.com/media/uHox9Jm5TyTPa/giphy.gif', 'https://media.giphy.com/media/s8Aix99cRIwyk/giphy.gif', 'https://media.giphy.com/media/5h9AIbcxZospnLbmbl/giphy.gif','https://media.giphy.com/media/3LugygiVMlZDXTakyb/giphy.gif','https://media.giphy.com/media/oOxBQwNqGwxeWLDF6A/giphy.gif','https://media.giphy.com/media/5hs5eKmprnJK5hTVGq/giphy.gif','https://media.giphy.com/media/tRzd704xXId2w/giphy.gif']
 		imgGif = random.choice(massAllOtvMessage)
-		await message.channel.send(ctx.message.author.mention+"\n"+str(imgGif))
+		await message.channel.send(message.author.mention+"\n"+str(imgGif))
 	# # print(message.content)
 	# messageUser = message.content[:]
 	# messageUser = messageUser.lower()
