@@ -34,7 +34,7 @@ async def time(ctx):
 	today = datetime.datetime.today()
 	await ctx.send(today.strftime("%H.%M.%S"))
 
-await bot.process_commands(message)
+
 
 @bot.command(pass_context= True)
 async def music(ctx):
