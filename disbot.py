@@ -409,23 +409,28 @@ async def deleteVoiceChannel():
 			await asyncio.sleep(int(sleepHOne))
 
 
-# @bot.event
-# async def on_message(message):
-# 	# print(message.content)
-# 	messageUser = message.content[:]
-# 	messageUser = messageUser.lower()
-# 	messageUser = messageUser.split()
-# 	# print(messageUser)
-# 	# if set(messageUser).intersection(set(listBunMessage)):
-# 	for ig in listBunMessage:
-# 		if ig in messageUser:
-# 			channel = message.channel
-# 			userBan = message.author
-# 			infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description=''+str(userBan)+', если хочешь использовать мат, заходи в голосовой чат.')
-# 			infoUserBan.set_footer(text="Администрация осуждает данное высказывание. `© Maxim`")
-# 			await discord.Message.delete(message, delay=None)
-# 			await channel.send(embed=infoUserBan)
-# 	await bot.process_commands(message)
+@bot.event
+async def on_message(message):
+	randIntOtvMessage = random.randint(0,10)
+	if randIntOtvMessage == 0:
+		massAllOtvMessage = ['https://media.giphy.com/media/YWWeEeFThzFS6VKmyX/giphy.gif','https://media.giphy.com/media/2Y7lZAxlutI5MuVEzb/giphy.gif','https://media.giphy.com/media/a5viI92PAF89q/giphy.gif','https://media.giphy.com/media/d3mlE7uhX8KFgEmY/giphy.gif','https://media.giphy.com/media/FxEwsOF1D79za/giphy.gif','https://media.giphy.com/media/Lcn0yF1RcLANG/giphy.gif','https://media.giphy.com/media/uHox9Jm5TyTPa/giphy.gif', 'https://media.giphy.com/media/s8Aix99cRIwyk/giphy.gif', 'https://media.giphy.com/media/5h9AIbcxZospnLbmbl/giphy.gif','https://media.giphy.com/media/3LugygiVMlZDXTakyb/giphy.gif','https://media.giphy.com/media/oOxBQwNqGwxeWLDF6A/giphy.gif','https://media.giphy.com/media/5hs5eKmprnJK5hTVGq/giphy.gif','https://media.giphy.com/media/tRzd704xXId2w/giphy.gif']
+		imgGif = random.choice(massAllOtvMessage)
+		await message.channel.send(ctx.message.author.mention+"\n"+str(imgGif))
+	# # print(message.content)
+	# messageUser = message.content[:]
+	# messageUser = messageUser.lower()
+	# messageUser = messageUser.split()
+	# # print(messageUser)
+	# # if set(messageUser).intersection(set(listBunMessage)):
+	# for ig in listBunMessage:
+	# 	if ig in messageUser:
+	# 		channel = message.channel
+	# 		userBan = message.author
+	# 		infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description=''+str(userBan)+', если хочешь использовать мат, заходи в голосовой чат.')
+	# 		infoUserBan.set_footer(text="Администрация осуждает данное высказывание. `© Maxim`")
+	# 		await discord.Message.delete(message, delay=None)
+	# 		await channel.send(embed=infoUserBan)
+	#await bot.process_commands(message)
 
 
 # @bot.event
