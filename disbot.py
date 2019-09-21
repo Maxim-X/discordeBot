@@ -418,6 +418,8 @@ async def on_message(message):
 		imgGif = random.choice(massAllOtvMessage)
 		await message.channel.send(message.author.mention)
 		await message.channel.send(str(imgGif))
+
+	await bot.process_commands(message)
 	# # print(message.content)
 	# messageUser = message.content[:]
 	# messageUser = messageUser.lower()
