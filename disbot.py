@@ -37,29 +37,29 @@ async def time(ctx):
 
 
 
-@bot.command(pass_context= True)
-async def music(ctx):
-	channel = ctx.message.author.voice.channel
-	voice = get(bot.voice_clients, guild=ctx.guild)
-	if voice and voice.is_connected():
-		await voice.move_to(channel)
-	else:
-		voice = await channel.connect()
-	await ctx.process_commands(">mem")
+# @bot.command(pass_context= True)
+# async def music(ctx):
+# 	channel = ctx.message.author.voice.channel
+# 	voice = get(bot.voice_clients, guild=ctx.guild)
+# 	if voice and voice.is_connected():
+# 		await voice.move_to(channel)
+# 	else:
+# 		voice = await channel.connect()
+# 	await ctx.process_commands(">mem")
 
-@bot.command(pass_context=True)
-async def add(ctx):
+# @bot.command(pass_context=True)
+# async def add(ctx):
 	
 
-	data = {
-		"president": {
-			"name": "Zaphod Beeblebrox",
-			"species": "Betelgeusian",
-			"user": "Maxim"
-		}
-	}
-	with open('listBunMessage.json','w') as f:
-		json.dump(data, f)
+# 	data = {
+# 		"president": {
+# 			"name": "Zaphod Beeblebrox",
+# 			"species": "Betelgeusian",
+# 			"user": "Maxim"
+# 		}
+# 	}
+# 	with open('listBunMessage.json','w') as f:
+# 		json.dump(data, f)
 
 async def newsGamePlayGround():
 	while not bot.is_closed():
