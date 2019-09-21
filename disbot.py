@@ -46,6 +46,19 @@ async def music(ctx):
 		voice = await channel.connect()
 	await ctx.process_commands(">mem")
 
+@bot.command(pass_context=True)
+async def add(ctx):
+	
+
+	data = {
+		"president": {
+			"name": "Zaphod Beeblebrox",
+			"species": "Betelgeusian",
+			"user": "Maxim"
+		}
+	}
+	with open('listBunMessage.json','w') as f:
+		json.dump(data, f)
 
 async def newsGamePlayGround():
 	while not bot.is_closed():
