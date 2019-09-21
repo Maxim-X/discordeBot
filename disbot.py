@@ -35,9 +35,6 @@ async def time(ctx):
 	await ctx.send(today.strftime("%H.%M.%S"))
 
 
-
-
-
 async def newsGamePlayGround():
 	while not bot.is_closed():
 		await bot.wait_until_ready()
