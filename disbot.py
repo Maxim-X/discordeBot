@@ -125,12 +125,16 @@ async def pars(ctx):
 		allTime = login_form[0].find_elements_by_xpath("//time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
-		if nameGameOk == 'Free Games Collection':
-			driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
-			UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
-		else:
-			driver.get('https://www.epicgames.com/store/ru/collection/free-game-collection')
-			UrlGame = 'https://www.epicgames.com/store/ru/collection/free-game-collection'
+
+		UrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'FreeGame')]")
+		UrlGame = UrlGame[0]
+		driver.get(str(UrlGame))
+		# if nameGameOk == 'Free Games Collection':
+		# 	driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
+		# 	UrlGame = 'https://www.epicgames.com/store/ru/collection/free-games-collection'
+		# else:
+		# 	driver.get('https://www.epicgames.com/store/ru/collection/free-game-collection')
+		# 	UrlGame = 'https://www.epicgames.com/store/ru/collection/free-game-collection'
 		await asyncio.sleep(5)
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
