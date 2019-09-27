@@ -16,7 +16,7 @@ from selenium import webdriver
 import random
 from discord.utils import get
 bot = commands.Bot(command_prefix='>')
-
+ 
 
 
 def chromeOpen():
