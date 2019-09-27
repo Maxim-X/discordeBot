@@ -127,8 +127,8 @@ async def pars(ctx):
 		timeGameOk = timeGame.replace('.','')
 
 		UrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'FreeGame')]")
-		print(str(UrlGame[0]))
-		UrlGame = UrlGame[0]
+		print(str(UrlGame[0].text))
+		UrlGame = UrlGame[0].text
 		driver.get(str(UrlGame))
 		# if nameGameOk == 'Free Games Collection':
 		# 	driver.get('https://www.epicgames.com/store/ru/collection/free-games-collection')
