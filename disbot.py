@@ -365,7 +365,9 @@ async def on_member_update(before, after):
 	# Пользователь начал играть
 	if before.activity == None and after.activity != None:
 		newGameStatus = after.activity.name
+		print(str(after.id))
 		if newGameStatus != '' and after.id != '450264735368085505' :
+
 			channel = bot.get_channel(623944345522798603)
 			haveGame = False
 			for channelInd in channel.voice_channels:
