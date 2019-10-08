@@ -366,7 +366,7 @@ async def on_member_update(before, after):
 	if before.activity == None and after.activity != None:
 		newGameStatus = after.activity.name
 		print(str(after.id))
-		if newGameStatus != '' and after.id != '450264735368085505' :
+		if newGameStatus != '' and after.id != '412938474174414858' :
 
 			channel = bot.get_channel(623944345522798603)
 			haveGame = False
