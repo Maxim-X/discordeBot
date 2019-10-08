@@ -365,7 +365,7 @@ async def on_member_update(before, after):
 	# Пользователь начал играть
 	if before.activity == None and after.activity != None:
 		newGameStatus = after.activity.name
-		if newGameStatus != '':
+		if newGameStatus != '' || after.id != '450264735368085505' :
 			channel = bot.get_channel(623944345522798603)
 			haveGame = False
 			for channelInd in channel.voice_channels:
@@ -415,7 +415,7 @@ async def deleteVoiceChannel():
 @bot.event
 async def on_message(message):
 	randIntOtvMessage = random.randint(0,100)
-	if randIntOtvMessage == 0 and message.author.display_name != "Maxim1" and not message.author.bot:
+	if randIntOtvMessage == 0 and message.author.display_name != "Maxim" and not message.author.bot:
 		print(message.author.display_name)
 		await asyncio.sleep(4)
 		massAllOtvMessage = ['https://media.giphy.com/media/YWWeEeFThzFS6VKmyX/giphy.gif','https://media.giphy.com/media/2Y7lZAxlutI5MuVEzb/giphy.gif','https://media.giphy.com/media/a5viI92PAF89q/giphy.gif','https://media.giphy.com/media/d3mlE7uhX8KFgEmY/giphy.gif','https://media.giphy.com/media/FxEwsOF1D79za/giphy.gif','https://media.giphy.com/media/Lcn0yF1RcLANG/giphy.gif','https://media.giphy.com/media/uHox9Jm5TyTPa/giphy.gif', 'https://media.giphy.com/media/s8Aix99cRIwyk/giphy.gif', 'https://media.giphy.com/media/5h9AIbcxZospnLbmbl/giphy.gif','https://media.giphy.com/media/3LugygiVMlZDXTakyb/giphy.gif','https://media.giphy.com/media/oOxBQwNqGwxeWLDF6A/giphy.gif','https://media.giphy.com/media/5hs5eKmprnJK5hTVGq/giphy.gif','https://media.giphy.com/media/tRzd704xXId2w/giphy.gif']
