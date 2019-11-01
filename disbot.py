@@ -111,8 +111,8 @@ async def pars(ctx):
 	login_form = login_formAllSection[2].find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-groupWrapper')]")
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
-	for ddd in nameGame:
-		print("\t "+ ddd.text)
+	for ind, ddd in nameGame:
+		print("\t "+ ddd.text+" ["+ind+"]")
 	if nameGameOk != 'Бесплатные игры':
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
