@@ -107,10 +107,10 @@ async def pars(ctx):
 	# elem.send_keys('seleniumhq' + Keys.RETURN)
 	# time.sleep(5)
 	await asyncio.sleep(5)
-	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
-	dfd = login_form[2]
-	nameGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
-	nameGameOk = nameGame[0].text
+	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'Discover-section_')][2]")
+	dfd = login_form
+	#nameGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+	#nameGameOk = nameGame[0].text
 	print(dfd.text)
 	print(nameGame[0].text)
 	kdkdk = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
