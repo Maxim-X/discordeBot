@@ -113,7 +113,7 @@ async def pars(ctx):
 	login_form = login_formAllSection[2];
 	print("\t 2----- "+str(login_form.text)+"\n\n")
 	login_form = login_form.find_elements_by_xpath("./*[starts-with(@class, 'CardGrid-card')]")
-	print("\t 3----- "+str(login_form.text)+"\n\n")
+	#print("\t 3----- "+str(login_form.text)+"\n\n")
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
 
