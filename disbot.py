@@ -107,7 +107,7 @@ async def pars(ctx):
 	# elem.send_keys('seleniumhq' + Keys.RETURN)
 	# time.sleep(5)
 	await asyncio.sleep(5)
-	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-group')]")
+	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-groupWrapper')]")
 	nameGame = login_form[1].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
 	if nameGameOk != 'Бесплатные игры':
