@@ -108,8 +108,10 @@ async def pars(ctx):
 	# time.sleep(5)
 	await asyncio.sleep(5)
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
-	nameGame = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+	dfd = login_form[2]
+	nameGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
+	print(nameGame[0].text)
 	kdkdk = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	for ind, ddd in enumerate(kdkdk):
 		print("\t "+ ddd.text+" ["+str(ind)+"]")
