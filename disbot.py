@@ -108,25 +108,25 @@ async def pars(ctx):
 	# time.sleep(5)
 	await asyncio.sleep(5)
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-group')]")
-	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+	nameGame = login_form[1].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
 	if nameGameOk != 'Бесплатные игры':
-		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
+		allImgGame = login_form[1].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
-		allTime = login_form[0].find_elements_by_xpath("//time")
-		allUrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
+		allTime = login_form[1].find_elements_by_xpath("//time")
+		allUrlGame = login_form[1].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
 		UrlGame = allUrlGame[0].get_attribute('href')
 		timeGame = str(allTime[0].text)
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 	else:
-		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
+		allImgGame = login_form[1].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
-		allTime = login_form[0].find_elements_by_xpath("//time")
+		allTime = login_form[1].find_elements_by_xpath("//time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
 
-		UrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
+		UrlGame = login_form[1].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
 		print(str(UrlGame[0].get_attribute("href")))
 		UrlGame = UrlGame[0].get_attribute("href")
 		driver.get(str(UrlGame))
