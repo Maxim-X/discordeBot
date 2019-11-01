@@ -111,6 +111,8 @@ async def pars(ctx):
 	login_form = login_formAllSection[2].find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-groupWrapper')]")
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
+	for ddd in nameGame:
+		print("\t "+ ddd.text)
 	if nameGameOk != 'Бесплатные игры':
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
@@ -121,6 +123,7 @@ async def pars(ctx):
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 	else:
+
 		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
 		allTime = login_form[0].find_elements_by_xpath("//time")
