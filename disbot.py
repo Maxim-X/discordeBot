@@ -108,9 +108,12 @@ async def pars(ctx):
 	# time.sleep(5)
 	await asyncio.sleep(5)
 	login_formAllSection = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
+	for ind, ddd in enumerate(login_formAllSection):
+		print("\t ----- "+ ddd.text+" ["+str(ind)+"]\n\n")
 	login_form = login_formAllSection[2].find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-groupWrapper')]")
 	nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
+
 	for ind, ddd in enumerate(nameGame):
 		print("\t "+ ddd.text+" ["+str(ind)+"]")
 	if nameGameOk != 'Бесплатные игры':
