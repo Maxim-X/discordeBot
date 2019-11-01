@@ -107,36 +107,26 @@ async def pars(ctx):
 	# elem.send_keys('seleniumhq' + Keys.RETURN)
 	# time.sleep(5)
 	await asyncio.sleep(5)
-	login_formAllSection = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
-
-	print("\t 1----- "+ str(login_formAllSection[2].text)+"\n\n")
-	login_form = login_formAllSection[2];
-	print("\t 2----- "+str(login_form.text)+"\n\n")
-	login_form = login_form.find_elements_by_xpath("/*[starts-with(@class, 'CardGrid-card')]")
-	#print("\t 3----- "+str(login_form.text)+"\n\n")
-	#nameGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
-	#nameGameOk = nameGame[0].text
-
-	for ind, ddd in enumerate(login_form):
-		print("\t "+ ddd.text+" ["+str(ind)+"]")
+	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
+	nameGame = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+	nameGameOk = nameGame[0].text
 	if nameGameOk != 'Бесплатные игры':
-		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
+		allImgGame = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
-		allTime = login_form[0].find_elements_by_xpath("//time")
-		allUrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
+		allTime = login_form[2].find_elements_by_xpath("//time")
+		allUrlGame = login_form[2].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
 		UrlGame = allUrlGame[0].get_attribute('href')
 		timeGame = str(allTime[0].text)
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 	else:
-
-		allImgGame = login_form[0].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
+		allImgGame = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
-		allTime = login_form[0].find_elements_by_xpath("//time")
+		allTime = login_form[2].find_elements_by_xpath("//time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
 
-		UrlGame = login_form[0].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
+		UrlGame = login_form[2].find_elements_by_xpath("//a[starts-with(@class, 'FreeGame')]")
 		print(str(UrlGame[0].get_attribute("href")))
 		UrlGame = UrlGame[0].get_attribute("href")
 		driver.get(str(UrlGame))
