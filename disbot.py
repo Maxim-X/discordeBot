@@ -111,6 +111,7 @@ async def pars(ctx):
 	dfd = login_form[2]
 	nameGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
+	print(dfd.text)
 	print(nameGame[0].text)
 	kdkdk = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	for ind, ddd in enumerate(kdkdk):
