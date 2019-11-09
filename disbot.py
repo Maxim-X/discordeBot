@@ -108,7 +108,7 @@ async def pars(ctx):
 	print(dfd.text)
 	print("===================")
 
-	cardOneBlockGame = dfd.find_elements_by_xpath("./*[starts-with(@class, 'CardGrid-card_')]")
+	cardOneBlockGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-card_')]")
 	
 
 	print(cardOneBlockGame.text)
