@@ -122,6 +122,7 @@ async def pars(ctx):
 	if nameGameOk != 'Бесплатные игры':
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //img")
 		ImgGame = allImgGame[0].get_attribute("src")
+		print(ImgGame)
 		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //time")
 		allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //a[starts-with(@class, 'Card-root')]")
 		UrlGame = allUrlGame[0].get_attribute('href')
@@ -131,6 +132,7 @@ async def pars(ctx):
 	else:
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //img")
 		ImgGame = allImgGame[0].get_attribute("src")
+		print(ImgGame)
 		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
