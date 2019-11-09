@@ -113,7 +113,7 @@ async def pars(ctx):
 	for idx, val in enumerate(cardOneBlockGame):
 	    print(str(idx), str(val.text))
 
-	nameGame = cardOneBlockGame[0].find_elements_by_xpath("./*[starts-with(@class, 'Card-title_')]")
+	nameGame = cardOneBlockGame[0].find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] /*[starts-with(@class, 'Card-title_')]")
 	print(nameGame.text)
 	nameGameOk = nameGame.text
 	print(nameGameOk)
