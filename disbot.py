@@ -135,7 +135,7 @@ async def pars(ctx):
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
 
-		UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //a[starts-with(@class, 'FreeGame')]")
+		UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //a[starts-with(@class, 'Card-root')]")
 		UrlGame = UrlGame[0].get_attribute("href")
 		driver.get(str(UrlGame))
 		# if nameGameOk == 'Free Games Collection':
