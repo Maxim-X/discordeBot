@@ -107,7 +107,7 @@ async def pars(ctx):
 	dfd = login_form[2]
 	print(dfd.text)
 
-	cardOneBlockGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-card_')]")
+	cardOneBlockGame = dfd.find_elements_by_xpath("./*[starts-with(@class, 'CardGrid-card_')]")
 	
 	for x in cardOneBlockGame:
 		print("----==-------")
