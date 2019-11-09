@@ -113,7 +113,7 @@ async def pars(ctx):
 	#for idx, val in enumerate(cardOneBlockGame):
 	   # print(str(idx), str(val.text))
 
-	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] /*[starts-with(@class, 'Card-title_')]")
+	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //*[starts-with(@class, 'Card-title_')]")
 	for idx, val in enumerate(nameGame):
 	   print(str(idx), str(val.text))
 	# print(nameGame.text)
