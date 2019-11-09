@@ -114,31 +114,28 @@ async def pars(ctx):
 	   # print(str(idx), str(val.text))
 
 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //*[starts-with(@class, 'Card-title_')]")
-	for idx, val in enumerate(nameGame):
-	   print(str(idx), str(val.text))
-	# print(nameGame.text)
-	# nameGameOk = nameGame.text
-	# print(nameGameOk)
+
+	nameGameOk = nameGame[0].text
 
 	#kdkdk = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 
 	if nameGameOk != 'Бесплатные игры':
-		allImgGame = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
+		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
-		allTime = login_form[2].find_elements_by_xpath("//time")
-		allUrlGame = login_form[2].find_elements_by_xpath("//a[starts-with(@class, 'Card-root')]")
+		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //time")
+		allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //a[starts-with(@class, 'Card-root')]")
 		UrlGame = allUrlGame[0].get_attribute('href')
 		timeGame = str(allTime[0].text)
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 	else:
-		allImgGame = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
+		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
-		allTime = login_form[2].find_elements_by_xpath("//time")
+		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
 
-		UrlGame = login_form[2].find_elements_by_xpath("//a[starts-with(@class, 'FreeGame')]")
+		UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //a[starts-with(@class, 'FreeGame')]")
 		print(str(UrlGame[0].get_attribute("href")))
 		UrlGame = UrlGame[0].get_attribute("href")
 		driver.get(str(UrlGame))
@@ -150,7 +147,7 @@ async def pars(ctx):
 		# 	UrlGame = 'https://www.epicgames.com/store/ru/collection/free-game-collection'
 		await asyncio.sleep(5)
 		# login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'FreeGame-game')]")
-		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'StoreCard-title')]")
+		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //*[starts-with(@class, 'StoreCard-title')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
 		
