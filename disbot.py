@@ -154,7 +154,6 @@ async def pars(ctx):
 		
 	driver.quit()
 	todayNew = datetime.datetime.today()
-	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await ctx.send(embed=embed)
 
