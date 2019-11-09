@@ -106,11 +106,12 @@ async def pars(ctx):
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
 	dfd = login_form[2]
 	print(dfd.text)
+	print("===================")
 
 	cardOneBlockGame = dfd.find_elements_by_xpath("./*[starts-with(@class, 'CardGrid-card_')]")
 	
 
-
+	print(cardOneBlockGame.text)
 	for idx, val in enumerate(cardOneBlockGame):
 	    print(idx.text, val)
 	nameGame = cardOneBlockGame[0].find_elements_by_xpath("./*[starts-with(@class, 'Card-title_')]")
