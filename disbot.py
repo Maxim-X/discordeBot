@@ -101,19 +101,17 @@ async def pars(ctx):
 	channel = bot.get_channel(615296305144660008)#412939700748419086
 	driver = chromeOpen()
 	driver.get('https://www.epicgames.com/store/ru/')
-	# assert 'Yahoo' in browser.title
 
-	# elem = browser.find_element_by_name('p')  # Find the search box
-	# elem.send_keys('seleniumhq' + Keys.RETURN)
-	# time.sleep(5)
 	await asyncio.sleep(5)
 	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'Discover-section_')")
-	dfd = login_form
-	#nameGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
-	#nameGameOk = nameGame[0].text
+	dfd = login_form[2]
+
+	nameGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+	nameGameOk = nameGame[0].text
 	print(dfd.text)
 	print(nameGame[0].text)
 	kdkdk = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+	
 	for ind, ddd in enumerate(kdkdk):
 		print("\t "+ ddd.text+" ["+str(ind)+"]")
 	if nameGameOk != 'Бесплатные игры':
