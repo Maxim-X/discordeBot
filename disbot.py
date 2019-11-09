@@ -105,7 +105,7 @@ async def pars(ctx):
 	await asyncio.sleep(5)
 	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
 	dfd = login_form[2]
-
+	print(dfd.text)
 
 	cardOneBlockGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-card_')]")
 	
