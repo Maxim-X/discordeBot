@@ -105,15 +105,13 @@ async def pars(ctx):
 	await asyncio.sleep(5)
 	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'Discover-section_')")
 	dfd = login_form[2]
-
-	nameGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+	cardOneBlockGame = dfd.find_element_by_xpath("//*[starts-with(@class, 'CardGrid-card_')")
+	cardOneBlockGame = cardOneBlockGame[0]
+	nameGame = cardOneBlockGame.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
-	print(dfd.text)
-	print(nameGame[0].text)
-	kdkdk = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
-	
-	for ind, ddd in enumerate(kdkdk):
-		print("\t "+ ddd.text+" ["+str(ind)+"]")
+
+	#kdkdk = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
+
 	if nameGameOk != 'Бесплатные игры':
 		allImgGame = login_form[2].find_elements_by_xpath("//*[starts-with(@class, 'Picture-image')]")
 		ImgGame = allImgGame[0].get_attribute("src")
