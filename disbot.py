@@ -103,9 +103,11 @@ async def pars(ctx):
 	driver.get('https://www.epicgames.com/store/ru/')
 
 	await asyncio.sleep(5)
-	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
+	login_form = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-section_')]")
 	dfd = login_form[2]
-	cardOneBlockGame = dfd.find_element_by_xpath("//*[starts-with(@class, 'CardGrid-card_')]")
+
+	
+	cardOneBlockGame = dfd.find_elements_by_xpath("//*[starts-with(@class, 'CardGrid-card_')]")
 	cardOneBlockGame = cardOneBlockGame[0]
 	nameGame = cardOneBlockGame.find_elements_by_xpath("//*[starts-with(@class, 'Card-title_')]")
 	nameGameOk = nameGame[0].text
