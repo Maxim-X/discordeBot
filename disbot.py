@@ -103,7 +103,7 @@ async def pars(ctx):
 	driver.get('https://www.epicgames.com/store/ru/')
 
 	await asyncio.sleep(5)
-	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')] // span[3] ")
+	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] ")
 	print(login_form.text)
 	print("===================")
 
