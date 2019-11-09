@@ -132,7 +132,7 @@ async def pars(ctx):
 	else:
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //*[starts-with(@class, 'Picture-picture_')] //img")
 		for x in allImgGame:
-			print(x.get_attribute('src'))
+			print(x.get_attribute('data-image'))
 		#print(ImgGame)
 		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //time")
 		timeGame = allTime[0].text
