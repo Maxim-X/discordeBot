@@ -130,7 +130,7 @@ async def pars(ctx):
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 	else:
-		allImgGame = driver.find_elements_by_xpath("//*[@id='dieselReactWrapper']/div/div[4]/div[1]/div[2]/span[3]/div/div/div/section/div/div[1]/div/a/div/div[1]/div/div/img")
+		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //img")
 		ImgGame = allImgGame[0].get_attribute('innerHTML')
 		print(ImgGame)
 		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'Discover-contentWrapper_')]/span[3] //time")
