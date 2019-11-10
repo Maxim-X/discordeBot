@@ -209,13 +209,19 @@ async def checkCrackGame():
 			today = today.strftime("%b %d, %Y")
 			print(today)
 			if(today != dataCrack):
+				print("1")
 				embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
+				print("2")
 				driver.quit()
-				
+				print("3")
 				embed.set_image(url=""+str(gameImg)+"")
+				print("4")
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+				print("5")
 				await channel.send(embed=embed)
+				print("6")
 			else:
+				print("7")
 				await channel.send("Каво?")
 		else:
 			await channel.send("Игра не взломана")
