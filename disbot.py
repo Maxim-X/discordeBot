@@ -147,7 +147,7 @@ async def check(ctx):
 	else:
 		print("Игра не взломана")
 
-	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0xff7d25)
+	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x00e205)
 	
 	driver.quit()
 	todayNew = datetime.datetime.today()
