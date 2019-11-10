@@ -135,6 +135,7 @@ async def check(ctx):
 		await asyncio.sleep(5)
 		dataRelease = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
 		gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
+		gameTeamCrack = gameTeamCrack[0].text
 		dataRelease = dataRelease[0].text
 		print(dataRelease)
 		today = datetime.datetime.today() - timedelta(hours=5)
