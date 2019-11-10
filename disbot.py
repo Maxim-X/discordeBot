@@ -216,9 +216,11 @@ async def checkCrackGame():
 				embed.set_image(url=""+str(gameImg)+"")
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
+			else:
+				await channel.send("Каво?")
 		else:
 			await channel.send("Игра не взломана")
-			
+
 		todayNew = datetime.datetime.today()
 		todaym = int(todayNew.strftime("%M"))
 		sleepHOne = 3600 - (todaym * 60)
