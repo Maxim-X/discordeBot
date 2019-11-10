@@ -359,58 +359,58 @@ async def on_member_join(member):
 	await channel.send(embed=embed)
 	await member.add_roles(discord.utils.get(member.guild.roles, name='Новичок'))
 				
-@bot.event
-async def on_member_update(before, after):
-	# Пользователь начал играть
-	if before.activity == None and after.activity != None:
-		newGameStatus = after.activity.name
-		print(str(after.id))
-		if newGameStatus != '' and after.id != 450264735368085505 and after.id != 412235680303939595 :
+# @bot.event
+# async def on_member_update(before, after):
+# 	# Пользователь начал играть
+# 	if before.activity == None and after.activity != None:
+# 		newGameStatus = after.activity.name
+# 		print(str(after.id))
+# 		if newGameStatus != '' and after.id != 450264735368085505 and after.id != 412235680303939595 :
 
-			channel = bot.get_channel(623944345522798603)
-			haveGame = False
-			for channelInd in channel.voice_channels:
-				if (channelInd.name == str(newGameStatus)):
-					haveGame = True
-			if(not haveGame):
-				massAllVC = channel.voice_channels
-				if(len(massAllVC) <= 1):
-					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
-				else:
-					channelDelInd = massAllVC[0]
-					await channelDelInd.delete()
-					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
+# 			channel = bot.get_channel(623944345522798603)
+# 			haveGame = False
+# 			for channelInd in channel.voice_channels:
+# 				if (channelInd.name == str(newGameStatus)):
+# 					haveGame = True
+# 			if(not haveGame):
+# 				massAllVC = channel.voice_channels
+# 				if(len(massAllVC) <= 1):
+# 					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
+# 				else:
+# 					channelDelInd = massAllVC[0]
+# 					await channelDelInd.delete()
+# 					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
 
 		# Пользователь начал играть
 
 
-async def deleteVoiceChannel():
-	while not bot.is_closed():
-		await bot.wait_until_ready()
-		todayNew = datetime.datetime.today()
-		todayH = int(todayNew.strftime("%H"))
-		todayM = int(todayNew.strftime("%M"))
-		if todayH + 5 < 24:
-			todayH = todayH + 5
-		else:
-			todayH = todayH + 5 - 24
-		print("Часов "+str(todayH))
-		if todayH == 10:
-			channel = bot.get_channel(623944345522798603)
-			for channelInd in channel.voice_channels:
-				if(len(channelInd.members) == 0):
-					await channelInd.delete()
-			todayNew = datetime.datetime.today()
-			todayM = int(todayNew.strftime("%M"))
-			sleepHOne = 86400 - (todayM * 60)
-			print('Сплю: '+str(sleepHOne)+' секунд')
-			await asyncio.sleep(int(sleepHOne))
-		else:
-			todayNew = datetime.datetime.today()
-			todayM = int(todayNew.strftime("%M"))
-			sleepHOne = 3600 - (todayM * 60)
-			print('Сплю: '+str(sleepHOne)+' секунд')
-			await asyncio.sleep(int(sleepHOne))
+# async def deleteVoiceChannel():
+# 	while not bot.is_closed():
+# 		await bot.wait_until_ready()
+# 		todayNew = datetime.datetime.today()
+# 		todayH = int(todayNew.strftime("%H"))
+# 		todayM = int(todayNew.strftime("%M"))
+# 		if todayH + 5 < 24:
+# 			todayH = todayH + 5
+# 		else:
+# 			todayH = todayH + 5 - 24
+# 		print("Часов "+str(todayH))
+# 		if todayH == 10:
+# 			channel = bot.get_channel(623944345522798603)
+# 			for channelInd in channel.voice_channels:
+# 				if(len(channelInd.members) == 0):
+# 					await channelInd.delete()
+# 			todayNew = datetime.datetime.today()
+# 			todayM = int(todayNew.strftime("%M"))
+# 			sleepHOne = 86400 - (todayM * 60)
+# 			print('Сплю: '+str(sleepHOne)+' секунд')
+# 			await asyncio.sleep(int(sleepHOne))
+# 		else:
+# 			todayNew = datetime.datetime.today()
+# 			todayM = int(todayNew.strftime("%M"))
+# 			sleepHOne = 3600 - (todayM * 60)
+# 			print('Сплю: '+str(sleepHOne)+' секунд')
+# 			await asyncio.sleep(int(sleepHOne))
 
 
 @bot.event
@@ -634,6 +634,6 @@ token = os.environ.get('BOT_TOKEN')
 bot.bg_task = bot.loop.create_task(goodMorning())
 bot.bg_task = bot.loop.create_task(freeGameEpic())
 # bot.bg_task = bot.loop.create_task(newsGamePlayGround())
-bot.bg_task = bot.loop.create_task(deleteVoiceChannel())
+# bot.bg_task = bot.loop.create_task(deleteVoiceChannel())
 bot.run(str(token))
 
