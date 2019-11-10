@@ -165,9 +165,8 @@ async def checkCrackGame():
 		todayH = todayH + 5
 	else:
 		todayH = todayH + 5 - 24
-
+	channel = bot.get_channel(615296305144660008)#412939700748419086
 	if todayH == 0:
-		channel = bot.get_channel(615296305144660008)#412939700748419086
 		caps = DesiredCapabilities().CHROME
 		caps["pageLoadStrategy"] = "none" # interactive
 		chrome_options = webdriver.ChromeOptions()
