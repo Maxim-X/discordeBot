@@ -160,7 +160,7 @@ async def check(ctx):
 async def checkCrackGame():
 	todayNew = datetime.datetime.today()
 	todayH = int(todayNew.strftime("%H"))
-	todaym = int(todayNew.strftime("%M"))
+	
 	if todayH + 5 < 24:
 		todayH = todayH + 5
 	else:
@@ -212,14 +212,17 @@ async def checkCrackGame():
 			if(today != dataCrack):
 				embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
 				driver.quit()
-				todayNew = datetime.datetime.today()
+				
 				embed.set_image(url=""+str(gameImg)+"")
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				await channel.send(embed=embed)
 		else:
 			await channel.send("Игра не взломана")
-	sleepHOne = 3600 - (todaym * 60)
-	await asyncio.sleep(int(sleepHOne)) #3600
+			
+		todayNew = datetime.datetime.today()
+		todaym = int(todayNew.strftime("%M"))
+		sleepHOne = 3600 - (todaym * 60)
+		await asyncio.sleep(int(sleepHOne)) #3600
 
 
 
