@@ -15,6 +15,10 @@ import asyncio
 from selenium import webdriver
 import random
 from discord.utils import get
+
+from datetime import timedelta, datetime
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 bot = commands.Bot(command_prefix='>')
  
 
@@ -93,6 +97,64 @@ async def time(ctx):
 # 			sleepHOne = 3600 - (todayM * 60)
 # 			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 # 			await asyncio.sleep(int(sleepHOne))
+
+@bot.command(pass_context= True)
+async def check(ctx):
+	channel = bot.get_channel(615296305144660008)#412939700748419086
+	caps = DesiredCapabilities().CHROME
+	caps["pageLoadStrategy"] = "none" # interactive
+	chrome_options = webdriver.ChromeOptions()
+	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+	chrome_options.add_argument("--headless")
+	chrome_options.add_argument("--disable-dev-shm-usage")
+	chrome_options.add_argument("--no-sandbox")
+	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options,desired_capabilities=caps)
+	
+
+	driver.get('https://crackwatch.com/')
+	time.sleep(5)
+	viewGameImg = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='image-box'] // img")
+
+	viewGameStatus = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='sub-title'] // div[@class='inline-block'] // font")
+	viewGameNameAndSrc = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='main-title main-title-cap'] // a")
+
+
+	gameImg = viewGameImg[0].get_attribute('src')
+	gameStatus = (viewGameStatus[0].text[: int(viewGameStatus[0].text.find('D+'))]).strip()
+	gameTimeCrack = (viewGameStatus[0].text[int(viewGameStatus[0].text.find('D+')+2):]).strip()
+	gameName = viewGameNameAndSrc[0].text
+	gameSrc = viewGameNameAndSrc[0].get_attribute('href')
+	print(gameImg)
+	print(gameStatus)
+	print(gameName)
+	print(gameSrc)
+	print(gameTimeCrack)
+
+	if gameStatus != "CRACKED":
+		driver.get(str(gameSrc))
+		time.sleep(5)
+		dataRelease = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
+		gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
+		dataRelease = dataRelease[0].text
+		print(dataRelease)
+		today = datetime.today() - timedelta(hours=5)
+		
+		today = today.strftime("%b %d, %Y")
+		print(today)
+		if dataRelease == str(today):
+			
+	else:
+		print("Игра не взломана")
+	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда {gameTeamCrack}, успешно взломала игру {gameName}.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0xff7d25)
+	
+	driver.quit()
+	todayNew = datetime.datetime.today()
+	embed.set_image(url=""+str(ImgGame)+"")
+	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	await ctx.send(embed=embed)
+
+
+
 
 @bot.command(pass_context= True)
 async def pars(ctx):
