@@ -267,7 +267,7 @@ async def freeGameEpic():
 	print('--------')
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(615296305144660008) #615296305144660008
+		channel = bot.get_channel(412939700748419086) #615296305144660008
 		todayNew = datetime.datetime.today()
 		todayWeekDay = str(todayNew.strftime("%A"))
 		todayH = int(todayNew.strftime("%H"))
@@ -277,9 +277,9 @@ async def freeGameEpic():
 		else:
 			todayH = todayH + 5 - 24
 		print(str(todayH))
-		if todayWeekDay == 'Sunday' or todayWeekDay == 'Wednesday':
+		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH == 17 and todayM == 26:
+			if todayH == 18 and todayM == 0:
 				driver = chromeOpen()
 				driver.get('https://www.epicgames.com/store/ru/')
 				# assert 'Yahoo' in browser.title 
