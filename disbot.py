@@ -16,7 +16,7 @@ from selenium import webdriver
 import random
 from discord.utils import get
 
-from datetime import timedelta, datetime
+from datetime import timedelta
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 bot = commands.Bot(command_prefix='>')
@@ -137,7 +137,7 @@ async def check(ctx):
 		gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
 		dataRelease = dataRelease[0].text
 		print(dataRelease)
-		today = datetime.today() - timedelta(hours=5)
+		today = datetime.datetime.today() - timedelta(hours=5)
 		
 		today = today.strftime("%b %d, %Y")
 		print(today)
@@ -145,7 +145,7 @@ async def check(ctx):
 			
 	else:
 		print("Игра не взломана")
-		
+
 	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда {gameTeamCrack}, успешно взломала игру {gameName}.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0xff7d25)
 	
 	driver.quit()
