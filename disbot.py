@@ -218,6 +218,7 @@ async def checkCrackGame():
 				print("4")
 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 				print("5")
+				await channel.send("123?")
 				await channel.send(embed=embed)
 				print("6")
 			else:
