@@ -112,7 +112,7 @@ async def check(ctx):
 	
 
 	driver.get('https://crackwatch.com/')
-	await asyncio.sleep(5)
+	await asyncio.sleep(8)
 	viewGameImg = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='image-box'] // img")
 
 	viewGameStatus = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='sub-title'] // div[@class='inline-block'] // font")
@@ -132,7 +132,7 @@ async def check(ctx):
 
 	if gameStatus != "CRACKED":
 		driver.get(str(gameSrc))
-		await asyncio.sleep(5)
+		await asyncio.sleep(8)
 		dataRelease = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
 		gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
 		gameTeamCrack = gameTeamCrack[0].text
