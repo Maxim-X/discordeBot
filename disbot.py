@@ -292,31 +292,31 @@ async def pars(ctx):
 
 @bot.command(pass_context= True)
 async def GamePlayGroundZakaz(ctx, *, url):
-	todayNew = datetime.datetime.today() 
-	todayH = int(todayNew.strftime("%H"))
-	todaym = int(todayNew.strftime("%M"))
-	if todayH + 5 < 24:
-		todayH = todayH + 5
-	else:
-		todayH = todayH + 5 - 24
+	# todayNew = datetime.datetime.today() 
+	# todayH = int(todayNew.strftime("%H"))
+	# todaym = int(todayNew.strftime("%M"))
+	# if todayH + 5 < 24:
+	# 	todayH = todayH + 5
+	# else:
+	# 	todayH = todayH + 5 - 24
 
-	driver = chromeOpen()
-	channel = bot.get_channel(619497569298546709)
+	# driver = chromeOpen()
+	channel = bot.get_channel(615296305144660008)
 	# driver.get('https://www.playground.ru/news/')
 	# pageListUrl = driver.find_element_by_xpath('//a[@class="item story-container"]')
 	# pageGame = pageListUrl.get_attribute('href')
-	pageGame = str(url)
-	driver.get(pageGame)
-	nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
-	nameNews = nameNews.text
-	imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
-	titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
-	titleNews = titleNews.text
-	driver.quit()
-	embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
-	embed.set_image(url=""+str(imgNews)+"")
-	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	await channel.send(embed=embed)
+	# pageGame = str(url)
+	# driver.get(pageGame)
+	# nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
+	# nameNews = nameNews.text
+	# imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
+	# titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
+	# titleNews = titleNews.text
+	# driver.quit()
+	# embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
+	# embed.set_image(url=""+str(imgNews)+"")
+	# embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	await channel.send("123")
 # Now you can start using Selenium
 
 
