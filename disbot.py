@@ -100,7 +100,7 @@ async def time(ctx):
 
 @bot.command(pass_context= True)
 async def check(ctx):
-	channel = bot.get_channel(615296305144660008)#412939700748419086
+	
 	caps = DesiredCapabilities().CHROME
 	caps["pageLoadStrategy"] = "none" # interactive
 	chrome_options = webdriver.ChromeOptions()
@@ -146,10 +146,9 @@ async def check(ctx):
 			
 	else:
 		print("Игра не взломана")
-
+	driver.quit()
 	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
 	
-	driver.quit()
 	todayNew = datetime.datetime.today()
 	embed.set_image(url=""+str(gameImg)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
@@ -166,7 +165,7 @@ async def checkCrackGame():
 			todayH = todayH + 5
 		else:
 			todayH = todayH + 5 - 24
-		channel = bot.get_channel(615296305144660008)#412939700748419086
+		
 		if todayH == 4: 
 			caps = DesiredCapabilities().CHROME
 			caps["pageLoadStrategy"] = "none" # interactive
@@ -219,13 +218,15 @@ async def checkCrackGame():
 					print("4")
 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 					print("5")
-					await channel.send("123?")
+					channel = bot.get_channel(615296305144660008)#412939700748419086
 					await channel.send(embed=embed)
 					print("6")
 				else:
 					print("7")
+					channel = bot.get_channel(615296305144660008)#412939700748419086
 					await channel.send("Каво?")
 			else:
+				channel = bot.get_channel(615296305144660008)#412939700748419086
 				await channel.send("Игра не взломана")
 
 			todayNew = datetime.datetime.today()
