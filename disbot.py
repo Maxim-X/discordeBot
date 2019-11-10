@@ -141,15 +141,16 @@ async def check(ctx):
 		
 		today = today.strftime("%b %d, %Y")
 		print(today)
-		if dataRelease == str(today):
+		#if dataRelease == str(today):
 			
 	else:
 		print("Игра не взломана")
+		
 	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда {gameTeamCrack}, успешно взломала игру {gameName}.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0xff7d25)
 	
 	driver.quit()
 	todayNew = datetime.datetime.today()
-	embed.set_image(url=""+str(ImgGame)+"")
+	embed.set_image(url=""+str(gameImg)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await ctx.send(embed=embed)
 
