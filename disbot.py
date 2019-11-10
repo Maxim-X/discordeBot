@@ -166,7 +166,7 @@ async def checkCrackGame():
 	else:
 		todayH = todayH + 5 - 24
 
-	if todayH == 23:
+	if todayH == 0:
 		channel = bot.get_channel(615296305144660008)#412939700748419086
 		caps = DesiredCapabilities().CHROME
 		caps["pageLoadStrategy"] = "none" # interactive
@@ -208,7 +208,7 @@ async def checkCrackGame():
 			today = datetime.datetime.today() - timedelta(hours=5)
 			
 			today = today.strftime("%b %d, %Y")
-			if(today == dataCrack):
+			if(today != dataCrack):
 				embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
 				driver.quit()
 				todayNew = datetime.datetime.today()
