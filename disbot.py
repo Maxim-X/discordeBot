@@ -156,83 +156,83 @@ async def check(ctx):
 
 
 
-async def checkCrackGame():
-	while not bot.is_closed():
-		todayNew = datetime.datetime.today()
-		todayH = int(todayNew.strftime("%H"))
+# async def checkCrackGame():
+# 	while not bot.is_closed():
+# 		todayNew = datetime.datetime.today()
+# 		todayH = int(todayNew.strftime("%H"))
 		
-		if todayH + 5 < 24:
-			todayH = todayH + 5
-		else:
-			todayH = todayH + 5 - 24
+# 		if todayH + 5 < 24:
+# 			todayH = todayH + 5
+# 		else:
+# 			todayH = todayH + 5 - 24
 		
-		if todayH == 4: 
-			caps = DesiredCapabilities().CHROME
-			caps["pageLoadStrategy"] = "none" # interactive
-			chrome_options = webdriver.ChromeOptions()
-			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-			chrome_options.add_argument("--headless")
-			chrome_options.add_argument("--disable-dev-shm-usage")
-			chrome_options.add_argument("--no-sandbox")
-			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options,desired_capabilities=caps)
+# 		if todayH == 4: 
+# 			caps = DesiredCapabilities().CHROME
+# 			caps["pageLoadStrategy"] = "none" # interactive
+# 			chrome_options = webdriver.ChromeOptions()
+# 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+# 			chrome_options.add_argument("--headless")
+# 			chrome_options.add_argument("--disable-dev-shm-usage")
+# 			chrome_options.add_argument("--no-sandbox")
+# 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options,desired_capabilities=caps)
 			
 
-			driver.get('https://crackwatch.com/')
-			await asyncio.sleep(8)
-			viewGameImg = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='image-box'] // img")
+# 			driver.get('https://crackwatch.com/')
+# 			await asyncio.sleep(8)
+# 			viewGameImg = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='image-box'] // img")
 
-			viewGameStatus = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='sub-title'] // div[@class='inline-block'] // font")
-			viewGameNameAndSrc = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='main-title main-title-cap'] // a")
+# 			viewGameStatus = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='sub-title'] // div[@class='inline-block'] // font")
+# 			viewGameNameAndSrc = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='main-title main-title-cap'] // a")
 
 
-			gameImg = viewGameImg[0].get_attribute('src')
-			gameStatus = (viewGameStatus[0].text[: int(viewGameStatus[0].text.find('D+'))]).strip()
-			gameTimeCrack = (viewGameStatus[0].text[int(viewGameStatus[0].text.find('D+')+2):]).strip()
-			gameName = viewGameNameAndSrc[0].text
-			gameSrc = viewGameNameAndSrc[0].get_attribute('href')
-			print(gameImg)
-			print(gameStatus)
-			print(gameName)
-			print(gameSrc)
-			print(gameTimeCrack)
+# 			gameImg = viewGameImg[0].get_attribute('src')
+# 			gameStatus = (viewGameStatus[0].text[: int(viewGameStatus[0].text.find('D+'))]).strip()
+# 			gameTimeCrack = (viewGameStatus[0].text[int(viewGameStatus[0].text.find('D+')+2):]).strip()
+# 			gameName = viewGameNameAndSrc[0].text
+# 			gameSrc = viewGameNameAndSrc[0].get_attribute('href')
+# 			print(gameImg)
+# 			print(gameStatus)
+# 			print(gameName)
+# 			print(gameSrc)
+# 			print(gameTimeCrack)
 
-			if gameStatus != "CRACKED":
-				driver.get(str(gameSrc))
-				await asyncio.sleep(8)
-				dataCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
-				gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
-				gameTeamCrack = gameTeamCrack[0].text
-				dataCrack = dataCrack[0].text
-				print(dataCrack)
-				today = datetime.datetime.today() - timedelta(hours=5)
+# 			if gameStatus != "CRACKED":
+# 				driver.get(str(gameSrc))
+# 				await asyncio.sleep(8)
+# 				dataCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
+# 				gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
+# 				gameTeamCrack = gameTeamCrack[0].text
+# 				dataCrack = dataCrack[0].text
+# 				print(dataCrack)
+# 				today = datetime.datetime.today() - timedelta(hours=5)
 				
-				today = today.strftime("%b %d, %Y")
-				print(today)
-				if(today != dataCrack):
-					print("1")
-					embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
-					print("2")
-					driver.quit()
-					print("3")
-					embed.set_image(url=""+str(gameImg)+"")
-					print("4")
-					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-					print("5")
-					channel = bot.get_channel(615296305144660008)#412939700748419086
-					await channel.send(embed=embed)
-					print("6")
-				else:
-					print("7")
-					channel = bot.get_channel(615296305144660008)#412939700748419086
-					await channel.send("Каво?")
-			else:
-				channel = bot.get_channel(615296305144660008)#412939700748419086
-				await channel.send("Игра не взломана")
+# 				today = today.strftime("%b %d, %Y")
+# 				print(today)
+# 				if(today != dataCrack):
+# 					print("1")
+# 					embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
+# 					print("2")
+# 					driver.quit()
+# 					print("3")
+# 					embed.set_image(url=""+str(gameImg)+"")
+# 					print("4")
+# 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+# 					print("5")
+# 					channel = bot.get_channel(615296305144660008)#412939700748419086
+# 					await channel.send(embed=embed)
+# 					print("6")
+# 				else:
+# 					print("7")
+# 					channel = bot.get_channel(615296305144660008)#412939700748419086
+# 					await channel.send("Каво?")
+# 			else:
+# 				channel = bot.get_channel(615296305144660008)#412939700748419086
+# 				await channel.send("Игра не взломана")
 
-			todayNew = datetime.datetime.today()
-			todaym = int(todayNew.strftime("%M"))
-			sleepHOne = 3600 - (todaym * 60)
-			await asyncio.sleep(int(sleepHOne)) #3600
+# 			todayNew = datetime.datetime.today()
+# 			todaym = int(todayNew.strftime("%M"))
+# 			sleepHOne = 3600 - (todaym * 60)
+# 			await asyncio.sleep(int(sleepHOne)) #3600
 
 
 
@@ -778,7 +778,7 @@ async def cleanChat(ctx, allNumMessage):
 token = os.environ.get('BOT_TOKEN')
 bot.bg_task = bot.loop.create_task(goodMorning())
 bot.bg_task = bot.loop.create_task(freeGameEpic())
-bot.bg_task = bot.loop.create_task(checkCrackGame())
+# bot.bg_task = bot.loop.create_task(checkCrackGame())
 # bot.bg_task = bot.loop.create_task(newsGamePlayGround())
 # bot.bg_task = bot.loop.create_task(deleteVoiceChannel())
 bot.run(str(token))
