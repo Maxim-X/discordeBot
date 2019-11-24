@@ -574,7 +574,7 @@ async def on_message(message):
 @bot.event
 async def on_message(message):
 	if message.content == "Рамблер":
-		await message.channel.send("Ты прав.")
+		await message.channel.send("Поздравляю, ты выйграл!")
 	await bot.process_commands(message)
 	# # print(message.content)
 	# messageUser = message.content[:]
