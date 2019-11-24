@@ -570,6 +570,12 @@ async def on_message(message):
 		await message.channel.send(str(imgGif))
 
 	await bot.process_commands(message)
+
+@bot.event
+async def on_message(message):
+	if message.content == "Рамблер":
+		await message.channel.send("Ты прав.")
+	await bot.process_commands(message)
 	# # print(message.content)
 	# messageUser = message.content[:]
 	# messageUser = messageUser.lower()
