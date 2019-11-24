@@ -575,7 +575,7 @@ async def on_message(message):
 async def on_message(message):
 	if message.content == "Рамблер":
 		await message.channel.send("Поздравляю, ты выйграл(-а) !")
-		await message.delete()
+		await discord.Message.delete(message, delay=None)
 
 	await bot.process_commands(message)
 	# # print(message.content)
