@@ -424,7 +424,7 @@ async def freeGameEpic():
 		print(str(todayH))
 		if todayWeekDay == 'Saturday' or todayWeekDay == 'Wednesday':
 			print('2')
-			if todayH == 16 and todayM == 14:
+			if todayH == 12 and todayM == 20:
 				driver = chromeOpen()
 				driver.get('https://www.epicgames.com/store/ru/')
 				# assert 'Yahoo' in browser.title 
