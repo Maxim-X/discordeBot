@@ -247,15 +247,18 @@ async def pars(ctx):
 	driver.get('https://www.epicgames.com/store/ru/')
 
 	await asyncio.sleep(15)
+	print("1")
 	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] ")
 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //*[starts-with(@class, 'OfferTitleInfo')]")
 	nameGameOk = nameGame[0].text
+	print("2")
 
 	if nameGameOk != 'Бесплатные игры':
+		print("3")
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //img")
 		ImgGame = allImgGame[0].get_attribute("data-image")
 		ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-		#print(allImgGame[0])
+		print(allImgGame[0])
 		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //time")
 		allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //a") #a[starts-with(@class, 'Card-root')]
 		UrlGame = allUrlGame[0].get_attribute('href')
@@ -263,6 +266,8 @@ async def pars(ctx):
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 	else:
+
+		print("4")
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //*[starts-with(@class, 'Picture-picture_')] //img")
 		ImgGame = allImgGame[0].get_attribute("data-image")
 		print(str(ImgGame))
@@ -284,6 +289,7 @@ async def pars(ctx):
 		
 
 		
+	print("5")
 	driver.quit()
 	todayNew = datetime.datetime.today()
 	embed.set_image(url=""+str(ImgGame)+"")
