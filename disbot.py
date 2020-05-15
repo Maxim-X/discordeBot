@@ -250,6 +250,7 @@ async def pars(ctx):
 	await asyncio.sleep(15)
 	print("1")
 	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
+	await ctx.send(login_form)
 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
 	nameGameOk = nameGame[0].text
 	print("2")
