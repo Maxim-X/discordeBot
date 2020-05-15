@@ -246,7 +246,7 @@ async def pars(ctx):
 	driver = chromeOpen()
 	driver.get('https://www.epicgames.com/store/ru/')
 
-	await asyncio.sleep(5)
+	await asyncio.sleep(15)
 	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[2] ")
 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[2] //*[starts-with(@class, 'OfferTitleInfo')]")
 	nameGameOk = nameGame[0].text
@@ -277,7 +277,7 @@ async def pars(ctx):
 		UrlGame = UrlGame[0].get_attribute("href")
 		driver.get(str(UrlGame))
 
-		await asyncio.sleep(5)
+		await asyncio.sleep(15)
 		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[2] //*[starts-with(@class, 'OfferTitleInfo')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
