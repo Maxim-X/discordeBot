@@ -240,6 +240,7 @@ async def check(ctx):
 
 @bot.command(pass_context= True)
 async def pars(ctx):
+	print("Начало")
 	await ctx.message.delete()
 	await bot.wait_until_ready()
 	#channel = bot.get_channel(615296305144660008)#412939700748419086
