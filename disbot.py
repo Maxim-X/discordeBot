@@ -248,19 +248,19 @@ async def pars(ctx):
 
 	await asyncio.sleep(15)
 	print("1")
-	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] ")
-	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //*[starts-with(@class, 'OfferTitleInfo')]")
+	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
+	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
 	nameGameOk = nameGame[0].text
 	print("2")
 
 	if nameGameOk != 'Бесплатные игры':
 		print("3")
-		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //img")
+		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
 		ImgGame = allImgGame[0].get_attribute("data-image")
 		ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
 		print(allImgGame[0])
-		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //time")
-		allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //a") #a[starts-with(@class, 'Card-root')]
+		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
+		allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a") #a[starts-with(@class, 'Card-root')]
 		UrlGame = allUrlGame[0].get_attribute('href')
 		timeGame = str(allTime[0].text)
 		timeGameOk = timeGame.replace('.','')
@@ -268,22 +268,22 @@ async def pars(ctx):
 	else:
 
 		print("4")
-		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //*[starts-with(@class, 'Picture-picture_')] //img")
+		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'Picture-picture_')] //img")
 		ImgGame = allImgGame[0].get_attribute("data-image")
 		print(str(ImgGame))
 		ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
 		print(str(ImgGame))
 		#print(ImgGame)
-		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //time")
+		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
 		timeGame = allTime[0].text
 		timeGameOk = timeGame.replace('.','')
 
-		UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //a")
+		UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
 		UrlGame = UrlGame[0].get_attribute("href")
 		driver.get(str(UrlGame))
 
 		await asyncio.sleep(15)
-		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[4] //*[starts-with(@class, 'OfferTitleInfo')]")
+		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
 		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
 		
