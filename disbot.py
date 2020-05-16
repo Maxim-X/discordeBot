@@ -735,6 +735,31 @@ async def sendMessage(ctx,*, title):
 	await ctx.message.delete()
 	await ctx.send(embed=embed)
 
+@bot.command(pass_context= True)
+async def sendMessageNews(ctx,*, title):
+	name = ''
+	on = False
+	for x in title:
+		if str(x) == ')':
+			on = False
+		if on:
+			name += str(x) 
+		if str(x) == '(':
+			on = True
+	words = ("(", ")")
+	titleText = title[:title.find(words[0]) + len(words[0])] + title[title.find(words[1]):]
+	titleText = titleText.replace('(','').replace(')','')
+	wordsImg = ("<img>", "</img>")
+	Img = re.findall(r'<img>(.*?)</img>',titleText)
+	titleText = titleText[:titleText.find(wordsImg[0]) + len(wordsImg[0])] + titleText[titleText.find(wordsImg[1]):]
+	titleText = titleText.replace('<img>','').replace('</img>','')
+	embed = discord.Embed(title= ""+name+"", colour= 0x6c82cb, description= ""+titleText+"")
+	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	embed.set_image(url=""+str(Img[0])+"")
+	channel = bot.get_channel(412939700748419086)
+	await ctx.message.delete()
+	await channel.send(embed=embed)
+
 
 @bot.command(pass_context= True)
 async def myinfo(ctx, user: discord.User):
