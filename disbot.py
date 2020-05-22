@@ -250,13 +250,13 @@ async def pars(ctx):
 	await asyncio.sleep(15)
 	print("1")
 	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
-	await ctx.send(login_form)
+	await ctx.send("1")
 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
 	nameGameOk = nameGame[0].text
-	print("2")
+	await ctx.send("2")
 
 	if nameGameOk != 'Бесплатные игры':
-		print("3")
+		await ctx.send("3")
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
 		ImgGame = allImgGame[0].get_attribute("data-image")
 		ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
@@ -267,9 +267,10 @@ async def pars(ctx):
 		timeGame = str(allTime[0].text)
 		timeGameOk = timeGame.replace('.','')
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
+		await ctx.send("4")
 	else:
 
-		print("4")
+		await ctx.send("5")
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'Picture-picture_')] //img")
 		ImgGame = allImgGame[0].get_attribute("data-image")
 		print(str(ImgGame))
@@ -291,7 +292,7 @@ async def pars(ctx):
 		
 
 		
-	print("5")
+	await ctx.send("6")
 	driver.quit()
 	todayNew = datetime.datetime.today()
 	embed.set_image(url=""+str(ImgGame)+"")
