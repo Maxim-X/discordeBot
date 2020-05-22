@@ -254,6 +254,7 @@ async def pars(ctx):
 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
 	nameGameOk = nameGame[0].text
 	await ctx.send("2")
+	await ctx.send(nameGameOk)
 
 	if nameGameOk != 'Бесплатные игры':
 		await ctx.send("3")
