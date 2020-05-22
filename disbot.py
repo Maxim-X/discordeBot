@@ -271,8 +271,9 @@ async def pars(ctx):
 		await ctx.send("/1")
 		UrlGame = allUrlGame[0].get_attribute('href')
 		await ctx.send("/1")
+		await ctx.send(allTime[0].text)
 		timeGame = str(allTime[0].text)
-		await ctx.send("/1")
+		await ctx.send("/1") #<--------------
 		timeGameOk = timeGame.replace('.','')
 		await ctx.send("/1")
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
