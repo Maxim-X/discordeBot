@@ -258,14 +258,23 @@ async def pars(ctx):
 	if nameGameOk != 'Бесплатные игры':
 		await ctx.send("3")
 		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
+		await ctx.send("/1")
 		ImgGame = allImgGame[0].get_attribute("data-image")
+		await ctx.send("/1")
 		ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
+		await ctx.send("/1")
 		print(allImgGame[0])
+		await ctx.send("/1")
 		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
+		await ctx.send("/1")
 		allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a") #a[starts-with(@class, 'Card-root')]
+		await ctx.send("/1")
 		UrlGame = allUrlGame[0].get_attribute('href')
+		await ctx.send("/1")
 		timeGame = str(allTime[0].text)
+		await ctx.send("/1")
 		timeGameOk = timeGame.replace('.','')
+		await ctx.send("/1")
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
 		await ctx.send("4")
 	else:
