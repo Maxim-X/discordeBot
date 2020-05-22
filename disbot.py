@@ -271,7 +271,10 @@ async def pars(ctx):
 		await ctx.send("/1")
 		UrlGame = allUrlGame[0].get_attribute('href')
 		await ctx.send("/1")
-		await ctx.send(allTime[0].text)
+		await ctx.send(len(allTime))
+		for x in allTime:
+			await ctx.send(str(x.text))
+
 		timeGame = str(allTime[0].text)
 		await ctx.send("/1") #<--------------
 		timeGameOk = timeGame.replace('.','')
