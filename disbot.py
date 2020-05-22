@@ -253,6 +253,8 @@ async def pars(ctx):
 	await ctx.send("1")
 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
 	nameGameOk = nameGame[0].text
+	for x in nameGame:
+		await ctx.send(str(x.text))
 	await ctx.send("2")
 	await ctx.send(nameGameOk)
 
