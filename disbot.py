@@ -247,7 +247,7 @@ async def pars(ctx):
 	driver = chromeOpen()
 	driver.get('https://www.epicgames.com/store/ru/')
 
-	await asyncio.sleep(15)
+	await asyncio.sleep(30)
 	print("1")
 	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
 	await ctx.send("1")
