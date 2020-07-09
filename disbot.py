@@ -350,21 +350,21 @@ async def pars(ctx):
 @bot.command(pass_context= True)
 async def ds(ctx):
 	global mainLoopStatus
-    global dataConfig  # Gets config values
-    global langM
+	global dataConfig  # Gets config values
+	global langM
 
-    # await ctx.send(str(langM["start_success"]))
+	# await ctx.send(str(langM["start_success"]))
 
-    # Here is where the real function starts
+	# Here is where the real function starts
 
-    mainLoopStatus = True  # Changes It to True so the main loop can start
+	mainLoopStatus = True  # Changes It to True so the main loop can start
 
 
-    # Epic Games methods
-    epic_mod.obj.make_request()
-    epic_mod.obj.process_request()
-    print(epic_mod.obj.gameData)
-    await ctx.send(epic_mod.obj.gameData)
+	# Epic Games methods
+	epic_mod.obj.make_request()
+	epic_mod.obj.process_request()
+	print(epic_mod.obj.gameData)
+	await ctx.send(epic_mod.obj.gameData)
 
 
 @bot.command(pass_context= True)
