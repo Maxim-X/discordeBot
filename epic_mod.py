@@ -52,6 +52,7 @@ class Scraping:
                 continue
 
             # Parses relevant data such as name and link and adds It to gameData
+            print(i)
             temp = (i["title"], str(self.baseUrl + i["urlSlug"]))
 
             self.gameData.append(temp)
