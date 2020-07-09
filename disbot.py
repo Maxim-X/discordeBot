@@ -19,8 +19,40 @@ from discord.utils import get
 from datetime import timedelta
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+import epic_mod
+import time
 bot = commands.Bot(command_prefix='>')
  
+mainLoopStatus = False  # Variable which starts or stops the main loop
+dataConfig = None  # Loaded configuration
+langM = None
+
+def pm(message):
+    """Ignores PM messages"""
+
+    if "Direct Message with" in str(message):
+        return True
+
+def get_time():
+    """Generates a string with the neccessary date and time format"""
+
+    return time.strftime('[%Y/%m/%d]' + '[%H:%M]')
+
+
+def generate_message(title, link):
+    """Generates some messages the bot sends"""
+    # If third parameter True, then the message is for discord
+    # This lets the function knows where the message is going to be sent and adds the mention if required
+
+    global dataConfig
+    global langM
+
+    draft = langM["procedural_message"].format(title, link)
+
+    if dataConfig["role_mention"]:  # If role_mention is True, then adds the role parameter from config
+        draft = dataConfig["role"] + " " + draft
+
+    return draft
 
 
 def chromeOpen():
@@ -314,6 +346,26 @@ async def pars(ctx):
 	embed.set_image(url=""+str(ImgGame)+"")
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await ctx.send(embed=embed)
+
+@bot.command(pass_context= True)
+async def ds(ctx):
+	global mainLoopStatus
+    global dataConfig  # Gets config values
+    global langM
+
+    # await ctx.send(str(langM["start_success"]))
+
+    # Here is where the real function starts
+
+    mainLoopStatus = True  # Changes It to True so the main loop can start
+
+
+    # Epic Games methods
+    epic_mod.obj.make_request()
+    epic_mod.obj.process_request()
+    print(epic_mod.obj.gameData)
+    await ctx.send(epic_mod.obj.gameData)
+
 
 @bot.command(pass_context= True)
 async def GamePlayGroundZakaz(ctx, *, url):
