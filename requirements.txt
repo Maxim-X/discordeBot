@@ -13,4 +13,3 @@ lxml
 datetime
 asyncio
 selenium
-pysqlite
