@@ -64,7 +64,39 @@ def chromeOpen():
 	chrome_options.add_argument("--no-sandbox")
 	return webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
+def EpicGamesFreeGame(idChannel = "696376496582950953"):
+	global mainLoopStatus
+	global dataConfig  # Gets config values
+	global langM
 
+	# await ctx.send(str(langM["start_success"]))
+
+	# Here is where the real function starts
+
+	mainLoopStatus = True  # Changes It to True so the main loop can start
+	allNameGame = ""
+
+	# Epic Games methods
+	epic_mod.obj.make_request()
+	epic_mod.obj.process_request()
+	print(epic_mod.obj.gameData)
+	allGameInfo = epic_mod.obj.gameData
+	if len(allGameInfo) == 1:
+		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{allGameInfo[0][0]}``\n\nДанная игра будет бесплатна до {allGameInfo[0][2]}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({allGameInfo[0][1]})", color=0xff7d25)
+	else:
+		# Собираем список игр
+		for GameInfo in allGameInfo:
+			if allNameGame != "":
+				allNameGame = allNameGame+"`` "+GameInfo[0]+" ``\n"
+			else:
+				allNameGame = "`` "+GameInfo[0]+" ``\n"
+		# Собираем список игр
+		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздаются: {allNameGame}\nДанные игры будут бесплатны до {allGameInfo[0][2]}, успей добавить их в свою библиотеку!\n[Ссылка на игры](https://www.epicgames.com/store/ru/free-games)", color=0xff7d25)
+	embed.set_image(url=allGameInfo[random.randint(0,len(allGameInfo)-1)][3])
+	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	# print(str(ctx.channel.id))
+	return embed
+	
 @bot.command(pass_context= True)
 async def time(ctx):
 	today = datetime.datetime.today()
@@ -272,71 +304,73 @@ async def check(ctx):
 
 @bot.command(pass_context= True)
 async def pars(ctx):
-	print("Начало")
-	await ctx.message.delete()
-	await bot.wait_until_ready()
-	#channel = bot.get_channel(615296305144660008)#412939700748419086
-	driver = chromeOpen()
-	driver.get('https://www.epicgames.com/store/ru/')
+	embed = EpicGamesFreeGame(ctx.channel.id)
+	await ctx.send(embed=embed)
+	# print("Начало")
+	# await ctx.message.delete()
+	# await bot.wait_until_ready()
+	# #channel = bot.get_channel(615296305144660008)#412939700748419086
+	# driver = chromeOpen()
+	# driver.get('https://www.epicgames.com/store/ru/')
 
-	await asyncio.sleep(30)
-	print("1")
-	login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
-	await ctx.send("1")
-	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-	nameGameOk = nameGame[0].text
-	for x in nameGame:
-		await ctx.send(str(x.text))
-	await ctx.send("2")
-	await ctx.send(nameGameOk)
+	# await asyncio.sleep(30)
+	# print("1")
+	# login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
+	# await ctx.send("1")
+	# nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
+	# nameGameOk = nameGame[0].text
+	# for x in nameGame:
+	# 	await ctx.send(str(x.text))
+	# await ctx.send("2")
+	# await ctx.send(nameGameOk)
 
-	if nameGameOk != 'Бесплатные игры':
-		await ctx.send("3")
-		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
-		await ctx.send("/1")
-		ImgGame = allImgGame[0].get_attribute("data-image")
-		await ctx.send("/1")
-		ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-		await ctx.send("/1")
-		print(allImgGame[0])
-		await ctx.send("/1")
-		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-		await ctx.send("/1")
-		allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a") #a[starts-with(@class, 'Card-root')]
-		await ctx.send("/1")
-		UrlGame = allUrlGame[0].get_attribute('href')
-		await ctx.send("/1")
-		await ctx.send(len(allTime))
-		for x in allTime:
-			await ctx.send(str(x.text))
+	# if nameGameOk != 'Бесплатные игры':
+	# 	await ctx.send("3")
+	# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
+	# 	await ctx.send("/1")
+	# 	ImgGame = allImgGame[0].get_attribute("data-image")
+	# 	await ctx.send("/1")
+	# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
+	# 	await ctx.send("/1")
+	# 	print(allImgGame[0])
+	# 	await ctx.send("/1")
+	# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
+	# 	await ctx.send("/1")
+	# 	allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a") #a[starts-with(@class, 'Card-root')]
+	# 	await ctx.send("/1")
+	# 	UrlGame = allUrlGame[0].get_attribute('href')
+	# 	await ctx.send("/1")
+	# 	await ctx.send(len(allTime))
+	# 	for x in allTime:
+	# 		await ctx.send(str(x.text))
 
-		timeGame = str(allTime[0].text)
-		await ctx.send("/1") #<--------------
-		timeGameOk = timeGame.replace('.','')
-		await ctx.send("/1")
-		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
-		await ctx.send("4")
-	else:
+	# 	timeGame = str(allTime[0].text)
+	# 	await ctx.send("/1") #<--------------
+	# 	timeGameOk = timeGame.replace('.','')
+	# 	await ctx.send("/1")
+	# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
+	# 	await ctx.send("4")
+	# else:
 
-		await ctx.send("5")
-		allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'Picture-picture_')] //img")
-		ImgGame = allImgGame[0].get_attribute("data-image")
-		print(str(ImgGame))
-		ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-		print(str(ImgGame))
-		#print(ImgGame)
-		allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-		timeGame = allTime[0].text
-		timeGameOk = timeGame.replace('.','')
+	# 	await ctx.send("5")
+	# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'Picture-picture_')] //img")
+	# 	ImgGame = allImgGame[0].get_attribute("data-image")
+	# 	print(str(ImgGame))
+	# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
+	# 	print(str(ImgGame))
+	# 	#print(ImgGame)
+	# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
+	# 	timeGame = allTime[0].text
+	# 	timeGameOk = timeGame.replace('.','')
 
-		UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
-		UrlGame = UrlGame[0].get_attribute("href")
-		driver.get(str(UrlGame))
+	# 	UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
+	# 	UrlGame = UrlGame[0].get_attribute("href")
+	# 	driver.get(str(UrlGame))
 
-		await asyncio.sleep(15)
-		nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-		nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
-		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
+	# 	await asyncio.sleep(15)
+	# 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
+	# 	nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
+	# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
 		
 
 		
