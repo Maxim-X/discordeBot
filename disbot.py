@@ -18,7 +18,7 @@ from discord.utils import get
 
 from datetime import timedelta
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
+ 
 import epic_mod
 import time
 bot = commands.Bot(command_prefix='>')
@@ -96,7 +96,7 @@ def EpicGamesFreeGame(idChannel = "696376496582950953"):
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	# print(str(ctx.channel.id))
 	return embed
-	
+
 @bot.command(pass_context= True)
 async def time(ctx):
 	today = datetime.datetime.today()
