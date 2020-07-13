@@ -64,7 +64,7 @@ def chromeOpen():
 	chrome_options.add_argument("--no-sandbox")
 	return webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
-	
+
 def EpicGamesFreeGame(idChannel = "696376496582950953"):
 	global mainLoopStatus
 	global dataConfig  # Gets config values
@@ -520,10 +520,9 @@ async def goodMorning():
 			await asyncio.sleep(int(sleepHOne)) #3600
 
 async def freeGameEpic():
-	print('--------')
 	while not bot.is_closed():
 		await bot.wait_until_ready()
-		channel = bot.get_channel(412939700748419086) #615296305144660008
+		# channel = bot.get_channel(412939700748419086) #615296305144660008
 		todayNew = datetime.datetime.today()
 		todayWeekDay = str(todayNew.strftime("%A"))
 		todayH = int(todayNew.strftime("%H"))
@@ -536,70 +535,69 @@ async def freeGameEpic():
 		if todayWeekDay == 'Friday' or todayWeekDay == 'Wednesday':
 
 			if todayH == 18 and todayM == 0:
-				driver = chromeOpen()
-				driver.get('https://www.epicgames.com/store/ru/')
+				embed = EpicGamesFreeGame()
+				await ctx.send(embed=embed)
+				# driver = chromeOpen()
+				# driver.get('https://www.epicgames.com/store/ru/')
 
-				await asyncio.sleep(5)
-				login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
-				nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-				nameGameOk = nameGame[0].text
+				# await asyncio.sleep(5)
+				# login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
+				# nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
+				# nameGameOk = nameGame[0].text
 
-				if nameGameOk != 'Бесплатные игры':
-					allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
-					ImgGame = allImgGame[0].get_attribute("data-image")
-					ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-					#print(allImgGame[0])
-					allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-					allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
-					UrlGame = allUrlGame[0].get_attribute('href')
-					timeGame = str(allTime[0].text)
-					timeGameOk = timeGame.replace('.','')
-					embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
-				else:
-					allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
-					ImgGame = allImgGame[0].get_attribute("data-image")
-					#print(str(ImgGame))
-					ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-					#print(str(ImgGame))
-					#print(ImgGame)
-					allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-					timeGame = allTime[0].text
-					timeGameOk = timeGame.replace('.','')
+				# if nameGameOk != 'Бесплатные игры':
+				# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
+				# 	ImgGame = allImgGame[0].get_attribute("data-image")
+				# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
+				# 	#print(allImgGame[0])
+				# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
+				# 	allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
+				# 	UrlGame = allUrlGame[0].get_attribute('href')
+				# 	timeGame = str(allTime[0].text)
+				# 	timeGameOk = timeGame.replace('.','')
+				# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
+				# else:
+				# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
+				# 	ImgGame = allImgGame[0].get_attribute("data-image")
+				# 	#print(str(ImgGame))
+				# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
+				# 	#print(str(ImgGame))
+				# 	#print(ImgGame)
+				# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
+				# 	timeGame = allTime[0].text
+				# 	timeGameOk = timeGame.replace('.','')
 
-					UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
-					UrlGame = UrlGame[0].get_attribute("href")
-					driver.get(str(UrlGame))
+				# 	UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
+				# 	UrlGame = UrlGame[0].get_attribute("href")
+				# 	driver.get(str(UrlGame))
 
-					await asyncio.sleep(5)
-					nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-					nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
-					embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
+				# 	await asyncio.sleep(5)
+				# 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
+				# 	nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
+				# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
 					
 
 
 					
-				driver.quit() 
-				embed.set_image(url=""+str(ImgGame)+"")
-				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-				await channel.send(embed=embed)
+				# driver.quit() 
+				# embed.set_image(url=""+str(ImgGame)+"")
+				# embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+				# await channel.send(embed=embed)
 				todayNew = datetime.datetime.today()
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
 				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(sleepHOne)
 			else:
-				print('4')
 				todayNew = datetime.datetime.today()
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
-				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 				await asyncio.sleep(int(sleepHOne))
 				
 		else:
 			todayNew = datetime.datetime.today()
 			todayM = int(todayNew.strftime("%M"))
 			sleepHOne = 3600 - (todayM * 60)
-			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
 			await asyncio.sleep(int(sleepHOne))
 
 @bot.event
