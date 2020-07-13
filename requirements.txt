@@ -13,7 +13,4 @@ lxml
 datetime
 asyncio
 selenium
-time
-sqlite3
-json
-locale
+pysqlite
