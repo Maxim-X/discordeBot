@@ -27,7 +27,6 @@ class Scraping:
     def searchAtrName(self, allInfo, key):
         if len(allInfo) > 0:
             for info in allInfo:
-                print("---------"+str(info["key"])+"---------"+str(info["value"]))
                 if info["key"] == str(key):
                     return info["value"]
         return None
@@ -41,7 +40,7 @@ class Scraping:
             self.data = requests.get(self.endpoint)
 
             self.data = json.loads(self.data.content)  # Bytes to json object
-            print(self.data)
+           
         except:
             print(time.strftime('[%Y/%m/%d]' + '[%H:%M]') +
                   "[ERROR]: Epic Games request failed!")
