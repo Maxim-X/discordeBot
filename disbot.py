@@ -374,12 +374,12 @@ async def pars(ctx):
 		
 
 		
-	await ctx.send("6")
-	driver.quit()
-	todayNew = datetime.datetime.today()
-	embed.set_image(url=""+str(ImgGame)+"")
-	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	await ctx.send(embed=embed)
+	# await ctx.send("6")
+	# driver.quit()
+	# todayNew = datetime.datetime.today()
+	# embed.set_image(url=""+str(ImgGame)+"")
+	# embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+	# await ctx.send(embed=embed)
 
 @bot.command(pass_context= True)
 async def ds(ctx):
