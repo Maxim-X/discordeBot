@@ -13,8 +13,3 @@ lxml
 datetime
 asyncio
 selenium
-epic_mod
-time
-sqlite3
-json
-locale
