@@ -64,6 +64,7 @@ def chromeOpen():
 	chrome_options.add_argument("--no-sandbox")
 	return webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
+	
 def EpicGamesFreeGame(idChannel = "696376496582950953"):
 	global mainLoopStatus
 	global dataConfig  # Gets config values
