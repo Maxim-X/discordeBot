@@ -104,65 +104,6 @@ async def time(ctx):
 	await ctx.send(today.strftime("%H.%M.%S"))
 
 
-# async def newsGamePlayGround():
-# 	while not bot.is_closed():
-# 		await bot.wait_until_ready()
-# 		todayNew = datetime.datetime.today()
-# 		todayH = int(todayNew.strftime("%H"))
-# 		todaym = int(todayNew.strftime("%M"))
-# 		if todayH + 5 < 24:
-# 			todayH = todayH + 5
-# 		else:
-# 			todayH = todayH + 5 - 24 
-
-# 		if todayH == 14 or todayH == 15 or todayH == 18 or todayH == 19:
-# 			if todaym <= 5:
-# 				timeSleep = random.randint(60, 120)
-# 				print('Сплю: '+str(timeSleep)+' секунд')
-# 				await asyncio.sleep(int(timeSleep))
-# 				driver = chromeOpen()
-# 				channel = bot.get_channel(619497569298546709)
-# 				print('---1---')
-# 				driver.get('https://www.playground.ru/news/')
-# 				print('---1---')
-# 				pageListUrl = driver.find_element_by_xpath('//article[@class="post"]// h3[@class="post-title"] //a')
-# 				print('---1---')
-# 				pageGame = pageListUrl.get_attribute('href')
-# 				print('Ссылка:' +str(pageGame))
-# 				print('---1---')
-# 				driver.get(str(pageGame))
-# 				print('---1---')
-# 				nameNews = driver.find_element_by_xpath('//h1[@class="post-title"]')
-# 				print('---1---')
-# 				nameNews = nameNews.text
-# 				print('---1---')
-# 				imgNews = driver.find_element_by_xpath('//figure//img').get_attribute('src')
-# 				print('---1---')
-# 				titleNews = driver.find_element_by_xpath('//div[@itemprop="articleBody"]/p')
-# 				print('---1---')
-# 				titleNews = titleNews.text
-# 				print('---1---')
-# 				driver.quit()
-# 				print('---1---')
-# 				embed=discord.Embed(title=f"{nameNews}", description=f"{titleNews}\n\n[Читать далее...]({pageGame})", color=0x0078f2)
-# 				print('---1---')
-# 				embed.set_image(url=""+str(imgNews)+"")
-# 				print('---1---')
-# 				embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-# 				print('---1---')
-# 				await channel.send(embed=embed)
-# 				print('---1---')
-# 			todayNew = datetime.datetime.today()
-# 			todayM = int(todayNew.strftime("%M")) 
-# 			sleepHOne = 3600 - (todayM * 60)
-# 			await asyncio.sleep(int(sleepHOne)) #3600
-# 		else:
-# 			todayNew = datetime.datetime.today()
-# 			todayM = int(todayNew.strftime("%M"))
-# 			sleepHOne = 3600 - (todayM * 60)
-# 			# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
-# 			await asyncio.sleep(int(sleepHOne))
-
 @bot.command(pass_context= True)
 async def check(ctx):
 	
@@ -221,84 +162,6 @@ async def check(ctx):
 
 
 
-# async def checkCrackGame():
-# 	while not bot.is_closed():
-# 		todayNew = datetime.datetime.today()
-# 		todayH = int(todayNew.strftime("%H"))
-		
-# 		if todayH + 5 < 24:
-# 			todayH = todayH + 5
-# 		else:
-# 			todayH = todayH + 5 - 24
-		
-# 		if todayH == 4: 
-# 			caps = DesiredCapabilities().CHROME
-# 			caps["pageLoadStrategy"] = "none" # interactive
-# 			chrome_options = webdriver.ChromeOptions()
-# 			chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-# 			chrome_options.add_argument("--headless")
-# 			chrome_options.add_argument("--disable-dev-shm-usage")
-# 			chrome_options.add_argument("--no-sandbox")
-# 			driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options,desired_capabilities=caps)
-			
-
-# 			driver.get('https://crackwatch.com/')
-# 			await asyncio.sleep(8)
-# 			viewGameImg = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='image-box'] // img")
-
-# 			viewGameStatus = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='sub-title'] // div[@class='inline-block'] // font")
-# 			viewGameNameAndSrc = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='main-title main-title-cap'] // a")
-
-
-# 			gameImg = viewGameImg[0].get_attribute('src')
-# 			gameStatus = (viewGameStatus[0].text[: int(viewGameStatus[0].text.find('D+'))]).strip()
-# 			gameTimeCrack = (viewGameStatus[0].text[int(viewGameStatus[0].text.find('D+')+2):]).strip()
-# 			gameName = viewGameNameAndSrc[0].text
-# 			gameSrc = viewGameNameAndSrc[0].get_attribute('href')
-# 			print(gameImg)
-# 			print(gameStatus)
-# 			print(gameName)
-# 			print(gameSrc)
-# 			print(gameTimeCrack)
-
-# 			if gameStatus != "CRACKED":
-# 				driver.get(str(gameSrc))
-# 				await asyncio.sleep(8)
-# 				dataCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
-# 				gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
-# 				gameTeamCrack = gameTeamCrack[0].text
-# 				dataCrack = dataCrack[0].text
-# 				print(dataCrack)
-# 				today = datetime.datetime.today() - timedelta(hours=5)
-				
-# 				today = today.strftime("%b %d, %Y")
-# 				print(today)
-# 				if(today != dataCrack):
-# 					print("1")
-# 					embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
-# 					print("2")
-# 					driver.quit()
-# 					print("3")
-# 					embed.set_image(url=""+str(gameImg)+"")
-# 					print("4")
-# 					embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-# 					print("5")
-# 					channel = bot.get_channel(615296305144660008)#412939700748419086
-# 					await channel.send(embed=embed)
-# 					print("6")
-# 				else:
-# 					print("7")
-# 					channel = bot.get_channel(615296305144660008)#412939700748419086
-# 					await channel.send("Каво?")
-# 			else:
-# 				channel = bot.get_channel(615296305144660008)#412939700748419086
-# 				await channel.send("Игра не взломана")
-
-# 			todayNew = datetime.datetime.today()
-# 			todaym = int(todayNew.strftime("%M"))
-# 			sleepHOne = 3600 - (todaym * 60)
-# 			await asyncio.sleep(int(sleepHOne)) #3600
-
 
 
 
@@ -307,80 +170,6 @@ async def check(ctx):
 async def pars(ctx):
 	embed = EpicGamesFreeGame(ctx.channel.id)
 	await ctx.send(embed=embed)
-	# print("Начало")
-	# await ctx.message.delete()
-	# await bot.wait_until_ready()
-	# #channel = bot.get_channel(615296305144660008)#412939700748419086
-	# driver = chromeOpen()
-	# driver.get('https://www.epicgames.com/store/ru/')
-
-	# await asyncio.sleep(30)
-	# print("1")
-	# login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
-	# await ctx.send("1")
-	# nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-	# nameGameOk = nameGame[0].text
-	# for x in nameGame:
-	# 	await ctx.send(str(x.text))
-	# await ctx.send("2")
-	# await ctx.send(nameGameOk)
-
-	# if nameGameOk != 'Бесплатные игры':
-	# 	await ctx.send("3")
-	# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
-	# 	await ctx.send("/1")
-	# 	ImgGame = allImgGame[0].get_attribute("data-image")
-	# 	await ctx.send("/1")
-	# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-	# 	await ctx.send("/1")
-	# 	print(allImgGame[0])
-	# 	await ctx.send("/1")
-	# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-	# 	await ctx.send("/1")
-	# 	allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a") #a[starts-with(@class, 'Card-root')]
-	# 	await ctx.send("/1")
-	# 	UrlGame = allUrlGame[0].get_attribute('href')
-	# 	await ctx.send("/1")
-	# 	await ctx.send(len(allTime))
-	# 	for x in allTime:
-	# 		await ctx.send(str(x.text))
-
-	# 	timeGame = str(allTime[0].text)
-	# 	await ctx.send("/1") #<--------------
-	# 	timeGameOk = timeGame.replace('.','')
-	# 	await ctx.send("/1")
-	# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
-	# 	await ctx.send("4")
-	# else:
-
-	# 	await ctx.send("5")
-	# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'Picture-picture_')] //img")
-	# 	ImgGame = allImgGame[0].get_attribute("data-image")
-	# 	print(str(ImgGame))
-	# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-	# 	print(str(ImgGame))
-	# 	#print(ImgGame)
-	# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-	# 	timeGame = allTime[0].text
-	# 	timeGameOk = timeGame.replace('.','')
-
-	# 	UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
-	# 	UrlGame = UrlGame[0].get_attribute("href")
-	# 	driver.get(str(UrlGame))
-
-	# 	await asyncio.sleep(15)
-	# 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-	# 	nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
-	# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
-		
-
-		
-	# await ctx.send("6")
-	# driver.quit()
-	# todayNew = datetime.datetime.today()
-	# embed.set_image(url=""+str(ImgGame)+"")
-	# embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	# await ctx.send(embed=embed)
 
 @bot.command(pass_context= True)
 async def ds(ctx):
@@ -479,14 +268,6 @@ async def goodMorning():
 			goodMornText = driver.find_elements_by_xpath("//p[starts-with(@id, 'sluchaino')]")
 			goodMorningTextOk = goodMornText[0].text
 			driver.quit()
-			#Вот свежий выпуск игровых новостей:\n
-			# listGoodMorn = ['Стремитесь не к успеху, а к ценностям, которые он дает​.',
-			# 'Разочаровавшись в одном, не наказывайте другого. Все люди разные. Не теряйте способность верить и любить.',
-			# 'Нет ничего сильнее идеи, время которой пришло!','Иногда мне кажется, что все, чем я хочу заниматься в жизни — это слушать музыку.',
-			# 'В погоне за похвалой лучшая приманка — скромность. Maxim © PS: поддерживаю. ',
-			# 'Жизнь – игра, не проиграй себя,','Лучше рисоваться многими знаниями, чем хорошо владеть немногими.',
-			# 'На самом деле, жизнь проста. Мы сами настойчиво её усложняем.']
-			# goodMornText = random.choice(listGoodMorn)
 			todayWeekDay = str(todayNew.strftime("%A"))
 
 			
@@ -537,52 +318,7 @@ async def freeGameEpic():
 			if todayH == 18 and todayM == 0:
 				embed = EpicGamesFreeGame()
 				await ctx.send(embed=embed)
-				# driver = chromeOpen()
-				# driver.get('https://www.epicgames.com/store/ru/')
 
-				# await asyncio.sleep(5)
-				# login_form = driver.find_element_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] ")
-				# nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-				# nameGameOk = nameGame[0].text
-
-				# if nameGameOk != 'Бесплатные игры':
-				# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
-				# 	ImgGame = allImgGame[0].get_attribute("data-image")
-				# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-				# 	#print(allImgGame[0])
-				# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-				# 	allUrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
-				# 	UrlGame = allUrlGame[0].get_attribute('href')
-				# 	timeGame = str(allTime[0].text)
-				# 	timeGameOk = timeGame.replace('.','')
-				# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{nameGameOk}``\n\nДанная игра будет бесплатна до {timeGameOk}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({UrlGame})", color=0xff7d25)
-				# else:
-				# 	allImgGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //img")
-				# 	ImgGame = allImgGame[0].get_attribute("data-image")
-				# 	#print(str(ImgGame))
-				# 	ImgGame = ImgGame[: int(ImgGame.find('jpg') +3 )]
-				# 	#print(str(ImgGame))
-				# 	#print(ImgGame)
-				# 	allTime = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //time")
-				# 	timeGame = allTime[0].text
-				# 	timeGameOk = timeGame.replace('.','')
-
-				# 	UrlGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //a")
-				# 	UrlGame = UrlGame[0].get_attribute("href")
-				# 	driver.get(str(UrlGame))
-
-				# 	await asyncio.sleep(5)
-				# 	nameGame = driver.find_elements_by_xpath("//*[starts-with(@class, 'css-r2r3m1')]/span[3] //*[starts-with(@class, 'OfferTitleInfo')]")
-				# 	nameGameOk ="``"+nameGame[0].text +"`` , ``"+ nameGame[1].text+"``"
-				# 	embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: {nameGameOk}\n\nДанные игры будут бесплатны до {timeGameOk}, успей добавить их в свою библиотеку!\n[Ссылка на игры]({UrlGame})", color=0xff7d25)
-					
-
-
-					
-				# driver.quit() 
-				# embed.set_image(url=""+str(ImgGame)+"")
-				# embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-				# await channel.send(embed=embed)
 				todayNew = datetime.datetime.today()
 				todayM = int(todayNew.strftime("%M"))
 				sleepHOne = 3600 - (todayM * 60)
@@ -608,60 +344,6 @@ async def on_member_join(member):
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	await channel.send(embed=embed)
 	await member.add_roles(discord.utils.get(member.guild.roles, name='Новичок'))
-				
-# @bot.event
-# async def on_member_update(before, after):
-# 	# Пользователь начал играть
-# 	if before.activity == None and after.activity != None:
-# 		newGameStatus = after.activity.name
-# 		print(str(after.id))
-# 		if newGameStatus != '' and after.id != 450264735368085505 and after.id != 412235680303939595 :
-
-# 			channel = bot.get_channel(623944345522798603)
-# 			haveGame = False
-# 			for channelInd in channel.voice_channels:
-# 				if (channelInd.name == str(newGameStatus)):
-# 					haveGame = True
-# 			if(not haveGame):
-# 				massAllVC = channel.voice_channels
-# 				if(len(massAllVC) <= 1):
-# 					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
-# 				else:
-# 					channelDelInd = massAllVC[0]
-# 					await channelDelInd.delete()
-# 					await channel.create_voice_channel(name=str(newGameStatus), overwrites=None, reason=None)
-
-		# Пользователь начал играть
-
-
-# async def deleteVoiceChannel():
-# 	while not bot.is_closed():
-# 		await bot.wait_until_ready()
-# 		todayNew = datetime.datetime.today()
-# 		todayH = int(todayNew.strftime("%H"))
-# 		todayM = int(todayNew.strftime("%M"))
-# 		if todayH + 5 < 24:
-# 			todayH = todayH + 5
-# 		else:
-# 			todayH = todayH + 5 - 24
-# 		print("Часов "+str(todayH))
-# 		if todayH == 10:
-# 			channel = bot.get_channel(623944345522798603)
-# 			for channelInd in channel.voice_channels:
-# 				if(len(channelInd.members) == 0):
-# 					await channelInd.delete()
-# 			todayNew = datetime.datetime.today()
-# 			todayM = int(todayNew.strftime("%M"))
-# 			sleepHOne = 86400 - (todayM * 60)
-# 			print('Сплю: '+str(sleepHOne)+' секунд')
-# 			await asyncio.sleep(int(sleepHOne))
-# 		else:
-# 			todayNew = datetime.datetime.today()
-# 			todayM = int(todayNew.strftime("%M"))
-# 			sleepHOne = 3600 - (todayM * 60)
-# 			print('Сплю: '+str(sleepHOne)+' секунд')
-# 			await asyncio.sleep(int(sleepHOne))
-
 
 @bot.event
 async def on_message(message):
@@ -677,26 +359,7 @@ async def on_message(message):
 
 @bot.event
 async def on_message(message):
-	if message.content == "Рамблер":
-		await message.channel.send("Поздравляю, ты выйграл(-а) !")
-		await discord.Message.delete(message, delay=None)
-
 	await bot.process_commands(message)
-	# # print(message.content)
-	# messageUser = message.content[:]
-	# messageUser = messageUser.lower()
-	# messageUser = messageUser.split()
-	# # print(messageUser)
-	# # if set(messageUser).intersection(set(listBunMessage)):
-	# for ig in listBunMessage:
-	# 	if ig in messageUser:
-	# 		channel = message.channel
-	# 		userBan = message.author
-	# 		infoUserBan = discord.Embed(title= "Данное сообщение не прошло модерацию", colour= 0xf9d506, description=''+str(userBan)+', если хочешь использовать мат, заходи в голосовой чат.')
-	# 		infoUserBan.set_footer(text="Администрация осуждает данное высказывание. `© Maxim`")
-	# 		await discord.Message.delete(message, delay=None)
-	# 		await channel.send(embed=infoUserBan)
-	#await bot.process_commands(message)
 
 
 # @bot.event
@@ -793,25 +456,25 @@ async def mem(ctx):
 	await ctx.send(embed=embed)
 
 
-@bot.command(pass_context= True)
-async def addBanMessage(ctx, *, word):
-	allword = word.split( )
-	allword = len(allword)
-	if allword == 1:
-		await ctx.send("Я тебя понял, сча все будет!")
-		text_file=open("listBunMessage.txt", "r", encoding="utf-8")
-		allBanMessage = text_file.readlines()
-		text_file.close()
-		text_file=open("listBunMessage.txt", "w", encoding="utf-8")
-		allBanMessage+=str(word)+"\n"
-		await ctx.send(str(allBanMessage))
-		text_file.writelines(allBanMessage)
-		text_file.close()
-		author = ctx.message.author
-		infoUser = discord.Embed(title= "Слово `"+str(word)+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+str(author)+" спасибо за то что внес вклад в мое развитие!")
-		await ctx.send(embed=infoUser)
-	else:
-		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
+# @bot.command(pass_context= True)
+# async def addBanMessage(ctx, *, word):
+# 	allword = word.split( )
+# 	allword = len(allword)
+# 	if allword == 1:
+# 		await ctx.send("Я тебя понял, сча все будет!")
+# 		text_file=open("listBunMessage.txt", "r", encoding="utf-8")
+# 		allBanMessage = text_file.readlines()
+# 		text_file.close()
+# 		text_file=open("listBunMessage.txt", "w", encoding="utf-8")
+# 		allBanMessage+=str(word)+"\n"
+# 		await ctx.send(str(allBanMessage))
+# 		text_file.writelines(allBanMessage)
+# 		text_file.close()
+# 		author = ctx.message.author
+# 		infoUser = discord.Embed(title= "Слово `"+str(word)+"` добавлено в список запрещенных слов.", colour= 0xf9d506, description=""+str(author)+" спасибо за то что внес вклад в мое развитие!")
+# 		await ctx.send(embed=infoUser)
+# 	else:
+# 		await ctx.send("Чтобы добавить слово в список запрещенных нужно указать только одно слово. \nДанное правило `Максим` разработал чтобы исключить вырывание слов из контекста.")
 
 @bot.command(pass_context= True)
 async def sendMessage(ctx,*, title):

@@ -60,8 +60,10 @@ class Scraping:
                 continue
             # Parses relevant data such as name and link and adds It to gameData
             urlName = self.searchAtrName(i["customAttributes"], "com.epicgames.app.productSlug")
-            locale.setlocale(locale.LC_ALL, 'ru_RU.utf8')
-            dateEnd = datetime.datetime.strptime(i["price"]["lineOffers"][0].get("appliedRules")[0].get("endDate"), '%Y-%m-%dT%H:%M:%S.%fZ').strftime("%d %b")
+            # locale.setlocale(locale.LC_ALL, 'ru_RU.utf8')
+            months = {"Jan": "Янв","Feb": "Фев","Mar": "Мар","Apr": "Апр","May": "Май","Jun": "Июн","Jul": "Июл","Aug": "Авг","Sep": "Сен","Oct": "Окт","Nov": "Ноя"}
+            dateEnd = datetime.datetime.strptime(i["price"]["lineOffers"][0].get("appliedRules")[0].get("endDate"), '%Y-%m-%dT%H:%M:%S.%fZ').strftime("%d")
+            dateEnd = dateEnd+" "+months[str(datetime.datetime.strptime(i["price"]["lineOffers"][0].get("appliedRules")[0].get("endDate"), '%Y-%m-%dT%H:%M:%S.%fZ').strftime("%b"))]
             imagePost = i["keyImages"][0]["url"]
             if urlName is not None:
                 temp = (i["title"], str(self.baseUrl+urlName), dateEnd, imagePost) # dateEnd i["customAttributes"]).get("com.epicgames.app.blacklist")
