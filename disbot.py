@@ -174,7 +174,7 @@ async def pars(ctx):
 @bot.command(pass_context= True)
 @commands.has_permissions(administrator=True)
 async def parsInChannel(ctx, idChannel):
-	embed = EpicGamesFreeGame(idChannel)
+	embed = EpicGamesFreeGame()
 	channel = bot.get_channel(idChannel)
 	await channel.send(embed=embed)
 
