@@ -65,7 +65,7 @@ def chromeOpen():
 	return webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 	#--- Парсинг сайтов
 
-def EpicGamesFreeGame(idChannel = "696376496582950953"):
+def EpicGamesFreeGame():
 	global mainLoopStatus
 	global dataConfig  # Gets config values
 	global langM
@@ -168,14 +168,15 @@ async def time(ctx):
 
 @bot.command(pass_context= True)
 async def pars(ctx):
-	embed = EpicGamesFreeGame(ctx.channel.id)
+	embed = EpicGamesFreeGame()
 	await ctx.send(embed=embed)
 
 @bot.command(pass_context= True)
 @commands.has_permissions(administrator=True)
 async def parsInChannel(ctx, idChannel):
 	embed = EpicGamesFreeGame(idChannel)
-	await ctx.send(embed=embed)
+	channel = bot.get_channel(idChannel)
+	await channel.send(embed=embed)
 
 @bot.command(pass_context= True)
 async def ds(ctx):
