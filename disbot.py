@@ -80,7 +80,7 @@ def EpicGamesFreeGame(idChannel = "696376496582950953"):
 	# Epic Games methods
 	epic_mod.obj.make_request()
 	epic_mod.obj.process_request()
-	print(epic_mod.obj.gameData)
+	# print(epic_mod.obj.gameData)
 	allGameInfo = epic_mod.obj.gameData
 	if len(allGameInfo) == 1:
 		embed=discord.Embed(title="Бесплатные игры в Epic Games | Store", description=f"Привет всем участникам канала!\nСейчас в магазине Epic Games | Store бесплатно раздается: ``{allGameInfo[0][0]}``\n\nДанная игра будет бесплатна до {allGameInfo[0][2]}, успей добавить ее в свою библиотеку!\n[Ссылка на игру]({allGameInfo[0][1]})", color=0xff7d25)
@@ -104,61 +104,61 @@ async def time(ctx):
 	await ctx.send(today.strftime("%H.%M.%S"))
 
 
-@bot.command(pass_context= True)
-async def check(ctx):
+# @bot.command(pass_context= True)
+# async def check(ctx):
 	
-	caps = DesiredCapabilities().CHROME
-	caps["pageLoadStrategy"] = "none" # interactive
-	chrome_options = webdriver.ChromeOptions()
-	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-	chrome_options.add_argument("--headless")
-	chrome_options.add_argument("--disable-dev-shm-usage")
-	chrome_options.add_argument("--no-sandbox")
-	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options,desired_capabilities=caps)
+# 	caps = DesiredCapabilities().CHROME
+# 	caps["pageLoadStrategy"] = "none" # interactive
+# 	chrome_options = webdriver.ChromeOptions()
+# 	chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+# 	chrome_options.add_argument("--headless")
+# 	chrome_options.add_argument("--disable-dev-shm-usage")
+# 	chrome_options.add_argument("--no-sandbox")
+# 	driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options,desired_capabilities=caps)
 	
 
-	driver.get('https://crackwatch.com/')
-	await asyncio.sleep(8)
-	viewGameImg = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='image-box'] // img")
+# 	driver.get('https://crackwatch.com/')
+# 	await asyncio.sleep(8)
+# 	viewGameImg = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='image-box'] // img")
 
-	viewGameStatus = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='sub-title'] // div[@class='inline-block'] // font")
-	viewGameNameAndSrc = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='main-title main-title-cap'] // a")
+# 	viewGameStatus = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='sub-title'] // div[@class='inline-block'] // font")
+# 	viewGameNameAndSrc = driver.find_elements_by_xpath("//div[@class='game-gallery-hot'] // div[@class='game-box'] // div[@class='title-box']  // div[@class='main-title main-title-cap'] // a")
 
 
-	gameImg = viewGameImg[0].get_attribute('src')
-	gameStatus = (viewGameStatus[0].text[: int(viewGameStatus[0].text.find('D+'))]).strip()
-	gameTimeCrack = (viewGameStatus[0].text[int(viewGameStatus[0].text.find('D+')+2):]).strip()
-	gameName = viewGameNameAndSrc[0].text
-	gameSrc = viewGameNameAndSrc[0].get_attribute('href')
-	print(gameImg)
-	print(gameStatus)
-	print(gameName)
-	print(gameSrc)
-	print(gameTimeCrack)
+# 	gameImg = viewGameImg[0].get_attribute('src')
+# 	gameStatus = (viewGameStatus[0].text[: int(viewGameStatus[0].text.find('D+'))]).strip()
+# 	gameTimeCrack = (viewGameStatus[0].text[int(viewGameStatus[0].text.find('D+')+2):]).strip()
+# 	gameName = viewGameNameAndSrc[0].text
+# 	gameSrc = viewGameNameAndSrc[0].get_attribute('href')
+# 	print(gameImg)
+# 	print(gameStatus)
+# 	print(gameName)
+# 	print(gameSrc)
+# 	print(gameTimeCrack)
 
-	if gameStatus != "CRACKED":
-		driver.get(str(gameSrc))
-		await asyncio.sleep(8)
-		dataRelease = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
-		gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
-		gameTeamCrack = gameTeamCrack[0].text
-		dataRelease = dataRelease[0].text
-		print(dataRelease)
-		today = datetime.datetime.today() - timedelta(hours=5)
+# 	if gameStatus != "CRACKED":
+# 		driver.get(str(gameSrc))
+# 		await asyncio.sleep(8)
+# 		dataRelease = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[2] // div[@class='info-data']")
+# 		gameTeamCrack = driver.find_elements_by_xpath("//div[@class='game-page-header-over'] // div[@class='grid'] // div[4] // div[@class='info-data']")
+# 		gameTeamCrack = gameTeamCrack[0].text
+# 		dataRelease = dataRelease[0].text
+# 		print(dataRelease)
+# 		today = datetime.datetime.today() - timedelta(hours=5)
 		
-		today = today.strftime("%b %d, %Y")
-		print(today)
-		#if dataRelease == str(today):
+# 		today = today.strftime("%b %d, %Y")
+# 		print(today)
+# 		#if dataRelease == str(today):
 			
-	else:
-		print("Игра не взломана")
-	driver.quit()
-	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
+# 	else:
+# 		print("Игра не взломана")
+# 	driver.quit()
+# 	embed=discord.Embed(title=f"Игра {gameName} взломана и доступна на торрентах", description=f"Сегодня команда ``{gameTeamCrack}``, успешно взломала игру ``{gameName}``.\n\nНа взлом этой команде понадобилось {gameTimeCrack} д.", color=0x89be5c)
 	
-	todayNew = datetime.datetime.today()
-	embed.set_image(url=""+str(gameImg)+"")
-	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
-	await ctx.send(embed=embed)
+# 	todayNew = datetime.datetime.today()
+# 	embed.set_image(url=""+str(gameImg)+"")
+# 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
+# 	await ctx.send(embed=embed)
 
 
 
@@ -169,6 +169,12 @@ async def check(ctx):
 @bot.command(pass_context= True)
 async def pars(ctx):
 	embed = EpicGamesFreeGame(ctx.channel.id)
+	await ctx.send(embed=embed)
+
+@bot.command(pass_context= True)
+@commands.has_permissions(administrator=True)
+async def parsInChannel(ctx, idChannel):
+	embed = EpicGamesFreeGame(idChannel)
 	await ctx.send(embed=embed)
 
 @bot.command(pass_context= True)
