@@ -27,34 +27,6 @@ mainLoopStatus = False  # Variable which starts or stops the main loop
 dataConfig = None  # Loaded configuration
 langM = None
 
-def pm(message):
-    """Ignores PM messages"""
-
-    if "Direct Message with" in str(message):
-        return True
-
-def get_time():
-    """Generates a string with the neccessary date and time format"""
-
-    return time.strftime('[%Y/%m/%d]' + '[%H:%M]')
-
-
-def generate_message(title, link):
-    """Generates some messages the bot sends"""
-    # If third parameter True, then the message is for discord
-    # This lets the function knows where the message is going to be sent and adds the mention if required
-
-    global dataConfig
-    global langM
-
-    draft = langM["procedural_message"].format(title, link)
-
-    if dataConfig["role_mention"]:  # If role_mention is True, then adds the role parameter from config
-        draft = dataConfig["role"] + " " + draft
-
-    return draft
-
-
 def chromeOpen():
 	#--- Парсинг сайтов
 	chrome_options = webdriver.ChromeOptions()
@@ -97,6 +69,12 @@ def EpicGamesFreeGame():
 	embed.set_footer(text="Сервер "+str(bot.guilds[0].name))
 	# print(str(ctx.channel.id))
 	return embed
+	
+def sleepOneHours():
+	todayNew = datetime.datetime.today()
+	todayM = int(todayNew.strftime("%M"))
+	sleepHOne = 3600 - (todayM * 60)
+	return sleepHOne
 
 @bot.command(pass_context= True)
 async def time(ctx):
@@ -328,22 +306,22 @@ async def freeGameEpic():
 					channel = bot.get_channel(Guild.system_channel.id)
 				await channel.send(embed=embed)
 
-				todayNew = datetime.datetime.today()
-				todayM = int(todayNew.strftime("%M"))
-				sleepHOne = 3600 - (todayM * 60)
+				# todayNew = datetime.datetime.today()
+				# todayM = int(todayNew.strftime("%M"))
+				# sleepHOne = 3600 - (todayM * 60)
 				# await channel.send('Сплю: '+str(sleepHOne)+' секунд')
-				await asyncio.sleep(sleepHOne)
+				await asyncio.sleep(int(sleepOneHours()))
 			else:
-				todayNew = datetime.datetime.today()
-				todayM = int(todayNew.strftime("%M"))
-				sleepHOne = 3600 - (todayM * 60)
-				await asyncio.sleep(int(sleepHOne))
+				# todayNew = datetime.datetime.today()
+				# todayM = int(todayNew.strftime("%M"))
+				# sleepHOne = 3600 - (todayM * 60)
+				await asyncio.sleep(int(sleepOneHours()))
 				
 		else:
-			todayNew = datetime.datetime.today()
-			todayM = int(todayNew.strftime("%M"))
-			sleepHOne = 3600 - (todayM * 60)
-			await asyncio.sleep(int(sleepHOne))
+			# todayNew = datetime.datetime.today()
+			# todayM = int(todayNew.strftime("%M"))
+			# sleepHOne = 3600 - (todayM * 60)
+			await asyncio.sleep(int(sleepOneHours()))
 
 @bot.event
 async def on_member_join(member):
