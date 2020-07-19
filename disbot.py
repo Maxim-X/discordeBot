@@ -324,7 +324,9 @@ async def freeGameEpic():
 
 			if todayH == 18 and todayM == 0:
 				embed = EpicGamesFreeGame()
-				await ctx.send(embed=embed)
+				for Guild in bot.guilds:
+					channel = bot.get_channel(Guild.system_channel.id)
+				await channel.send(embed=embed)
 
 				todayNew = datetime.datetime.today()
 				todayM = int(todayNew.strftime("%M"))
